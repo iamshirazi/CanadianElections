@@ -1,3 +1,5 @@
+# Copyright (c) 2023 Matthew Shirazi
+
 import geopandas as gpd
 import matplotlib.pyplot as plt
 
