@@ -15,7 +15,7 @@ Ind = '#847e7e'
 
 # read shapefile
 districts = gpd.read_file("districts2/lfed000b16a_e.shp")
-votes = pd.read_csv("voting_data/Canada2019.txt", sep=" ", header=0)
+votes = pd.read_csv("voting_data/Canada2021.txt", sep=" ", header=0)
 
 # Merge district shapes and number of votes
 districts['FEDUID'] = districts['FEDUID'].astype(int)
@@ -25,7 +25,7 @@ colour = []
 win = []
 
 # read file with voting results
-with open('voting_data/Canada2019.txt') as file:
+with open('voting_data/Canada2021.txt') as file:
 
     for _ in range(1):
         next(file)  # SKIP FIRST LINE
@@ -76,10 +76,10 @@ foliumMap = ridings.explore(
     tooltip=["Riding", "Lib", "Con", "NDP", "Green", "BQ", "Ind"], # show all party votes for a riding when hovering over it
     popup=True, # show all values of a riding when you click it
     tiles="CartoDB positron", # use "CartoDB positron" tiles
-    cmap=['#00A7EC', '#0F2D52', '#3D9B35', '#847e7e', '#EE3224', '#F58220'],
-    style_kwds=dict(color="black"), #use black outline
+    cmap=['#00A7EC', '#0F2D52', '#3D9B35', '#EE3224', '#F58220'], ## Removed '#847e7e' (Indepedendent colour) because no indepedent MPs were elected in 2021
+    style_kwds=dict(color="black") #use black outline
 )
 
-outfp = r"./election2019.html"
+outfp = r"./election2021.html"
 
 foliumMap.save(outfp)
