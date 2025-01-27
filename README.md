@@ -11,6 +11,6 @@ Will also improve performance so zooming in/out of the map doesn't have as much 
 ## How to run this project:
 1. Clone this repository
 2. Run: `pip install -r requirements.txt` to install all necessary libraries
-3. Run CanadianElection2019.py
-4. Copy the path of the election2019.html file
+3. Run CanadianElection2019.py or CanadianElection2021.py
+4. Copy the path of the election2019.html or 2021 file
 5. Paste the path into your browser to view the electoral map
