@@ -21,6 +21,9 @@ votes = pd.read_csv("voting_data/Canada2019.txt", sep=" ", header=0)
 districts['FEDUID'] = districts['FEDUID'].astype(int)
 districts = districts.merge(votes, on='FEDUID')
 
+## Simplifiy district shapes to increase loading speed
+districts["geometry"] = (districts.to_crs(districts.estimate_utm_crs()).simplify(100).to_crs(districts.crs))
+
 colour = []
 win = []
 
@@ -67,19 +70,22 @@ with open('voting_data/Canada2019.txt') as file:
 # Sort the ridings
 ridings = districts.sort_values('FEDUID')
 
+## DROP UNNECESSARY COLUMNS IN DATAFRAME:
+ridings = ridings.drop(['FEDUID', 'FEDNAME', 'FEDENAME', 'FEDFNAME', 'PRUID', 'PRNAME'], axis=1)
+
 # Colour the ridings
 ridings["Party"] = win
 ridings['color'] = colour
 
 foliumMap = ridings.explore(
     column="Party", # make choropleth vased on winner in column
-    tooltip=["Riding", "Lib", "Con", "NDP", "Green", "BQ", "Ind"], # show all party votes for a riding when hovering over it
+    tooltip=["Riding", "Party", "Lib", "Con", "NDP", "Green", "BQ", "Ind"], # show all party votes for a riding when hovering over it
     popup=True, # show all values of a riding when you click it
     tiles="CartoDB positron", # use "CartoDB positron" tiles
     cmap=['#00A7EC', '#0F2D52', '#3D9B35', '#847e7e', '#EE3224', '#F58220'],
     style_kwds=dict(color="black"), #use black outline
 )
 
-outfp = r"./election2019.html"
+outfp = r"./pages/elections/election2019.html"
 
 foliumMap.save(outfp)
