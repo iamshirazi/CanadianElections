@@ -17,5 +17,5 @@ Will add previous and future elections to this project.
 1. Clone this repository
 2. Run: `pip install -r requirements.txt` to install all necessary libraries
 3. Run CanadianElection1867.py, CanadianElection2019.py and CanadianElection2021.py
-4. Copy the path of the landing_page.html file
+4. Copy the path of the /pages/main/elections.html file
 5. Paste the path into your browser to view all of the current electoral maps available
