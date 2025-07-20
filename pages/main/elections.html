@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canadian Elections</title>
+    <link rel="stylesheet" href="elections_style.css">
+    <script src="elections_functions.js"></script>
+</head>
+<body>
+    <div id="mainBanner">
+        <div id="homeButton">
+            <h3 id="homeButtonText">Canadian Elections</h3>
+        </div>
+        <div>
+            <button id="button1867" onclick=load1867Election()>1867 Election</button>
+        </div>
+        <div>
+            <button id="button2019" onclick=load2019Election()>2019 Election</button>
+        </div>
+        <div>
+            <button id="button2021" onclick=load2021Election()>2021 Election</button>
+        </div>
+        <div>
+            <button id="aboutButton" onclick=loadAbout()>About</button>
+        </div>
+    </div>
+    <iframe id="iframe" src="../elections/election1867.html" type="text/html" scrolling="no"></iframe>
+    <div id="current_election_text">1867</div>
+</body>
+</html>

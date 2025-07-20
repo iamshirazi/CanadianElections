@@ -11,6 +11,7 @@ Will add previous and future elections to this project.
 * Performance has been significantly improved. Loading times have decreased by **98%**
 * The 1867 election has been added to the project. Huge thanks to [Dr. Jack Lucas, Dr. Zach Taylor, and Dr. Dave Armstrong](https://borealisdata.ca/file.xhtml?fileId=449029&version=2.0) and their team for creating and publishing the shapefiles for every federal district of every election in Canadian history.
 * A landing page was created, so now you can click a button to view any of the elections available
+* The Dockerfile was redone, so now you can host this entire project inside of a conatiner
 
 ## How to run this project:
 1. Clone this repository

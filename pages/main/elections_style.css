@@ -1,0 +1,107 @@
+#mainBanner {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    background-color: #000000;
+    width: 100%; 
+    height: 10%;
+}
+#homeButton {
+    position: absolute; 
+    top: -1%; 
+    left: 1%;
+    background-color: #000000;
+    width: 10%;
+    height: 100%;
+}
+#homeButtonText {
+    color: #ffffff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#button1867 {
+    position: absolute; 
+    left: 10%;
+    width: 10%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    transition: all .5s ease;
+}
+
+#button2019 {
+    position: absolute; 
+    left: 20%;
+    width: 10%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    transition: all .5s ease;
+}
+
+#button2021 {
+    position: absolute;
+    left: 30%;
+    width: 10%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    transition: all .5s ease;
+}
+
+#aboutButton {
+    position: absolute;
+    right: 0%;
+    width: 10%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    transition: all .5s ease;
+}
+
+#button1867:hover, #button2019:hover, #button2021:hover, #aboutButton:hover {
+    transition: all .5s ease;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+#iframe {
+    position: absolute;
+    top: 10%;
+    display: inline-block;
+    border: none;
+    height: 90vh;
+    width: 100vw;
+}
+
+#current_election_text {
+    font-size: xx-large;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: absolute; 
+    top: 10%; 
+    right: 5%; 
+    z-index: 2
+}
+
+.aboutParagraph {
+    text-align: left;
+    font-size: medium;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
