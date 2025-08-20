@@ -86,6 +86,4 @@ foliumMap = ridings.explore(
     style_kwds=dict(color="black"), #use black outline
 )
 
-outfp = r"./pages/elections/election2019.html"
-
-foliumMap.save(outfp)
+foliumMap.save("./pages/elections/election2019.html")
