@@ -91,6 +91,4 @@ foliumMap = dataframe3.explore(
     style_kwds=dict(color="black"), #use black outline
 )
 
-outfp = r"./pages/elections/election1867.html"
-
-foliumMap.save(outfp)
+foliumMap.save("./pages/elections/election1867.html")

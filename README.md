@@ -7,6 +7,10 @@ The map of Canada is highly detailed, and allows you to zoom into any part of th
 
 Will add previous and future elections to this project.
 
+### August 2025 UPDATE:
+* Made the elections.html page mobile friendly. The webpage now looks great on both PC and mobile.
+* Updated Dockerfile and python scripts. They now function better.
+
 ### July 2025 UPDATE:
 * Performance has been significantly improved. Loading times have decreased by **98%**
 * The 1867 election has been added to the project. Huge thanks to [Dr. Jack Lucas, Dr. Zach Taylor, and Dr. Dave Armstrong](https://borealisdata.ca/file.xhtml?fileId=449029&version=2.0) and their team for creating and publishing the shapefiles for every federal district of every election in Canadian history.

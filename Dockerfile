@@ -26,7 +26,7 @@ COPY voting_data ./voting_data \
     districts2 ./districts2
 
 ## Run all python scripts to generate the maps
-CMD ["python3", "./CanadianElection1867.py", "./CanadianElection2019.py; ./CanadianElection2021.py"]
+RUN python CanadianElection1867.py && python CanadianElection2019.py && python CanadianElection2021.py
 
 
 ### STAGE 2
@@ -34,10 +34,6 @@ FROM nginxinc/nginx-unprivileged:stable-alpine
 
 ## Copy main folder to nginx/html 
 COPY ./pages/main /usr/share/nginx/html/pages/main
-
-## Make elections folder in /usr/share/nginx/html
-# USER root
-# RUN mkdir -p /usr/share/nginx/pages/elections
 
 ## Copy the maps to the nginx/html/pages/elections folder
 COPY --from=python-stage /app/pages/elections/election1867.html /usr/share/nginx/html/pages/elections/election1867.html
