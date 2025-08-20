@@ -2,10 +2,9 @@
     position: absolute; 
     display: flex;
     top: 0; 
-    left: 0; 
     background-color: #000000;
-    width: 100%; 
-    height: 10%;
+    width: 100dvw; 
+    height: 10dvh;
 }
 #homeButton {
     display: inline-block;
