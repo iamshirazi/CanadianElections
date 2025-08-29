@@ -8,6 +8,7 @@ The map of Canada is highly detailed, and allows you to zoom into any part of th
 Will add previous and future elections to this project.
 
 ### August 2025 UPDATE:
+* [canadianelections.net](https://canadianelections.net) is now **LIVE**! Head over to canadianelections.net to view this entire project!
 * Made the elections.html page mobile friendly. The webpage now looks great on both PC and mobile.
 * Updated Dockerfile and python scripts. They now function better.
 
