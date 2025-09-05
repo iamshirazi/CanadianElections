@@ -4,6 +4,11 @@ function load1867Election() {
     document.getElementById('current_election_text').innerHTML = "1867"
 };
 
+function load1872Election() {
+    document.getElementById('iframe').src = "/elections/election1872.html";
+    document.getElementById('current_election_text').innerHTML = "1872"
+};
+
 function load2019Election() {
     document.getElementById('iframe').src = "/elections/election2019.html";
     document.getElementById('current_election_text').innerHTML = "2019"
