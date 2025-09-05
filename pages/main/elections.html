@@ -9,17 +9,23 @@
 </head>
 <body>
     <div id="mainBanner">
-        <div id="homeButton">
-            <h3 id="homeButtonText">Canadian Elections</h3>
+        <div class="dropdown">
+            <button id="homeButton">Canadian Elections</button>
+            <div class="dropdown-content">
+                <a onclick=load1867Election()>1867</a>
+                <a onclick=load1872Election()>1872</a>
+                <a onclick=load2019Election()>2019</a>
+                <a onclick=load2021Election()>2021</a>
+            </div>
         </div>
         <div>
-            <button id="button1867" onclick=load1867Election()>1867</button>
+            <button class="electionButtons" onclick=load1867Election()>1867</button>
         </div>
         <div>
-            <button id="button2019" onclick=load2019Election()>2019</button>
+            <button class="electionButtons" onclick=load2019Election()>2019</button>
         </div>
         <div>
-            <button id="button2021" onclick=load2021Election()>2021</button>
+            <button class="electionButtons" onclick=load2021Election()>2021</button>
         </div>
         <div>
             <button id="aboutButton" onclick=loadAbout()>About</button>
