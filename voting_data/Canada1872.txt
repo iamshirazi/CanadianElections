@@ -57,7 +57,7 @@ Guysborough CAMPBELL,Stewart None 1 0 0 0
 Haldimand Thompson,David None 0 1 0 0
 Halifax ALMON,William-Johnston--and--TOBIN,Stephen JONES,Alfred-Gilpin 2528 2486 2430 0
 Halton WHITE,John MCKINDSEY,George-Crawford 0 1414 0 1278
-Hamilton CHISHOLM,Daniel-Black WITTON,Henry-Buckingham 1443 0 0 1422
+Hamilton CHISHOLM,Daniel-Black--and--WITTON,Henry-Buckingham IRVING,Aemilius 1443 1346 0 1422
 Hants HOWE,Joseph None 1 0 0 0
 Hastings-East WHITE,John FRIZZELL,W. 818 0 0 774
 Hastings-North BOWELL,Mackenzie WALLBRIDGE,T.C. 766 0 0 559
@@ -119,7 +119,7 @@ Northumberland-East KEELER,Joseph BIGGAR,James-Lyons 1515 0 1430 0
 Northumberland-West COCKBURN,James None 1 0 0 0
 Ontario-North GIBBS,William-Henry THOMPSON,John-Hall 1835 1620 0 0
 Ontario-South GIBBS,Thomas-Nicholson White,Trueman-P. 1466 0 0 1373
-Ottawa-(City-of) CURRIER,Joseph-Merrill LEWIS,John-Bower 1 0 0 0
+Ottawa-(City-of) CURRIER,Joseph-Merrill--and--LEWIS,John-Bower None 1 0 0 0
 Ottawa-(County-of) WRIGHT,Alonzo None 1 0 0 0
 Oxford-North OLIVER,Thomas None 0 1 0 0
 Oxford-South BODWELL,Ebenezer-Vining None 0 1 0 0
