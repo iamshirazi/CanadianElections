@@ -57,7 +57,7 @@ Guysborough CAMPBELL,Stewart None 1 0 0 0
 Haldimand Thompson,David None 0 1 0 0
 Halifax ALMON,William-Johnston--and--TOBIN,Stephen JONES,Alfred-Gilpin 2528 2486 2430 0
 Halton WHITE,John MCKINDSEY,George-Crawford 0 1414 0 1278
-Hamilton CHISHOLM,Daniel-Black WITTON,Henry-Buckingham 1443 0 0 1422
+Hamilton CHISHOLM,Daniel-Black--and--WITTON,Henry-Buckingham IRVING,Aemilius 1443 1346 0 1422
 Hants HOWE,Joseph None 1 0 0 0
 Hastings-East WHITE,John FRIZZELL,W. 818 0 0 774
 Hastings-North BOWELL,Mackenzie WALLBRIDGE,T.C. 766 0 0 559
