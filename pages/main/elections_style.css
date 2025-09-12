@@ -11,13 +11,14 @@
 .dropdown {
   position: relative;
   display: inline-block;
-  width: 10%;
-  min-width: 90px;
 }
 
 #homeButton {
     background-color: #000000;
     color: #ffffff;
+    margin-left: -1%;
+    margin-right: -1%;
+    width: 10%;
     min-width: 90px;
     height: 100%;
     font-size: large;
@@ -57,7 +58,7 @@
     transition: all .5s ease;
 }
 
-#homeButton:hover, .electionButtons:hover, #aboutButton:hover {
+.electionButtons:hover, #aboutButton:hover {
     transition: all .5s ease;
     background-color: #ffffff;
     color: #000000;

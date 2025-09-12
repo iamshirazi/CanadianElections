@@ -9,6 +9,11 @@ function load1872Election() {
     document.getElementById('current_election_text').innerHTML = "1872"
 };
 
+function load1874Election() {
+    document.getElementById('iframe').src = "/elections/election1874.html";
+    document.getElementById('current_election_text').innerHTML = "1874"
+};
+
 function load2019Election() {
     document.getElementById('iframe').src = "/elections/election2019.html";
     document.getElementById('current_election_text').innerHTML = "2019"
