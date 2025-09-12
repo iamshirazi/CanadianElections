@@ -16,6 +16,7 @@
 #homeButton {
     background-color: #000000;
     color: #ffffff;
+    width: 10%;
     min-width: 90px;
     height: 100%;
     font-size: large;
