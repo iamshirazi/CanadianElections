@@ -34,6 +34,9 @@ RUN python CanadianElection1867.py && python CanadianElection1872.py && python C
 ### STAGE 2
 FROM nginxinc/nginx-unprivileged:stable-alpine
 
+## Copy sitemap.xml to nginx/html
+COPY ./pages/sitemap.xml /usr/share/nginx/html/pages/sitemap.xml
+
 ## Copy main folder to nginx/html 
 COPY ./pages/main /usr/share/nginx/html/pages/main
 
