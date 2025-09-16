@@ -10,13 +10,9 @@ RUN apt-get update && apt-get install -y \
     gcc \
     clang
 
-## Copy requirements.txt
+## Copy requirements.txt and all Python scripts
 COPY requirements.txt ./ \
-    CanadianElection1867.py ./ \
-    CanadianElection1872.py ./ \
-    CanadianElection1874.py ./ \
-    CanadianElection2019.py ./ \
-    CanadianElection2021.py ./
+    mapGenerators ./
 
 ## Install all requirements
 RUN python3 -m pip install --upgrade pip \
@@ -28,7 +24,9 @@ COPY voting_data ./voting_data \
     districts2 ./districts2
 
 ## Run all python scripts to generate the maps
-RUN python CanadianElection1867.py && python CanadianElection1872.py && python CanadianElection1874.py && python CanadianElection2019.py && python CanadianElection2021.py
+RUN python CanadianElection1867.py && python CanadianElection1872.py \
+    && python CanadianElection1874.py && python CanadianElection1878.py \
+    && python CanadianElection2019.py && python CanadianElection2021.py
 
 
 ### STAGE 2
@@ -47,6 +45,7 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY --from=python-stage /app/pages/elections/election1867.html /usr/share/nginx/html/pages/elections/election1867.html
 COPY --from=python-stage /app/pages/elections/election1872.html /usr/share/nginx/html/pages/elections/election1872.html
 COPY --from=python-stage /app/pages/elections/election1874.html /usr/share/nginx/html/pages/elections/election1874.html
+COPY --from=python-stage /app/pages/elections/election1878.html /usr/share/nginx/html/pages/elections/election1878.html
 COPY --from=python-stage /app/pages/elections/election2019.html /usr/share/nginx/html/pages/elections/election2019.html
 COPY --from=python-stage /app/pages/elections/election2021.html /usr/share/nginx/html/pages/elections/election2021.html
 
