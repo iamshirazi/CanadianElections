@@ -8,7 +8,7 @@ The map of Canada is highly detailed, and allows you to zoom into any part of th
 Will add previous and future elections to this project.
 
 ### September 2025 UPDATE:
-* Added the 1872, 1874, AND 1878 elections to the project! You can view them under the NEW dropdown menu. Just hover your mouse over the "More" button and select an election.
+* Added the 1872, 1874, 1878 AND 1882 elections to the project! You can view them under the NEW dropdown menu. Just hover your mouse over the "More" button and select an election.
 
 ### August 2025 UPDATE:
 * [canadianelections.net](https://canadianelections.net) is now **LIVE**! Head over to canadianelections.net to view this entire project!
