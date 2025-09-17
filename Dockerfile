@@ -19,9 +19,11 @@ RUN python3 -m pip install --upgrade pip \
     && python3 -m \
     pip install -r requirements.txt
 
-## Copy voting_data and shapefiles
-COPY voting_data ./voting_data \
-    districts2 ./districts2
+## Copy voting_data to the container
+COPY voting_data ./voting_data
+
+# Unzip districts2 and copy it to the container
+ADD districts2.tar.gz ./distrcts2
 
 ## Run all python scripts to generate the maps
 RUN python CanadianElection1867.py && python CanadianElection1872.py \
