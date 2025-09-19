@@ -1,4 +1,4 @@
-FEDUID Riding Lib Con NDP Green BQ Ind
+FEDUID Riding Liberal Conservative NDP Green Bloc-Quebecois Independent
 10001 Avalon 18646 12538 7101 2172 0 0
 10002 Bonavista--Bruin--Trinity 14701 12697 3855 920 0 0
 10003 Coast-of-Bays--Central--Notre-Dame 15861 11695 4058 1310 0 0
@@ -196,7 +196,7 @@ FEDUID Riding Lib Con NDP Green BQ Ind
 35085 Pickering–Uxbridge 32019 18320 7462 3711 0 0
 35086 Renfrew–Nipissing–Pembroke 11326 30287 8587 3108 0 1111
 35087 Richmond-Hill 21804 21692 4425 1695 0 126
-35088 Carleton 31637 25934 6289 3302 0 0
+35088 Carleton 25934 31637 6289 3302 0 0
 35089 St.-Catharines 23817 18850 12252 3637 0 0
 35090 Toronto–St.-Pauls 28646 11380 8238 3460 0 0
 35091 Sarnia–Lambton 11824 28340 12372 2440 0 541
