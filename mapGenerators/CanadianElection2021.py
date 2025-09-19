@@ -79,7 +79,7 @@ ridings['color'] = colour
 
 foliumMap = ridings.explore(
     column="Party", # make choropleth vased on winner in column
-    tooltip=["Riding", "Party", "Lib", "Con", "NDP", "Green", "BQ", "Ind"], # show all party votes for a riding when hovering over it
+    tooltip=["Riding", "Party", "Liberal", "Conservative", "NDP", "Green", "Bloc-Quebecois", "Independent"], # show all party votes for a riding when hovering over it
     popup=True, # show all values of a riding when you click it
     tiles="CartoDB positron", # use "CartoDB positron" tiles
     cmap=['#00A7EC', '#0F2D52', '#3D9B35', '#EE3224', '#F58220'], ## Removed '#847e7e' (Indepedendent colour) because no indepedent MPs were elected in 2021

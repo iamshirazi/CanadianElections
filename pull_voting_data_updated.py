@@ -3,17 +3,17 @@
 import pandas as pd
 import numpy as np
 
-dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Downloaded the excel file from Library of Parliament website
+dataframe1 = pd.read_excel('./voting_data/electionsCandidates-2.xlsx') ## Downloaded the excel file from Library of Parliament website
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1882.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1887.txt', dataframe2.values, fmt='%s')
 
 ### Read firstPass.txt, everytime a line starts with a name, append it to the previous line.
 previous_line = ['test', 'test', 'test', 'test']
 modified_lines = []
 skip_next_line = False
-with open("./voting_data/ElectionData1882.txt", "r") as file:
+with open("./voting_data/ElectionData1887.txt", "r") as file:
 
     i = 0
     for current_line in file:
@@ -35,7 +35,7 @@ with open("./voting_data/ElectionData1882.txt", "r") as file:
                     previous_line[3] = "0 1 0 0 0"
                 elif "Independent" in previous_line[2]:
                     previous_line[3] = "0 0 1 0 0"
-                elif previous_line[2] == "Nationalist-Conservative":
+                elif "Nationalist" in previous_line[2]:
                     previous_line[3] = "0 0 0 1 0"
 
                 previous_line[2] = "None"
@@ -56,7 +56,7 @@ with open("./voting_data/ElectionData1882.txt", "r") as file:
                     previous_line[3] = "0 " + winner_votes + " 0 0 0"
                 elif "Independent" in winner_party:
                     previous_line[3] = "0 0 " + winner_votes + " 0 0"
-                elif winner_party == "Nationalist-Conservative":
+                elif "Nationalist" in winner_party:
                     previous_line[3] = "0 0 0 " + winner_votes + " 0"
                 else:
                     ### Unknown
@@ -65,7 +65,7 @@ with open("./voting_data/ElectionData1882.txt", "r") as file:
                     continue
 
                 ## Don't want to overwrite winner_votes, so just send loser_votes to Unkown section
-                if loser_party == "Unknown" or loser_party == winner_party:
+                if loser_party == "Unknown" or loser_party == winner_party or loser_party in winner_party or winner_party in loser_party:
                     string_of_votes = previous_line[3].split()
                     previous_line[3] = string_of_votes[0] + ' ' + string_of_votes[1] + ' ' + string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + loser_votes
                 elif loser_party == "Liberal-Conservative" or loser_party == "Conservative":
@@ -77,7 +77,7 @@ with open("./voting_data/ElectionData1882.txt", "r") as file:
                 elif "Independent" in loser_party:
                     string_of_votes = previous_line[3].split()
                     previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  loser_votes + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4]
-                elif loser_party == "Nationalist-Conservative":
+                elif "Nationalist" in loser_party:
                     string_of_votes = previous_line[3].split()
                     previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' +  loser_votes + ' ' +  string_of_votes[4]
 
@@ -92,5 +92,5 @@ with open("./voting_data/ElectionData1882.txt", "r") as file:
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1882.txt", "w") as file:
+with open("./voting_data/Canada1887.txt", "w") as file:
     file.writelines(modified_lines)

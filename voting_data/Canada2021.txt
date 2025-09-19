@@ -1,4 +1,4 @@
-FEDUID Riding Lib Con NDP Green BQ Ind
+FEDUID Riding Liberal Conservative NDP Green Bloc-Quebecois Independent
 10001 Avalon 18608 12738 5151 0 0 0
 10002 Bonavista--Burin--Trinity 13972 12278 2484 0 0 0
 10003 Coast-of-Bays--Central--Notre-Dame 14646 14927 2261 0 0 0
