@@ -4,6 +4,7 @@ import geopandas as gpd
 from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.pyplot as plt
 import pandas as pd
+import parliament_charts
 
 # COLOURS
 Lib = '#EE3224'  # (238, 50, 36)
@@ -12,6 +13,13 @@ NDP = '#F58220'  # (253, 185, 19)
 Green = '#3D9B35'  # (61, 155, 53)
 BQ = '#00A7EC'  # (0, 167, 236)
 Ind = '#847e7e'
+
+CON_SEATS = 121
+LIB_SEATS = 157
+NDP_SEATS = 24
+GREEN_SEATS = 3
+BLOQ_SEATS = 32
+INDEPENDENT_SEATS = 0
 
 # read shapefile
 districts = gpd.read_file("districts2/lfed000b16a_e.shp")
@@ -65,6 +73,19 @@ with open('voting_data/Canada2019.txt') as file:
         elif winner == int(results[5]):
             colour.append(Ind)
             win.append("Independent")
+
+
+total_seats = (CON_SEATS + LIB_SEATS + NDP_SEATS + GREEN_SEATS + BLOQ_SEATS + INDEPENDENT_SEATS)
+
+sorted_parliament_seats = parliament_charts.create_parliament_seating_plan_2019(CON_SEATS, LIB_SEATS, NDP_SEATS, GREEN_SEATS, BLOQ_SEATS, INDEPENDENT_SEATS)
+
+parliament_chart = parliament_charts.generateParliamentChart(total_seats, sorted_parliament_seats)
+
+with open("pages/main/parliament_charts/parl_chart2019.html", "w") as file:
+    generic_lines = "<!DOCTYPE html>\n<html>\n<head>\n\t<link rel='stylesheet' href='/main/elections_style.css'>\n</head>\n</head>\n<body>\n"
+    file.writelines(generic_lines)
+    file.writelines(parliament_chart)
+    file.writelines("</body>\n</html>")
 
 
 # Sort the ridings

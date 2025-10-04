@@ -122,3 +122,176 @@
     bottom: 0;
     width: 100dvw;
 }
+
+#parliamentChartButton {
+    display: flex;
+    bottom: 12dvh;
+    left: 1%;
+    background-color: #000000;
+    color: #ffffff;
+    position: absolute;
+    z-index: 1;
+    display: inline-block;
+    border-radius: 25px;
+    border: none;
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: large;
+    transition: all .5s ease;
+}
+
+#parliamentChartButton:hover {
+    transition: all .5s ease;
+    background-color: #82d2c3;
+    color: #000000;
+}
+
+#parliamentChartButton:active {
+    transition: all .4s ease;
+    transform: rotate(180deg);
+}
+
+#parliamentChart {
+    position: absolute;
+    margin-left: 3%;
+    bottom: 1dvh;
+}
+
+.Liberal_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #EE3224; 
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Conservative_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #0F2D52;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Anti-Confederation_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #F58220;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Vacant_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #b6b6b6;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Independent_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #b6b6b6;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Nationalist-Conservative_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #800080;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Patrons-of-Industry_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color: #A52A2A;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.McCarthyite_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color:#009A44;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Green_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color:#3D9B35;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+} 
+
+.NDP_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color:#F58220;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.Bloq-Quebecois_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color:#00A7EC;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
+.fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row {
+    margin-left: 1rem;
+}
+
+.eleventh_row, .tenth_row, .ninth_row, .eighth_row, .seventh_row {
+    margin-left: 1rem;
+}
+
+.Liberal_dot:hover, .Conservative_dot:hover, .Anti-Confederation_dot:hover,
+.Vacant_dot:hover, .Independent_dot:hover, .Nationalist-Conservative_dot:hover,
+.Patrons-of-Industry_dot:hover, .McCarthyite_dot:hover, .Green_dot:hover, .NDP_dot:hover,
+.Bloq-Quebecois_dot:hover {
+    height: 1rem;
+    width: 1rem;
+    transition: all .5s ease;
+}

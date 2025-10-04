@@ -4,11 +4,16 @@ import geopandas as gpd
 from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.pyplot as plt
 import pandas as pd
+import parliament_charts
 
 # COLOURS
 Lib = '#EE3224'  # (238, 50, 36)
 Con = '#0F2D52'  # (15, 45, 82)
 Independent = '#847e7e'
+
+CON_SEATS = 63
+LIB_SEATS = 131
+INDEPENDENT_SEATS = 12
 
 # read shapefile
 districts = gpd.read_file("districts2/CBF_RO1872_CSRS.shp")
@@ -75,6 +80,18 @@ with open('voting_data/Canada1874.txt') as file:
 # pd.set_option('display.max_columns', None)
 # print(dataframe3[["fedname", "Riding"]])
 
+
+total_seats = (CON_SEATS + LIB_SEATS + INDEPENDENT_SEATS)
+
+sorted_parliament_seats = parliament_charts.create_parliament_seating_plan_1874(CON_SEATS, LIB_SEATS, INDEPENDENT_SEATS)
+
+parliament_chart = parliament_charts.generateParliamentChart(total_seats, sorted_parliament_seats)
+
+with open("pages/main/parliament_charts/parl_chart1874.html", "w") as file:
+    generic_lines = "<!DOCTYPE html>\n<html>\n<head>\n\t<link rel='stylesheet' href='/main/elections_style.css'>\n</head>\n</head>\n<body>\n"
+    file.writelines(generic_lines)
+    file.writelines(parliament_chart)
+    file.writelines("</body>\n</html>")
 
 ## DROP UNNECESSARY COLUMNS IN DATAFRAME:
 dataframe3 = dataframe3.drop(['OBJECTID', 'id', 'fedname', 'fedid', 'Shape_Area'], axis=1)

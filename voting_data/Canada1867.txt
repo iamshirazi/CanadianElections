@@ -53,7 +53,7 @@ Grey-North SNIDER,George BOLTON, 0 1399 0 1143
 Grey-South JACKSON,George DALGLEISH, 1560 0 0 1547
 Guysborough CAMPBELL,Stewart None 0 0 1 0
 Haldimand Thompson,David MCKINNON, 0 1391 0 1022
-Halifax JONES,Alfred-Gilpin POWER,Patrick 0 0 2381 2367
+Halifax JONES,Alfred-Gilpin--and--POWER,Patrick SHANNON,S.L. 0 0 2381 2154
 Halton WHITE,John CHISHOLM, 0 1422 0 1289
 Hamilton MAGILL,Charles None 0 1 0 0
 Hants HOWE,Joseph KING,Jas. 0 0 1530 956
