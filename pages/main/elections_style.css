@@ -160,9 +160,9 @@
 
 .Liberal_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #EE3224; 
     border-radius: 50%;
     display: inline-block;
@@ -171,9 +171,9 @@
 
 .Conservative_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #0F2D52;
     border-radius: 50%;
     display: inline-block;
@@ -182,9 +182,9 @@
 
 .Anti-Confederation_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #F58220;
     border-radius: 50%;
     display: inline-block;
@@ -193,9 +193,9 @@
 
 .Vacant_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #b6b6b6;
     border-radius: 50%;
     display: inline-block;
@@ -204,9 +204,9 @@
 
 .Independent_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #b6b6b6;
     border-radius: 50%;
     display: inline-block;
@@ -215,9 +215,9 @@
 
 .Nationalist-Conservative_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #800080;
     border-radius: 50%;
     display: inline-block;
@@ -226,9 +226,9 @@
 
 .Patrons-of-Industry_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color: #A52A2A;
     border-radius: 50%;
     display: inline-block;
@@ -237,9 +237,9 @@
 
 .McCarthyite_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color:#009A44;
     border-radius: 50%;
     display: inline-block;
@@ -248,9 +248,9 @@
 
 .Green_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color:#3D9B35;
     border-radius: 50%;
     display: inline-block;
@@ -259,9 +259,9 @@
 
 .NDP_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color:#F58220;
     border-radius: 50%;
     display: inline-block;
@@ -270,9 +270,9 @@
 
 .Bloq-Quebecois_dot {
     bottom: 10%;
-    height: 10px;
-    width: 10px;
-    margin: 2px;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
     background-color:#00A7EC;
     border-radius: 50%;
     display: inline-block;
@@ -280,18 +280,18 @@
 }
 
 .fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row {
-    margin-left: 12px;
+    margin-left: 1rem;
 }
 
 .eleventh_row, .tenth_row, .ninth_row, .eighth_row, .seventh_row {
-    margin-left: 12px;
+    margin-left: 1rem;
 }
 
 .Liberal_dot:hover, .Conservative_dot:hover, .Anti-Confederation_dot:hover,
 .Vacant_dot:hover, .Independent_dot:hover, .Nationalist-Conservative_dot:hover,
 .Patrons-of-Industry_dot:hover, .McCarthyite_dot:hover, .Green_dot:hover, .NDP_dot:hover,
 .Bloq-Quebecois_dot:hover {
-    height: 15px;
-    width: 15px;
+    height: 1rem;
+    width: 1rem;
     transition: all .5s ease;
 }
