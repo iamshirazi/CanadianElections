@@ -7,6 +7,10 @@ The map of Canada is highly detailed, and allows you to zoom into any part of th
 
 Will add previous and future elections to this project.
 
+### October 2025 UPDATE:
+* Added parliament charts for each currently available election! Just click the `>` button to see 
+the seat makeup in parliament.
+
 ### September 2025 UPDATE:
 * Added the 1872, 1874, 1878, 1882, 1887, 1891 AND 1896 elections to the project! You can view them under the NEW dropdown menu. Just hover your mouse over the "More" button and select an election.
 * Minified elections_style.css in the Dockerfile to decrease loading times (improve performance).
