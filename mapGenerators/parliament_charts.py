@@ -18,8 +18,8 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
     ninth_row = "<div class='ninth_row'>"
     tenth_row = "<div class='tenth_row'>"
     eleventh_row = "<div class='eleventh_row'>"
-    twelfth_row = "<div class='eleventh_row'>"
-    thirteenth_row = "<div class='eleventh_row'>"
+    twelfth_row = "<div class='twelfth_row'>"
+    thirteenth_row = "<div class='thirteenth_row'>"
     speaker_row = "<div class='speaker_row'>"
 
 

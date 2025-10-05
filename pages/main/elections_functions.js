@@ -4,6 +4,7 @@ function loadElection(electionYear) {
     document.getElementById('current_election_text').innerHTML = electionYear
     set_parliament_chart(electionYear)
     display_parliament_chart_button()
+    hideDropdownMenu()
 };
 
 function loadAbout() {
@@ -47,6 +48,30 @@ function display_parliament_chart_button() {
 
 function hide_parliament_chart_button() {
     const parl_chart_button = document.getElementById('parliamentChartButton')
+    const parliamentChart = document.getElementById('parliamentChart')
 
     parl_chart_button.style.display = "none";
+    parliamentChart.style.display = "none";
+    
 }
+
+function showDropdownMenu() {
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    dropdownContent.style.display = "block";
+}
+
+function hideDropdownMenu() {
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    dropdownContent.style.display = "none";
+}
+
+document.addEventListener('click', function(event) {
+    const dropdownContent = document.querySelector('.dropdown-content');
+    const moreButton = document.getElementById('moreButton')
+    
+    if (dropdownContent && !dropdownContent.contains(event.target) && (event.target !== dropdownContent && event.target !== moreButton)) {
+        dropdownContent.style.display = 'none';
+    }
+});

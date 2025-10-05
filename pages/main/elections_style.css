@@ -87,10 +87,6 @@
     background-color: #ddd;
 }
 
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
 #iframe {
     position: absolute;
     top: 10%;
@@ -154,7 +150,7 @@
 
 #parliamentChart {
     position: absolute;
-    margin-left: 3%;
+    margin-left: 3dvw;
     bottom: 1dvh;
 }
 
@@ -279,11 +275,9 @@
     transition: all .5s ease;
 }
 
-.fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row {
-    margin-left: 1rem;
-}
-
-.eleventh_row, .tenth_row, .ninth_row, .eighth_row, .seventh_row {
+.fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row,
+.thirteenth_row, .twelfth_row, .eleventh_row, .tenth_row, .ninth_row,
+.eighth_row, .seventh_row {
     margin-left: 1rem;
 }
 
@@ -295,3 +289,33 @@
     width: 1rem;
     transition: all .5s ease;
 }
+
+@media only screen and (max-width: 600px) {
+        .Liberal_dot, .Conservative_dot, .Anti-Confederation_dot,
+.Vacant_dot, .Independent_dot, .Nationalist-Conservative_dot,
+.Patrons-of-Industry_dot, .McCarthyite_dot, .Green_dot, .NDP_dot,
+.Bloq-Quebecois_dot {
+            height: 0.31rem;
+            width: 0.31rem;
+            margin: 0.03rem;
+        }
+        .first_row, .second_row, .third_row, .fourth_row,
+.fifth_row, .sixth_row, .seventh_row, .eighth_row,
+.ninth_row, .tenth_row, .eleventh_row, .twelfth_row,
+.thirteenth_row, .speaker_row {
+        margin-top: -10px;
+    }
+
+    #parliamentChart {
+        margin-left: 6dvw;
+        bottom: 5dvh;
+    }
+
+        .Liberal_dot:hover, .Conservative_dot:hover, .Anti-Confederation_dot:hover,
+.Vacant_dot:hover, .Independent_dot:hover, .Nationalist-Conservative_dot:hover,
+.Patrons-of-Industry_dot:hover, .McCarthyite_dot:hover, .Green_dot:hover, .NDP_dot:hover,
+.Bloq-Quebecois_dot:hover {
+            height: 0.5rem;
+            width: 0.5rem;
+        }
+    }
