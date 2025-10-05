@@ -19,7 +19,7 @@ LIB_SEATS = 157
 NDP_SEATS = 24
 GREEN_SEATS = 3
 BLOQ_SEATS = 32
-INDEPENDENT_SEATS = 0
+INDEPENDENT_SEATS = 1
 
 # read shapefile
 districts = gpd.read_file("districts2/lfed000b16a_e.shp")
