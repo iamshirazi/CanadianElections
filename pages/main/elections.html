@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="View interactive maps for all Canadian elections from 1867 to 1896, 2019, and 2021">
-    <meta name="keywords" content="canadian, elections, maps, 1867, 1872, 1874, 1882, 1887, 1891, 1896, 2019, 2021, federal, results, interactive, canada">
+    <meta name="description" content="View interactive maps for all Canadian elections from 1867 to 1900, 2019, and 2021">
+    <meta name="keywords" content="canadian, elections, maps, 1867, 1872, 1874, 1882, 1887, 1891, 1896, 1900, 2019, 2021, federal, results, interactive, canada">
     <title>Canadian Election Maps</title>
     <link rel="stylesheet" href="/main/elections_style.css">
     <script src="/main/elections_functions.js"></script>
@@ -19,7 +19,7 @@
             <button class="electionButtons" onclick="loadElection('2021')">2021</button>
         </div>
         <div class="dropdown">
-            <button class="electionButtons" >More</button>
+            <button class="electionButtons" id="moreButton" onclick="showDropdownMenu()">More</button>
             <div class="dropdown-content">
                 <a onclick="loadElection('1867')">1867</a>
                 <a onclick="loadElection('1872')">1872</a>
