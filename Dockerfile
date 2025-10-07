@@ -61,6 +61,10 @@ COPY ./pages/main /usr/share/nginx/html/pages/main
 ## Set canadianelections.net to automatically redirect to "/pages/main/elections.html", no explicit path required
 COPY default.conf /etc/nginx/conf.d/default.conf
 
+## Allow permissions to access favicon
+USER root
+RUN chmod -R 755 /usr/share/nginx/html/pages/main/favicon
+
 ## Copy elections_style.css from minify-stage
 COPY --from=minify-stage /app/elections_style.css /usr/share/nginx/html/pages/main/elections_style.css
 
