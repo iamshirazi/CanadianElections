@@ -311,11 +311,17 @@
         bottom: 5dvh;
     }
 
-        .Liberal_dot:hover, .Conservative_dot:hover, .Anti-Confederation_dot:hover,
+    .Liberal_dot:hover, .Conservative_dot:hover, .Anti-Confederation_dot:hover,
 .Vacant_dot:hover, .Independent_dot:hover, .Nationalist-Conservative_dot:hover,
 .Patrons-of-Industry_dot:hover, .McCarthyite_dot:hover, .Green_dot:hover, .NDP_dot:hover,
 .Bloq-Quebecois_dot:hover {
             height: 0.5rem;
             width: 0.5rem;
         }
+
+    .fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row,
+.thirteenth_row, .twelfth_row, .eleventh_row, .tenth_row, .ninth_row,
+.eighth_row, .seventh_row {
+    margin-left: 0.5rem;
+}
     }
