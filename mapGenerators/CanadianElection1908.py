@@ -7,8 +7,8 @@ import pandas as pd
 import parliament_charts
 
 # COLOURS
-Lib = '#d71920'  # (238, 50, 36)
-Con = '#003F72'  # (15, 45, 82)
+Lib = '#EE3224'  # (238, 50, 36)
+Con = '#0F2D52'  # (15, 45, 82)
 Independent = '#847e7e'
 Labour = "#FF8ADC"
 
@@ -34,7 +34,21 @@ gdf_updated = districts.drop(districts[districts['fedname'] == 'Wentworth'].inde
 
 districts = pd.concat([gdf_updated, correct_wentworth], ignore_index=True)
 # ************************************************************************************ #
+## GET CORRECT MIDDLESEX-EAST DISTRICT FROM 1903 election, 1905 MIDDLESEX-EAST is incorrect (overlaps London)
+correct_districts= gpd.read_file("districts2/CBF_RO1903_CSRS.shp")
+correct_middlesex_east = correct_districts[correct_districts['fedname'].isin(['Middlesex East'])]
 
+gdf_updated_mideast = districts.drop(districts[districts['fedname'] == 'Middlesex East'].index)
+
+districts = pd.concat([gdf_updated_mideast, correct_middlesex_east], ignore_index=True)
+# ************************************************************************************ #
+## ALSO GET BETTER FITTING LONDON DISTRICT
+better_london = correct_districts[correct_districts['fedname'].isin(['London'])]
+
+gdf_updated_london = districts.drop(districts[districts['fedname'] == 'London'].index)
+
+districts = pd.concat([gdf_updated_london, better_london], ignore_index=True)
+# ************************************************************************************ #
 
 dataframe2 = districts.sort_values('fedname')
 dataframe2.reset_index(drop=True, inplace=True)
@@ -119,7 +133,7 @@ foliumMap = dataframe3.explore(
     tooltip=["Riding", "Party", "winner", "loser"], # show all party votes for a riding when hovering over it
     popup=True, # show all values of a riding when you click it
     tiles="CartoDB positron", # use "CartoDB positron" tiles
-    cmap=['#003F72', '#847e7e', '#FF8ADC', '#d71920'],
+    cmap=['#0F2D52', '#847e7e', '#FF8ADC', '#EE3224'],
     style_kwds=dict(color="black"), #use black outline
 )
 
