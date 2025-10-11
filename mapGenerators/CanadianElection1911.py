@@ -12,9 +12,9 @@ Con = '#0F2D52'  # (15, 45, 82)
 Independent = '#847e7e'
 Labour = "#FF8ADC"
 
-CON_SEATS = 85
-LIB_SEATS = 133
-INDEPENDENT_SEATS = 2
+CON_SEATS = 132
+LIB_SEATS = 85
+INDEPENDENT_SEATS = 3
 LABOUR_SEATS = 1
 
 # read shapefile
@@ -53,7 +53,7 @@ districts = pd.concat([gdf_updated_london, better_london], ignore_index=True)
 dataframe2 = districts.sort_values('fedname')
 dataframe2.reset_index(drop=True, inplace=True)
 
-votes = pd.read_csv("voting_data/Canada1908.txt", sep=" ", header=0)
+votes = pd.read_csv("voting_data/Canada1911.txt", sep=" ", header=0)
 
 ## Merge district shapes and number of votes
 dataframe3 = pd.concat([dataframe2, votes], axis=1)
@@ -73,7 +73,7 @@ win = []
 
 
 # read file with voting results
-with open('voting_data/Canada1908.txt') as file:
+with open('voting_data/Canada1911.txt') as file:
 
     for _ in range(1):
         next(file)  # SKIP FIRST LINE
@@ -111,11 +111,11 @@ with open('voting_data/Canada1908.txt') as file:
 
 total_seats = (CON_SEATS + LIB_SEATS + INDEPENDENT_SEATS + LABOUR_SEATS)
 
-sorted_parliament_seats = parliament_charts.create_parliament_seating_plan_1908(CON_SEATS, LIB_SEATS, INDEPENDENT_SEATS, LABOUR_SEATS)
+sorted_parliament_seats = parliament_charts.create_parliament_seating_plan_1911(CON_SEATS, LIB_SEATS, INDEPENDENT_SEATS, LABOUR_SEATS)
 
 parliament_chart = parliament_charts.generateParliamentChart(total_seats, sorted_parliament_seats)
 
-with open("pages/main/parliament_charts/parl_chart1908.html", "w") as file:
+with open("pages/main/parliament_charts/parl_chart1911.html", "w") as file:
     generic_lines = "<!DOCTYPE html>\n<html>\n<head>\n\t<link rel='stylesheet' href='/main/elections_style.css'>\n</head>\n</head>\n<body>\n"
     file.writelines(generic_lines)
     file.writelines(parliament_chart)
@@ -137,4 +137,4 @@ foliumMap = dataframe3.explore(
     style_kwds=dict(color="black"), #use black outline
 )
 
-foliumMap.save("./pages/elections/election1908.html")
+foliumMap.save("./pages/elections/election1911.html")
