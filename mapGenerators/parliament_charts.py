@@ -223,6 +223,20 @@ def create_parliament_seating_plan_1908(con_seats, lib_seats, independent_seats,
 
     return parliament_seats
 
+def create_parliament_seating_plan_1911(con_seats, lib_seats, independent_seats, labour_seats):
+    parliament_seats = []
+
+    for i in range(con_seats):
+        parliament_seats.append('Conservative')
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(independent_seats):
+        parliament_seats.append('Independent')
+    for i in range(labour_seats):
+        parliament_seats.append('Labour')
+
+    return parliament_seats
+
 def create_parliament_seating_plan_2019(con_seats, lib_seats, ndp_seats, green_seats, bloq_seats, independent_seats):
     parliament_seats = []
 
