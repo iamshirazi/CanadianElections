@@ -223,6 +223,16 @@ def create_parliament_seating_plan_1908(con_seats, lib_seats, independent_seats,
 
     return parliament_seats
 
+def create_parliament_seating_plan_1917(unionist_seats, opposition_seats):
+    parliament_seats = []
+
+    for i in range(unionist_seats):
+        parliament_seats.append('Unionist')
+    for i in range(opposition_seats):
+        parliament_seats.append('Opposition')
+
+    return parliament_seats
+
 def create_parliament_seating_plan_1911(con_seats, lib_seats, independent_seats, labour_seats):
     parliament_seats = []
 
