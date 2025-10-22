@@ -223,16 +223,6 @@ def create_parliament_seating_plan_1908(con_seats, lib_seats, independent_seats,
 
     return parliament_seats
 
-def create_parliament_seating_plan_1917(unionist_seats, opposition_seats):
-    parliament_seats = []
-
-    for i in range(unionist_seats):
-        parliament_seats.append('Unionist')
-    for i in range(opposition_seats):
-        parliament_seats.append('Opposition')
-
-    return parliament_seats
-
 def create_parliament_seating_plan_1911(con_seats, lib_seats, independent_seats, labour_seats):
     parliament_seats = []
 
@@ -244,6 +234,36 @@ def create_parliament_seating_plan_1911(con_seats, lib_seats, independent_seats,
         parliament_seats.append('Independent')
     for i in range(labour_seats):
         parliament_seats.append('Labour')
+        
+    return parliament_seats
+
+def create_parliament_seating_plan_1917(unionist_seats, opposition_seats):
+    parliament_seats = []
+
+    for i in range(unionist_seats):
+        parliament_seats.append('Unionist')
+    for i in range(opposition_seats):
+        parliament_seats.append('Opposition')
+
+    return parliament_seats
+
+def create_parliament_seating_plan_1921(con_seats, lib_seats, progressive_seats, uf_alberta_seats, labour_seats, independent_seats, uf_ontario_seats):
+    parliament_seats = []
+
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(con_seats):
+        parliament_seats.append('Conservative')
+    for i in range(progressive_seats):
+        parliament_seats.append('Progressive')
+    for i in range(independent_seats):
+        parliament_seats.append('Independent')
+    for i in range(labour_seats):
+        parliament_seats.append('Labour')
+    for i in range(uf_alberta_seats):
+        parliament_seats.append('United-Farmers-of-Alberta')
+    for i in range(uf_ontario_seats):
+        parliament_seats.append('United-Farmers-of-Ontario')
 
     return parliament_seats
 
