@@ -7,13 +7,14 @@ dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Download
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1917.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1921.txt', dataframe2.values, fmt='%s')
 
 ### Read firstPass.txt, everytime a line starts with a name, append it to the previous line.
+previous_previous_line = ['testing', 'testing', 'testing']
 previous_line = ['test', 'test', 'test', 'test']
 modified_lines = []
 skip_next_line = False
-with open("./voting_data/ElectionData1917.txt", "r") as file:
+with open("./voting_data/ElectionData1921.txt", "r") as file:
 
     i = 0
     for current_line in file:
@@ -22,6 +23,7 @@ with open("./voting_data/ElectionData1917.txt", "r") as file:
 
         if skip_next_line == True:
             skip_next_line = False
+            previous_previous_line = previous_line
             previous_line = current_line
             i += 1
             continue
@@ -29,67 +31,90 @@ with open("./voting_data/ElectionData1917.txt", "r") as file:
         ## Elected by acclamation
         if i != 0:
             if previous_line[0] != current_line[0]:
-                if "Unionist" in previous_line[2]:
-                    previous_line[3] = "1 0 0 0 0"
-                elif "Oppostion" in previous_line[2]:
-                    previous_line[3] = "0 1 0 0 0"
-                elif "Independent" in previous_line[2]:
-                    previous_line[3] = "0 0 1 0 0"
+                if "Conservative" in previous_line[2]:
+                    previous_line[3] = "1 0 0 0 0 0 0 0"
+                elif "Liberal" in previous_line[2]:
+                    previous_line[3] = "0 1 0 0 0 0 0 0"
+                elif previous_line[2] == "Progressive":
+                    previous_line[3] = "0 0 1 0 0 0 0 0"
+                elif "Alberta" in previous_line[2]:
+                    previous_line[3] = "0 0 0 1 0 0 0 0"
                 elif "Labour" in previous_line[2]:
-                    previous_line[3] = "0 0 0 1 0"
+                    previous_line[3] = "0 0 0 0 1 0 0 0"
+                elif "Independent" in previous_line[2]:
+                    previous_line[3] = "0 0 0 0 0 1 0 0"
+                elif "Ontario" in previous_line[2]:
+                    previous_line[3] = "0 0 0 0 0 0 1 0"
 
                 previous_line[2] = "None"
                 previous_line = " ".join(previous_line)
                 modified_lines.append('\n' + previous_line)
 
-            ## Election with more than one candidate
-            if previous_line[0] == current_line[0]:
+
+            ## Election with 2 candidates
+            if previous_line[0] == current_line[0] and previous_line[0] != previous_previous_line[0]:
                 winner_party = previous_line[2]
                 winner_votes = previous_line[3]
                 loser = current_line[1]
                 loser_party = current_line[2]
                 loser_votes = current_line[3]
 
-                if "Unionist" in winner_party:
-                    previous_line[3] = winner_votes + " 0 0 0 0"
-                elif "Opposition" in winner_party:
-                    previous_line[3] = "0 " + winner_votes + " 0 0 0"
-                elif "Independent" in winner_party:
-                    previous_line[3] = "0 0 " + winner_votes + " 0 0"
+                if "Conservative" in winner_party:
+                    previous_line[3] = winner_votes + " 0 0 0 0 0 0 0"
+                elif "Liberal" in winner_party:
+                    previous_line[3] = "0 " + winner_votes + " 0 0 0 0 0 0"
+                elif winner_party == "Progressive":
+                    previous_line[3] = "0 0 " + winner_votes + " 0 0 0 0 0"
+                elif "Alberta" in winner_party:
+                    previous_line[3] = "0 0 0 " + winner_votes + " 0 0 0 0"
                 elif "Labour" in winner_party:
-                    previous_line[3] = "0 0 0 " + winner_votes + " 0"
+                    previous_line[3] = "0 0 0 0 " + winner_votes + " 0 0 0"
+                elif "Independent" in winner_party:
+                    previous_line[3] = "0 0 0 0 0 " + winner_votes + " 0 0"
+                elif "Ontario" in winner_party:
+                    previous_line[3] = "0 0 0 0 0 0 " + winner_votes + " 0"
                 else:
                     ### Unknown
+                    previous_previous_line = previous_line
                     previous_line = current_line
                     i += 1
                     continue
 
-                ## Don't want to overwrite winner_votes, so just send loser_votes to Unkown section
-                if loser_party == "Unknown" or loser_party == winner_party or loser_party in winner_party or winner_party in loser_party:
+                if "Conservative" in loser_party:
                     string_of_votes = previous_line[3].split()
-                    previous_line[3] = string_of_votes[0] + ' ' + string_of_votes[1] + ' ' + string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' + loser_votes
-                elif "Unionist" in loser_party:
+                    previous_line[3] = loser_votes + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7]
+                elif "Liberal" in loser_party:
                     string_of_votes = previous_line[3].split()
-                    previous_line[3] = loser_votes + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' +  string_of_votes[4]
-                elif "Opposition" in loser_party:
+                    previous_line[3] = string_of_votes[0] + ' ' +  loser_votes + ' ' +  string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7]
+                elif loser_party == "Progressive":
                     string_of_votes = previous_line[3].split()
-                    previous_line[3] = string_of_votes[0] + ' ' +  loser_votes + ' ' +  string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4]
-                elif "Independent" in loser_party:
+                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  loser_votes + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7]
+                elif "Alberta" in loser_party:
                     string_of_votes = previous_line[3].split()
-                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  loser_votes + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4]
+                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' +  loser_votes + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7]
                 elif "Labour" in loser_party:
                     string_of_votes = previous_line[3].split()
-                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' +  loser_votes + ' ' +  string_of_votes[4]
+                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + loser_votes + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7]
+                elif "Independent" in loser_party:
+                    string_of_votes = previous_line[3].split()
+                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + loser_votes + ' ' + string_of_votes[6] + ' ' + string_of_votes[7]
+                elif "Ontario" in loser_party:
+                    string_of_votes = previous_line[3].split()
+                    previous_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + loser_votes + ' ' + string_of_votes[7]
+                elif loser_party == "Unknown" or loser_party == winner_party or loser_party in winner_party or winner_party in loser_party:
+                    string_of_votes = previous_line[3].split()
+                    previous_line[3] = string_of_votes[0] + ' ' + string_of_votes[1] + ' ' + string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + loser_votes
 
                 previous_line[2] = loser
                 previous_line = " ".join(previous_line)
                 modified_lines.append('\n' + previous_line)
                 skip_next_line = True
 
+        previous_previous_line = previous_line
         previous_line = current_line
         i += 1
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1917.txt", "w") as file:
+with open("./voting_data/Canada1921.txt", "w") as file:
     file.writelines(modified_lines)
