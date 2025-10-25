@@ -167,7 +167,7 @@ Richmond--Wolfe Tobin,Edmund-William LEMIRE,Azarie 0 10340 0 0 0 2986 0 0
 Rimouski D'Anjou,Joseph-Émile-Stanislas-Émmanuel LAVOIE,Alfred 0 6363 1247 0 0 0 0 0
 Royal Jones,George-Burpee McAlister,Duncan-Hamilton 5551 5434 0 0 0 2663 0 0
 Russell Murphy,Charles RATHWELL,Marshall 0 9069 6836 0 0 0 0 0
-St.-John--Albert Baxter,John-Babington-Macaulay MacLaren,Murray 11646 10531 985 0 1224 0 0 10901
+St.-John--Albert Baxter,John-Babington-Macaulay--and--MacLaren,Murray MCLELLAN,Harry-Richards 11646 10531 985 0 1224 0 0 0
 Saint-Antoine Mitchell,Walter-George ROSS,William-Gillies 5274 9056 0 0 0 0 0 0
 Saint-Denis Denis,Joseph-Arthur GAUTHIER,Joseph-Cyriac 0 18703 0 0 0 3738 0 1366
 Saint-Hyacinthe--Rouville Morin,Louis-Simon-René Gauthier,Louis-Joseph 4627 9425 0 0 0 0 0 0
