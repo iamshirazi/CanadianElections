@@ -172,7 +172,7 @@ Royal Jones,George-Burpee McAlister,Duncan-Hamilton 7485 5614 0 0 0 0 0
 Russell Goulet,Alfred MERKLEY,Duncan-Cameron 6328 8419 0 0 0 0 0
 Saint-John--Albert MacLaren,Murray--and--Bell,Thomas Foster,Walter-Edward 14623 9348 0 0 0 0 0
 Saint-Antoine Bell,Leslie-Gordon Hushion,William-James 6433 5927 0 0 0 0 0
-Saint-Denis Denis,Joseph-Arthur BLAIN,Aldéric 13850 7216 0 0 0 0 0
+Saint-Denis Denis,Joseph-Arthur BLAIN,Aldéric 7372 13850 0 0 0 0 0
 Saint-Henri Mercier,Paul DOYON,Léopold 0 11829 0 0 0 0 0
 Saint-Hyacinthe--Rouville Morin,Louis-Simon-René BOUSQUET,Jean-Baptiste-Joseph-Eugène 2790 7645 0 0 0 0 0
 Saint-Jacques Rinfret,Louis-Édouard-Fernand Laurier,Ruben-Charles 0 12080 0 0 0 0 0
