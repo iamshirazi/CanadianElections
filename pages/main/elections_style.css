@@ -308,6 +308,17 @@
     transition: all .5s ease;
 }
 
+.Liberal-Progressive_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color:#00DCB0;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
 .fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row,
 .thirteenth_row, .twelfth_row, .eleventh_row, .tenth_row, .ninth_row,
 .eighth_row, .seventh_row {
@@ -319,7 +330,7 @@
 .Patrons-of-Industry_dot:hover, .McCarthyite_dot:hover, .Green_dot:hover, .NDP_dot:hover,
 .Bloq-Quebecois_dot:hover, .Labour_dot:hover, .Unionist_dot:hover, .Opposition_dot:hover, 
 .United-Farmers-of-Alberta_dot:hover, .Progressive_dot:hover,
-.United-Farmers-of-Ontario_dot:hover {
+.United-Farmers-of-Ontario_dot:hover, .Liberal-Progressive_dot:hover {
     height: 1rem;
     width: 1rem;
     transition: all .5s ease;
@@ -331,7 +342,7 @@
 .Patrons-of-Industry_dot, .McCarthyite_dot, .Green_dot, .NDP_dot,
 .Bloq-Quebecois_dot, .Labour_dot, .Unionist_dot, .Opposition_dot,
 .Progressive_dot, .United-Farmers-of-Alberta_dot, 
-.United-Farmers-of-Ontario_dot {
+.United-Farmers-of-Ontario_dot, .Liberal-Progressive_dot {
             height: 0.31rem;
             width: 0.31rem;
             margin: 0.03rem;
@@ -353,7 +364,7 @@
 .Patrons-of-Industry_dot:hover, .McCarthyite_dot:hover, .Green_dot:hover, .NDP_dot:hover,
 .Bloq-Quebecois_dot:hover, .Labour_dot:hover, .Unionist_dot:hover, .Opposition_dot:hover,
 .United-Farmers-of-Alberta_dot:hover, .Progressive_dot:hover,
-.United-Farmers-of-Ontario_dot:hover {
+.United-Farmers-of-Ontario_dot:hover, .Liberal-Progressive_dot:hover {
             height: 0.5rem;
             width: 0.5rem;
         }

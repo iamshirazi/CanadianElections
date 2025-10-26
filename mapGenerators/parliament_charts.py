@@ -32,6 +32,9 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
 
 
     ### POPULATE GOVERNING PARTY SECTION
+    if number_of_seats_per_row == 24:
+        number_of_seats_per_row += 1
+
     if total_seats <= 308:
         for i in range(number_of_seats_per_row):
             eleventh_row += '<span class="' + sorted_parliament_seats[current_seat] +'_dot"></span>'
@@ -272,16 +275,38 @@ def create_parliament_seating_plan_1925(con_seats, lib_seats, progressive_seats,
 
     for i in range(lib_seats):
         parliament_seats.append('Liberal')
+    for i in range(progressive_seats):
+        parliament_seats.append('Progressive')
+    for i in range(uf_alberta_seats):
+        parliament_seats.append('United-Farmers-of-Alberta')
+    for i in range(labour_seats):
+        parliament_seats.append('Labour')
+    for i in range(con_seats):
+        parliament_seats.append('Conservative')
+    for i in range(independent_seats):
+        parliament_seats.append('Independent')
+
+    return parliament_seats
+
+def create_parliament_seating_plan_1926(con_seats, lib_seats, progressive_seats, uf_alberta_seats, liberal_progressive_seats, labour_seats, independent_seats, uf_ontario_seats):
+    parliament_seats = []
+
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(liberal_progressive_seats):
+        parliament_seats.append('Liberal-Progressive')
+    for i in range(independent_seats):
+        parliament_seats.append('Independent')
     for i in range(con_seats):
         parliament_seats.append('Conservative')
     for i in range(progressive_seats):
         parliament_seats.append('Progressive')
-    for i in range(independent_seats):
-        parliament_seats.append('Independent')
-    for i in range(labour_seats):
-        parliament_seats.append('Labour')
     for i in range(uf_alberta_seats):
         parliament_seats.append('United-Farmers-of-Alberta')
+    for i in range(labour_seats):
+        parliament_seats.append('Labour')
+    for i in range(uf_ontario_seats):
+        parliament_seats.append('United-Farmers-of-Ontario')
 
     return parliament_seats
 

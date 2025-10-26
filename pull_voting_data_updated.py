@@ -1,7 +1,5 @@
 # Copyright (c) 2025 Matthew Shirazi
 
-## Need to add if statements to not overwrite a party's votes
-
 import pandas as pd
 import numpy as np
 
@@ -9,7 +7,7 @@ dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Download
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1925.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1926.txt', dataframe2.values, fmt='%s')
 
 previous_previous_line = ['testing', 'testing', 'testing']
 previous_line = ['test', 'test', 'test', 'test']
@@ -35,17 +33,21 @@ def set_accilmation_votes():
 def set_winner_votes(winner_party, winner_votes):
 
     if winner_party == "Conservative":
-        formatted_line[3] = winner_votes + " 0 0 0 0 0 0"
+        formatted_line[3] = winner_votes + " 0 0 0 0 0 0 0 0"
     elif winner_party == "Liberal-Party-of-Canada":
-        formatted_line[3] = "0 " + winner_votes + " 0 0 0 0 0"
+        formatted_line[3] = "0 " + winner_votes + " 0 0 0 0 0 0 0"
     elif winner_party == "Progressive":
-        formatted_line[3] = "0 0 " + winner_votes + " 0 0 0 0"
+        formatted_line[3] = "0 0 " + winner_votes + " 0 0 0 0 0 0"
     elif "Alberta" in winner_party:
-        formatted_line[3] = "0 0 0 " + winner_votes + " 0 0 0"
+        formatted_line[3] = "0 0 0 " + winner_votes + " 0 0 0 0 0"
+    elif winner_party == "Liberal-Progressive":
+        formatted_line[3] = "0 0 0 0 " + winner_votes + " 0 0 0 0"
     elif "Labour" in winner_party:
-        formatted_line[3] = "0 0 0 0 " + winner_votes + " 0 0"
+        formatted_line[3] = "0 0 0 0 0 " + winner_votes + " 0 0 0"
     elif "Independent" in winner_party:
-        formatted_line[3] = "0 0 0 0 0 " + winner_votes + " 0"
+        formatted_line[3] = "0 0 0 0 0 0 " + winner_votes + " 0 0"
+    elif "Ontario" in winner_party:
+        formatted_line[3] = "0 0 0 0 0 0 0 " + winner_votes + " 0"
     else:
         ### Unknown
         previous_previous_line = previous_line
@@ -54,31 +56,42 @@ def set_winner_votes(winner_party, winner_votes):
         UNKNOWN = True
 
 def set_party_votes(winner_party, loser_party, loser_votes):
-    if loser_party == "Conservative":
+
+    string_party_votes = formatted_line[3].split()
+    party_votes = list(map(int, string_party_votes))
+
+    if loser_party == "Conservative" and party_votes[0] == 0:
         string_of_votes = formatted_line[3].split()
-        formatted_line[3] = loser_votes + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6]
-    elif loser_party == "Liberal-Party-of-Canada":
+        formatted_line[3] = loser_votes + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif loser_party == "Liberal-Party-of-Canada" and party_votes[1] == 0:
         string_of_votes = formatted_line[3].split()
-        formatted_line[3] = string_of_votes[0] + ' ' +  loser_votes + ' ' +  string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6]
-    elif loser_party == "Progressive":
+        formatted_line[3] = string_of_votes[0] + ' ' +  loser_votes + ' ' +  string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif loser_party == "Progressive" and party_votes[2] == 0:
         string_of_votes = formatted_line[3].split()
-        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  loser_votes + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6]
-    elif "Alberta" in loser_party:
+        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  loser_votes + ' ' +  string_of_votes[3] + ' ' +  string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif "Alberta" in loser_party and party_votes[3] == 0:
         string_of_votes = formatted_line[3].split()
-        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' +  loser_votes + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6]
-    elif "Labour" in loser_party:
+        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' +  loser_votes + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif loser_party == "Liberal-Progressive" and party_votes[4] == 0:
         string_of_votes = formatted_line[3].split()
-        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + loser_votes + ' ' + string_of_votes[5] + ' ' + string_of_votes[6]
-    elif "Independent" in loser_party:
+        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' +  loser_votes + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif "Labour" in loser_party and party_votes[5] == 0:
         string_of_votes = formatted_line[3].split()
-        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + loser_votes + ' ' + string_of_votes[6]
+        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + loser_votes + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif "Independent" in loser_party and party_votes[6] == 0:
+        string_of_votes = formatted_line[3].split()
+        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + loser_votes + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
+    elif "Ontario" in loser_party and party_votes[7] == 0:
+        string_of_votes = formatted_line[3].split()
+        formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + loser_votes + ' ' + string_of_votes[8]
     elif loser_party == "Unknown" or loser_party == winner_party or loser_party in winner_party or winner_party in loser_party:
-        string_of_votes = formatted_line[3].split()
-        formatted_line[3] = string_of_votes[0] + ' ' + string_of_votes[1] + ' ' + string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + loser_votes
+        if party_votes[8] == 0:
+            string_of_votes = formatted_line[3].split()
+            formatted_line[3] = string_of_votes[0] + ' ' + string_of_votes[1] + ' ' + string_of_votes[2] + ' ' +  string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + loser_votes
 
 
 ### Read firstPass.txt, everytime a line starts with a name, append it to the previous line.
-with open("./voting_data/ElectionData1925.txt", "r") as file:
+with open("./voting_data/ElectionData1926.txt", "r") as file:
 
     i = 0
     for current_line in file:
@@ -181,5 +194,5 @@ with open("./voting_data/ElectionData1925.txt", "r") as file:
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1925.txt", "w") as file:
+with open("./voting_data/Canada1926.txt", "w") as file:
     file.writelines(modified_lines)
