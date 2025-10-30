@@ -87,7 +87,7 @@ Kootenay-West Esling,William-Kemble Humphrey,Levi-William 5720 0 4779 0 0 0 0
 L'Assomption--Montcalm Séguin,Paul-Arthur MONAHAN,John-Paul 2480 6261 0 0 0 0 0
 L'Islet Fafard,Joseph-Fernand GAGNON,Joseph-Adhémar 2436 3516 0 0 0 0 0
 Labelle Bourassa,Joseph-Henri-Napoléon JODOIN,Henri 0 3764 0 0 0 5843 0
-Lake-Saint-Jean Sylvestre,Armand TURCOTTE,Joseph-Sylvio-Narcisse 5502 7579 0 0 0 0 0
+Lac-Saint-Jean Sylvestre,Armand TURCOTTE,Joseph-Sylvio-Narcisse 5502 7579 0 0 0 0 0
 Lambton-East Armstrong,Joseph-Elijah Fansher,Burt-Wendell 5611 1061 5522 0 0 0 0
 Lambton-West Goodison,William-Thomas LeSueur,Richard-Vryling 6535 6704 0 0 0 0 0
 Lanark Preston,Richard-Franklin GEMMELL,Duncan-Herbert 7620 0 0 0 0 4416 0

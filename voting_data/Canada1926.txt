@@ -87,7 +87,7 @@ Kootenay-West Esling,William-Kemble GALE,Robert-Henry 6247 5257 0 0 0 0 0 0 0
 L'Assomption--Montcalm Séguin,Paul-Arthur FOREST,Alfred 1901 6044 0 0 0 0 0 0 0
 L'Islet Fafard,Joseph-Fernand GAGNON,Joseph-Adhémar 2795 3619 0 0 0 0 0 0 0
 Labelle Bourassa,Joseph-Henri-Napoléon COUSINEAU,Louis 1118 0 0 0 0 0 7569 0 0
-Lake-Saint-Jean Sylvestre,Armand TURCOTTE,Joseph-Sylvio-Narcisse 5733 8090 0 0 0 0 0 0 0
+Lac-Saint-Jean Sylvestre,Armand TURCOTTE,Joseph-Sylvio-Narcisse 5733 8090 0 0 0 0 0 0 0
 Lambton-East Fansher,Burt-Wendell ARMSTRONG,Joseph-Emmanuel 6340 0 6891 0 0 0 0 0 0
 Lambton-West Goodison,William-Thomas MCMILLEN,Andrew-R. 7413 7551 0 0 0 0 0 0 0
 Lanark Preston,Richard-Franklin BUCHANAN,George-W. 8122 0 0 0 4908 0 0 0 0
