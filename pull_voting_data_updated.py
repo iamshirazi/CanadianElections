@@ -7,7 +7,7 @@ dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Download
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1926.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1930.txt', dataframe2.values, fmt='%s')
 
 previous_previous_line = ['testing', 'testing', 'testing']
 previous_line = ['test', 'test', 'test', 'test']
@@ -42,11 +42,11 @@ def set_winner_votes(winner_party, winner_votes):
         formatted_line[3] = "0 0 0 " + winner_votes + " 0 0 0 0 0"
     elif winner_party == "Liberal-Progressive":
         formatted_line[3] = "0 0 0 0 " + winner_votes + " 0 0 0 0"
-    elif "Labour" in winner_party:
+    elif "Liberal-Labour" in winner_party or winner_party == "Labour":
         formatted_line[3] = "0 0 0 0 0 " + winner_votes + " 0 0 0"
     elif "Independent" in winner_party:
         formatted_line[3] = "0 0 0 0 0 0 " + winner_votes + " 0 0"
-    elif "Ontario" in winner_party:
+    elif winner_party == "Progressive-Conservative":
         formatted_line[3] = "0 0 0 0 0 0 0 " + winner_votes + " 0"
     else:
         ### Unknown
@@ -75,13 +75,13 @@ def set_party_votes(winner_party, loser_party, loser_votes):
     elif loser_party == "Liberal-Progressive" and party_votes[4] == 0:
         string_of_votes = formatted_line[3].split()
         formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' +  loser_votes + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
-    elif "Labour" in loser_party and party_votes[5] == 0:
+    elif ("Liberal-Labour" in loser_party or loser_party == "Labour") and party_votes[5] == 0:
         string_of_votes = formatted_line[3].split()
         formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + loser_votes + ' ' + string_of_votes[6] + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
     elif "Independent" in loser_party and party_votes[6] == 0:
         string_of_votes = formatted_line[3].split()
         formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + loser_votes + ' ' + string_of_votes[7] + ' ' + string_of_votes[8]
-    elif "Ontario" in loser_party and party_votes[7] == 0:
+    elif loser_party == "Progressive-Conservative" and party_votes[7] == 0:
         string_of_votes = formatted_line[3].split()
         formatted_line[3] = string_of_votes[0] + ' ' +  string_of_votes[1] + ' ' +  string_of_votes[2] + ' ' + string_of_votes[3] + ' ' + string_of_votes[4] + ' ' + string_of_votes[5] + ' ' + string_of_votes[6] + ' ' + loser_votes + ' ' + string_of_votes[8]
     elif loser_party == "Unknown" or loser_party == winner_party or loser_party in winner_party or winner_party in loser_party:
@@ -91,7 +91,7 @@ def set_party_votes(winner_party, loser_party, loser_votes):
 
 
 ### Read firstPass.txt, everytime a line starts with a name, append it to the previous line.
-with open("./voting_data/ElectionData1926.txt", "r") as file:
+with open("./voting_data/ElectionData1930.txt", "r") as file:
 
     i = 0
     for current_line in file:
@@ -179,14 +179,33 @@ with open("./voting_data/ElectionData1926.txt", "r") as file:
                 modified_lines.append('\n' + formatted_line)
                 skip_next_line = True
             
-            # if current_line[0] != previous_line[0] and current_line[0] != previous_previous_line[0]:
-            #     formatted_line = current_line.copy()
+            ## Elected by Acclamation
+            if current_line[3] == '0':
+                formatted_line = current_line.copy()
 
-            #     set_accilmation_votes()
+                set_accilmation_votes()
 
-            #     formatted_line[2] = "None"
-            #     formatted_line = " ".join(formatted_line)
-            #     modified_lines.append('\n' + formatted_line)
+                formatted_line[2] = "None"
+                formatted_line = " ".join(formatted_line)
+                modified_lines.append('\n' + formatted_line)
+            
+            if previous_line[3] == '0':
+                formatted_line = previous_line.copy()
+
+                set_accilmation_votes()
+
+                formatted_line[2] = "None"
+                formatted_line = " ".join(formatted_line)
+                modified_lines.append('\n' + formatted_line)
+
+            if previous_previous_line[3] == '0':
+                formatted_line = previous_previous_line.copy()
+
+                set_accilmation_votes()
+
+                formatted_line[2] = "None"
+                formatted_line = " ".join(formatted_line)
+                modified_lines.append('\n' + formatted_line)
 
         previous_previous_line = previous_line
         previous_line = current_line
@@ -194,5 +213,5 @@ with open("./voting_data/ElectionData1926.txt", "r") as file:
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1926.txt", "w") as file:
+with open("./voting_data/Canada1930.txt", "w") as file:
     file.writelines(modified_lines)

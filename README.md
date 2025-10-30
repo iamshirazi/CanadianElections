@@ -10,7 +10,7 @@ Will add previous and future elections to this project.
 ### October 2025 UPDATE:
 * Added parliament charts for each currently available election! Just click the `>` button to see 
 the seat makeup in parliament.
-* Added the 1900, 1904, 1908, 1911, 1917, 1921, 1925, and 1926 elections to the project!
+* Added the 1900, 1904, 1908, 1911, 1917, 1921, 1925, 1926, and 1930 elections to the project!
 * Added favicons, so a maple leaf will appear for this tab in all browsers.
 
 ### September 2025 UPDATE:
