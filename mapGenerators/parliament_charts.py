@@ -32,8 +32,6 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
 
 
     ### POPULATE GOVERNING PARTY SECTION
-    if number_of_seats_per_row == 24:
-        number_of_seats_per_row += 1
 
     if total_seats <= 308:
         for i in range(number_of_seats_per_row):
@@ -73,7 +71,7 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
 
 
     ### POPULATE OPPOSITION SECTION
-    if number_of_seats_per_row == 21 or number_of_seats_per_row == 28:
+    if number_of_seats_per_row == 21 or number_of_seats_per_row == 24 or number_of_seats_per_row == 28:
         number_of_seats_per_row += 1
 
     if total_seats <= 308:
