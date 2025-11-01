@@ -7,6 +7,10 @@ The election maps of Canada are highly detailed, and you can zoom into any part 
 
 Will add previous and future elections to this project.
 
+### November 2025 UPDATE:
+* Added the 1935 election to the project!
+* Fully automated pull_voting_data.py, archived the old version of the script.
+
 ### October 2025 UPDATE:
 * Added parliament charts for each currently available election! Just click the `>` button to see 
 the seat makeup in parliament.
