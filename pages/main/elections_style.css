@@ -165,7 +165,7 @@
     transition: all .5s ease;
 }
 
-.Conservative_dot, .Unionist_dot {
+.Conservative_dot, .Unionist_dot, .National-Government_dot {
     bottom: 10%;
     height: 0.62rem;
     width: 0.62rem;
@@ -319,7 +319,7 @@
     transition: all .5s ease;
 }
 
-.Social-Credit_dot {
+.Social-Credit_dot, .New-Democracy_dot {
     bottom: 10%;
     height: 0.62rem;
     width: 0.62rem;
@@ -352,6 +352,17 @@
     transition: all .5s ease;
 }
 
+.United-Reform_dot {
+    bottom: 10%;
+    height: 0.62rem;
+    width: 0.62rem;
+    margin: 0.07rem;
+    background-color:#C00767;
+    border-radius: 50%;
+    display: inline-block;
+    transition: all .5s ease;
+}
+
 .fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row,
 .thirteenth_row, .twelfth_row, .eleventh_row, .tenth_row, .ninth_row,
 .eighth_row, .seventh_row {
@@ -365,7 +376,8 @@
 .United-Farmers-of-Alberta_dot:hover, .Progressive_dot:hover,
 .United-Farmers-of-Ontario_dot:hover, .Liberal-Progressive_dot:hover,
 .Social-Credit_dot:hover, .Co-operative-Commonwealth-Federation_dot:hover,
-.Reconstruction-Party_dot:hover {
+.Reconstruction-Party_dot:hover, .National-Government_dot:hover, .New-Democracy_dot:hover,
+.United-Reform_dot:hover {
     height: 1rem;
     width: 1rem;
     transition: all .5s ease;
@@ -379,7 +391,8 @@
 .Progressive_dot, .United-Farmers-of-Alberta_dot, 
 .United-Farmers-of-Ontario_dot, .Liberal-Progressive_dot,
 .Social-Credit_dot, .Co-operative-Commonwealth-Federation_dot,
-.Reconstruction-Party_dot {
+.Reconstruction-Party_dot, .National-Government_dot, 
+.New-Democracy_dot, .United-Reform_dot {
             height: 0.31rem;
             width: 0.31rem;
             margin: 0.03rem;
@@ -403,7 +416,8 @@
 .United-Farmers-of-Alberta_dot:hover, .Progressive_dot:hover,
 .United-Farmers-of-Ontario_dot:hover, .Liberal-Progressive_dot:hover,
 .Social-Credit_dot:hover, .Co-operative-Commonwealth-Federation_dot:hover,
-.Reconstruction-Party_dot:hover {
+.Reconstruction-Party_dot:hover, .National-Government_dot:hover,
+.New-Democracy_dot:hover, .United-Reform_dot:hover {
             height: 0.5rem;
             width: 0.5rem;
         }
