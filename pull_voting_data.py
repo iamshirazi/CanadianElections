@@ -7,7 +7,7 @@ dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Download
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1940.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1945.txt', dataframe2.values, fmt='%s')
 
 modified_lines = []
 election_data = []
@@ -35,22 +35,22 @@ def set_winner_votes(election_data):
     loser = election_data[1][1]
     global formatted_line
 
-    if winner_party == "Conservative" or winner_party == "National-Government":
-        formatted_line = riding + " " + winner + " " + loser + " " + winner_votes + " 0 0 0 0 0 0 0 0 0"
+    if winner_party == "Progressive-Conservative-Party":
+        formatted_line = riding + " " + winner + " " + loser + " " + winner_votes + " 0 0 0 0 0 0 0 0"
     elif winner_party == "Liberal-Party-of-Canada":
-        formatted_line = riding + " " + winner + " " + loser + " 0 " + winner_votes + " 0 0 0 0 0 0 0 0"
-    elif "Social-Credit" in winner_party:
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 " + winner_votes + " 0 0 0 0 0 0 0"
+        formatted_line = riding + " " + winner + " " + loser + " 0 " + winner_votes + " 0 0 0 0 0 0 0"
     elif winner_party == "Co-operative-Commonwealth-Federation":
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 " + winner_votes + " 0 0 0 0 0 0"
-    elif winner_party == "Liberal-Progressive":
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 " + winner_votes + " 0 0 0 0 0"
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 " + winner_votes + " 0 0 0 0 0 0"
     elif "Independent" in winner_party:
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 " + winner_votes + " 0 0 0 0"
-    elif winner_party == "New-Democracy" or winner_party == "New-Democratic-Party":
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 0 " + winner_votes + " 0 0 0"
-    elif "United-Reform" in winner_party or "Unity" in winner_party or "United-Progressive" in winner_party:
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 0 0 " + winner_votes + " 0 0"
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 " + winner_votes + " 0 0 0 0 0"
+    elif "Social-Credit" in winner_party:
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 " + winner_votes + " 0 0 0 0"
+    elif winner_party == "Bloc-populaire-canadien":
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 " + winner_votes + " 0 0 0"
+    elif winner_party == "Labor-Progressive-Party":
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 0 " + winner_votes + " 0 0"
+    elif winner_party == "Liberal-Progressive":
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 0 0 " + winner_votes + " 0"
     else:
         ### False positive
         formatted_line = riding + " " + winner + " " + "FALSE_POSITIVE" + " 0 0 0 0 0 0 0 0 0 " + winner_votes
@@ -68,32 +68,30 @@ def set_other_votes(election_data, index):
     party_votes = list(string_party_votes[3:])
     updated_party_votes = []
 
-    if (loser_party == "Conservative" or loser_party == "National-Government") and int(party_votes[0]) == 0:
-        updated_party_votes = loser_votes + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
+    if loser_party == "Progressive-Conservative-Party" and int(party_votes[0]) == 0:
+        updated_party_votes = loser_votes + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8]
     elif loser_party == "Liberal-Party-of-Canada" and int(party_votes[1]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  loser_votes + ' ' +  party_votes[2] + ' ' +  party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif "Social-Credit" in loser_party and int(party_votes[2]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  loser_votes + ' ' +  party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif loser_party == "Co-operative-Commonwealth-Federation" and int(party_votes[3]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' +  loser_votes + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif loser_party == "Liberal-Progressive" and int(party_votes[4]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' +  loser_votes + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif "Independent" in loser_party and int(party_votes[5]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + loser_votes + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif (loser_party == "New-Democracy" or loser_party == "New-Democratic-Party") and int(party_votes[6]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' +  loser_votes + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif ("United-Reform" in loser_party or "Unity" in loser_party or "United-Progressive" in loser_party) and int(party_votes[7]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + loser_votes + ' ' + party_votes[8] + ' ' + party_votes[9]
-    elif loser_party == "Communist-Party-of-Canada" and int(party_votes[8]) == 0:
-        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + loser_votes + ' ' + party_votes[9]
+        updated_party_votes = party_votes[0] + ' ' +  loser_votes + ' ' +  party_votes[2] + ' ' +  party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8]
+    elif loser_party == "Co-operative-Commonwealth-Federation" and int(party_votes[2]) == 0:
+        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  loser_votes + ' ' +  party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8]
+    elif "Independent" in loser_party and int(party_votes[3]) == 0:
+        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' +  loser_votes + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8]
+    elif "Social-Credit" in loser_party and int(party_votes[4]) == 0:
+        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' +  loser_votes + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8]
+    elif loser_party == "Bloc-populaire-canadien" and int(party_votes[5]) == 0:
+        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + loser_votes + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8]
+    elif loser_party == "Labor-Progressive-Party" and int(party_votes[6]) == 0:
+        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' +  loser_votes + ' ' + party_votes[7] + ' ' + party_votes[8]
+    elif loser_party == "Liberal-Progressive" and int(party_votes[7]) == 0:
+        updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + loser_votes + ' ' + party_votes[8]
     elif loser_party == "Unknown" or loser_party == winner_party or loser_party in winner_party or winner_party in loser_party:
-        if int(party_votes[9]) == 0:
-            updated_party_votes = party_votes[0] + ' ' + party_votes[1] + ' ' + party_votes[2] + ' ' +  party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6]+ ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + loser_votes
+        if int(party_votes[8]) == 0:
+            updated_party_votes = party_votes[0] + ' ' + party_votes[1] + ' ' + party_votes[2] + ' ' +  party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6]+ ' ' + party_votes[7] + ' ' + loser_votes
         else:
             return
     else:
-        if int(party_votes[9]) == 0:
-            updated_party_votes = party_votes[0] + ' ' + party_votes[1] + ' ' + party_votes[2] + ' ' +  party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + party_votes[8] + ' ' + loser_votes
+        if int(party_votes[8]) == 0:
+            updated_party_votes = party_votes[0] + ' ' + party_votes[1] + ' ' + party_votes[2] + ' ' +  party_votes[3] + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7] + ' ' + loser_votes
         else:
             return
     
@@ -104,8 +102,8 @@ def set_other_votes(election_data, index):
     formatted_line = party_winner_loser + " " + updated_party_votes
 
 
-### Read ElectionData1940.txt, everytime a line starts with a name, append it to the previous line.
-with open("./voting_data/ElectionData1940.txt", "r") as file:
+### Read ElectionData1945.txt, everytime a line starts with a name, append it to the previous line.
+with open("./voting_data/ElectionData1945.txt", "r") as file:
 
     passes = 0
     for current_line in file:
@@ -136,5 +134,5 @@ with open("./voting_data/ElectionData1940.txt", "r") as file:
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1940.txt", "w") as file:
+with open("./voting_data/Canada1945.txt", "w") as file:
     file.writelines(modified_lines)
