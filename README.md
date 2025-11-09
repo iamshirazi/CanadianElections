@@ -8,7 +8,7 @@ The election maps of Canada are highly detailed, and you can zoom into any part 
 Will add previous and future elections to this project.
 
 ### November 2025 UPDATE:
-* Added the 1935 and 1940 elections to the project!
+* Added the 1935, 1940 and 1945 elections to the project!
 * Fully automated pull_voting_data.py, archived the old version of the script.
 
 ### October 2025 UPDATE:
