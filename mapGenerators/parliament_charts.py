@@ -71,7 +71,9 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
 
 
     ### POPULATE OPPOSITION SECTION
-    if number_of_seats_per_row == 21 or number_of_seats_per_row == 24 or number_of_seats_per_row == 28:
+    if number_of_seats_per_row == 21 or number_of_seats_per_row == 24 \
+        or number_of_seats_per_row == 26 \
+        or number_of_seats_per_row == 28:
         number_of_seats_per_row += 1
 
     if total_seats <= 308:
@@ -391,6 +393,26 @@ def create_parliament_seating_plan_1945(prog_con_seats, lib_seats, cc_federation
         parliament_seats.append('Labor-Progressive')
     for i in range(liberal_progressive_seats):
         parliament_seats.append('Liberal-Progressive')
+
+    return parliament_seats
+
+def create_parliament_seating_plan_1949(prog_con_seats, lib_seats, cc_federation_seats, social_credit_seats, independent_seats, liberal_progressive_seats, liberal_labor_seats):
+    parliament_seats = []
+
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(prog_con_seats):
+        parliament_seats.append('Progressive-Conservative')
+    for i in range(cc_federation_seats):
+        parliament_seats.append('Co-operative-Commonwealth-Federation')
+    for i in range(social_credit_seats):
+        parliament_seats.append('Social-Credit')
+    for i in range(independent_seats):
+        parliament_seats.append('Independent')
+    for i in range(liberal_progressive_seats):
+        parliament_seats.append('Liberal-Progressive')
+    for i in range(liberal_labor_seats):
+        parliament_seats.append('Liberal-Labour')
 
     return parliament_seats
 
