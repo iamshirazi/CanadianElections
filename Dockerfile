@@ -36,6 +36,7 @@ RUN python CanadianElection1867.py && python CanadianElection1872.py \
     && python CanadianElection1925.py && python CanadianElection1926.py \
     && python CanadianElection1930.py && python CanadianElection1935.py \
     && python CanadianElection1940.py && python CanadianElection1945.py \
+    && python CanadianElection1949.py \
     && python CanadianElection2019.py && python CanadianElection2021.py
 
 
@@ -94,6 +95,7 @@ COPY --from=python-stage /app/pages/elections/election1930.html /usr/share/nginx
 COPY --from=python-stage /app/pages/elections/election1935.html /usr/share/nginx/html/pages/elections/election1935.html
 COPY --from=python-stage /app/pages/elections/election1940.html /usr/share/nginx/html/pages/elections/election1940.html
 COPY --from=python-stage /app/pages/elections/election1945.html /usr/share/nginx/html/pages/elections/election1945.html
+COPY --from=python-stage /app/pages/elections/election1949.html /usr/share/nginx/html/pages/elections/election1949.html
 COPY --from=python-stage /app/pages/elections/election2019.html /usr/share/nginx/html/pages/elections/election2019.html
 COPY --from=python-stage /app/pages/elections/election2021.html /usr/share/nginx/html/pages/elections/election2021.html
 
@@ -118,6 +120,7 @@ COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1930.html /
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1935.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1935.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1940.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1940.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1945.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1945.html
+COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1949.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1949.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart2019.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart2019.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart2021.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart2021.html
 
