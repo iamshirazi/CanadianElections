@@ -83,10 +83,10 @@ with open('voting_data/Canada1935.txt') as file:
             win.append("Liberal")
         elif winner == int(results[2]):
             colour.append(Social_Credit)
-            win.append("Social-Credit")
+            win.append("Social Credit")
         elif winner == int(results[3]):
             colour.append(CC_Federation)
-            win.append("Co-operative-Commonwealth-Federation")
+            win.append("Co-operative Commonwealth")
         elif winner == int(results[4]):
             colour.append(Liberal_Progressive)
             win.append("Liberal-Progressive")
@@ -95,10 +95,10 @@ with open('voting_data/Canada1935.txt') as file:
             win.append("Independent")
         elif winner == int(results[6]):
             colour.append(Reconstruction)
-            win.append("Reconstruction-Party")
+            win.append("Reconstruction Party")
         elif winner == int(results[7]):
             colour.append(UF_Ontario)
-            win.append("United-Farmers-of-Ontario")
+            win.append("United Farmers of Ontario")
         else:
             continue
         

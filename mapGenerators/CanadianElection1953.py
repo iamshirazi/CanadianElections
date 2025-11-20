@@ -7,32 +7,34 @@ import pandas as pd
 import parliament_charts
 
 # COLOURS
-Lib = '#EE3224'  # (238, 50, 36)
-Con = '#0F2D52'  # (15, 45, 82)
+Liberal = '#EE3224'  # (238, 50, 36)
+Progressive_Conservative = '#0F2D52'  # (15, 45, 82)
+CC_Federation = '#FF9900'
+Social_Credit = '#005F00'
 Independent = '#847e7e'
-Patrons = '#A52A2A'
-McCarthyites = "#009A44"
+Liberal_Progressive = '#00DCB0'
+Liberal_Labour = '#A91CB9'
 
-CON_SEATS = 86
-LIB_SEATS = 117
-INDEPENDENT_SEATS = 6
-PATRONS_SEATS = 2
-MCCARTHY_SEATS = 2
+PROGRESSIVE_CONSERVATIVE_SEATS = 51
+LIBERAL_SEATS = 169
+CC_FEDERATION_SEATS = 23
+SOCIAL_CREDIT_SEATS = 15
+INDEPENDENT_SEATS = 5
+LIBERAL_PROGRESSIVE_SEATS = 1
+LIBERAL_LABOUR_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("districts2/CBF_RO1892_CSRS.shp")
+districts = gpd.read_file("districts2/CBF_RO1952_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
-###### REMOVED Yukon district, ONLY ALLOW DISTRICTS THAT DO NOT HAVE AN ID=60001 ######
-districts_new = districts[districts['id'] != 60001]
-
 ## Simplifiy district shapes to increase loading speed
-districts_new["geometry"] = (districts_new.to_crs(districts_new.estimate_utm_crs()).simplify(20).to_crs(districts_new.crs))
+districts["geometry"] = (districts.to_crs(districts.estimate_utm_crs()).simplify(20).to_crs(districts.crs))
 
-dataframe2 = districts_new.sort_values('fedname')
+
+dataframe2 = districts.sort_values('fedname')
 dataframe2.reset_index(drop=True, inplace=True)
 
-votes = pd.read_csv("voting_data/Canada1896.txt", sep=" ", header=0)
+votes = pd.read_csv("voting_data/Canada1953.txt", sep=" ", header=0)
 
 ## Merge district shapes and number of votes
 dataframe3 = pd.concat([dataframe2, votes], axis=1)
@@ -52,7 +54,7 @@ win = []
 
 
 # read file with voting results
-with open('voting_data/Canada1896.txt') as file:
+with open('voting_data/Canada1953.txt') as file:
 
     for _ in range(1):
         next(file)  # SKIP FIRST LINE
@@ -62,42 +64,51 @@ with open('voting_data/Canada1896.txt') as file:
         line = line[:-1].split()
 
         if len(line) != 0:
-            results = [int(line[3]), int(line[4]), int(line[5]), int(line[6]), int(line[7])]
+            results = [int(line[3]), int(line[4]), int(line[5]), int(line[6]), int(line[7]), int(line[8]), int(line[9])]
 
         winner = 0
 
-        for i in range(0, 5):
+        for i in range(0, 7):
             if results[i] > winner:
                 winner = int(results[i])
+        
 
         if winner == int(results[0]):
-            colour.append(Con)
-            win.append("Conservative")
+            colour.append(Progressive_Conservative)
+            win.append("Progressive Conservative")
         elif winner == int(results[1]):
-            colour.append(Lib)
+            colour.append(Liberal)
             win.append("Liberal")
         elif winner == int(results[2]):
+            colour.append(CC_Federation)
+            win.append("Co-operative Commonwealth")
+        elif winner == int(results[3]):
+            colour.append(Social_Credit)
+            win.append("Social Credit")
+        elif winner == int(results[4]):
             colour.append(Independent)
             win.append("Independent")
-        elif winner == int(results[3]):
-            colour.append(Patrons)
-            win.append("Patrons of Industry")
+        elif winner == int(results[5]):
+            colour.append(Liberal_Labour)
+            win.append("Liberal-Labour Party")
+        elif winner == int(results[6]):
+            colour.append(Liberal_Progressive)
+            win.append("Liberal-Progressive")
         else:
-            colour.append(McCarthyites)
-            win.append("McCarthyites")
+            continue
         
 ## DEBUG
 # pd.set_option('display.max_rows', None)
 # pd.set_option('display.max_columns', None)
 # print(dataframe3[["fedname", "Riding"]])
 
-total_seats = (CON_SEATS + LIB_SEATS + INDEPENDENT_SEATS + PATRONS_SEATS + MCCARTHY_SEATS)
+total_seats = (PROGRESSIVE_CONSERVATIVE_SEATS + LIBERAL_SEATS + CC_FEDERATION_SEATS + SOCIAL_CREDIT_SEATS + INDEPENDENT_SEATS + LIBERAL_PROGRESSIVE_SEATS + LIBERAL_LABOUR_SEATS)
 
-sorted_parliament_seats = parliament_charts.create_parliament_seating_plan_1896(CON_SEATS, LIB_SEATS, INDEPENDENT_SEATS, PATRONS_SEATS, MCCARTHY_SEATS)
+sorted_parliament_seats = parliament_charts.create_parliament_seating_plan_1949(PROGRESSIVE_CONSERVATIVE_SEATS, LIBERAL_SEATS, CC_FEDERATION_SEATS, SOCIAL_CREDIT_SEATS, INDEPENDENT_SEATS, LIBERAL_PROGRESSIVE_SEATS, LIBERAL_LABOUR_SEATS)
 
 parliament_chart = parliament_charts.generateParliamentChart(total_seats, sorted_parliament_seats)
 
-with open("pages/main/parliament_charts/parl_chart1896.html", "w") as file:
+with open("pages/main/parliament_charts/parl_chart1953.html", "w") as file:
     generic_lines = "<!DOCTYPE html>\n<html>\n<head>\n\t<link rel='stylesheet' href='/main/elections_style.css'>\n</head>\n</head>\n<body>\n"
     file.writelines(generic_lines)
     file.writelines(parliament_chart)
@@ -115,8 +126,8 @@ foliumMap = dataframe3.explore(
     tooltip=["Riding", "Party", "winner", "loser"], # show all party votes for a riding when hovering over it
     popup=True, # show all values of a riding when you click it
     tiles="CartoDB positron", # use "CartoDB positron" tiles
-    cmap=['#0F2D52', '#847e7e', '#EE3224', '#009A44', '#A52A2A'],
+    cmap=['#FF9900', '#847e7e', '#EE3224', '#A91CB9', '#00DCB0', '#0F2D52', '#005F00'],
     style_kwds=dict(color="black"), #use black outline
 )
 
-foliumMap.save("./pages/elections/election1896.html")
+foliumMap.save("./pages/elections/election1953.html")

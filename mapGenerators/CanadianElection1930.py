@@ -83,7 +83,7 @@ with open('voting_data/Canada1930.txt') as file:
             win.append("Progressive")
         elif winner == int(results[3]):
             colour.append(UF_Alberta)
-            win.append("United-Farmers-of-Alberta")
+            win.append("United Farmers of Alberta")
         elif winner == int(results[4]):
             colour.append(Liberal_Progressive)
             win.append("Liberal-Progressive")
