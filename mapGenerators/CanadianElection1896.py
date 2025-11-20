@@ -81,7 +81,7 @@ with open('voting_data/Canada1896.txt') as file:
             win.append("Independent")
         elif winner == int(results[3]):
             colour.append(Patrons)
-            win.append("Patrons-of-Industry")
+            win.append("Patrons of Industry")
         else:
             colour.append(McCarthyites)
             win.append("McCarthyites")

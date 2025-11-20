@@ -94,7 +94,7 @@ with open('voting_data/Canada1891.txt') as file:
             win.append("Independent")
         else:
             colour.append(NationalistCon)
-            win.append("Nationalist-Conservative")
+            win.append("Nationalist Conservative")
             
         
 ## DEBUG

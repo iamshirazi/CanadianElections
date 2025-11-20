@@ -77,22 +77,22 @@ with open('voting_data/Canada1945.txt') as file:
 
         if winner == int(results[0]):
             colour.append(Progressive_Conservative)
-            win.append("Progressive-Conservative")
+            win.append("Progressive Conservative")
         elif winner == int(results[1]):
             colour.append(Liberal)
             win.append("Liberal")
         elif winner == int(results[2]):
             colour.append(CC_Federation)
-            win.append("Co-operative-Commonwealth-Federation")
+            win.append("Co-operative Commonwealth")
         elif winner == int(results[3]):
             colour.append(Independent)
             win.append("Independent")
         elif winner == int(results[4]):
             colour.append(Social_Credit)
-            win.append("Social-Credit")
+            win.append("Social Credit")
         elif winner == int(results[5]):
             colour.append(Bloc_populaire)
-            win.append("Bloc-populaire")
+            win.append("Bloc populaire")
         elif winner == int(results[6]):
             colour.append(Labor_Progressive)
             win.append("Labor-Progressive")
