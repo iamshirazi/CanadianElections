@@ -416,6 +416,24 @@ def create_parliament_seating_plan_1949(prog_con_seats, lib_seats, cc_federation
 
     return parliament_seats
 
+def create_parliament_seating_plan_1957(prog_con_seats, lib_seats, cc_federation_seats, social_credit_seats, independent_seats, liberal_labor_seats):
+    parliament_seats = []
+
+    for i in range(prog_con_seats):
+        parliament_seats.append('Progressive-Conservative')
+    for i in range(social_credit_seats):
+        parliament_seats.append('Social-Credit')
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(cc_federation_seats):
+        parliament_seats.append('Co-operative-Commonwealth-Federation')
+    for i in range(independent_seats):
+        parliament_seats.append('Independent')
+    for i in range(liberal_labor_seats):
+        parliament_seats.append('Liberal-Labour')
+
+    return parliament_seats
+
 def create_parliament_seating_plan_2019(con_seats, lib_seats, ndp_seats, green_seats, bloq_seats, independent_seats):
     parliament_seats = []
 
