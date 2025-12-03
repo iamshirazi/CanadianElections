@@ -1,16 +1,18 @@
 
 function loadElection(electionYear) {
-    document.getElementById('iframe').src = "/elections/election" + electionYear + ".html";
-    document.getElementById('current_election_text').innerHTML = electionYear
-    set_parliament_chart(electionYear)
-    display_parliament_chart_button()
-    hideDropdownMenu()
+    window.location.href = "/elections/" + electionYear + ".html";
+    // document.getElementById('iframe').src = "election" + electionYear + ".html";
+    // document.getElementById('current_election_text').innerHTML = electionYear
+    // set_parliament_chart(electionYear)
+    // display_parliament_chart_button()
+    // hideDropdownMenu()
 };
 
 function loadAbout() {
-    document.getElementById('iframe').src = "/main/about.html";
-    document.getElementById('current_election_text').innerHTML = ""
-    hide_parliament_chart_button()
+    window.location.href = "/main/about.html";
+    // document.getElementById('iframe').src = "../main/about.html";
+    // document.getElementById('current_election_text').innerHTML = ""
+    // hide_parliament_chart_button()
 };
 
 function set_parliament_chart(electionYear) {
@@ -38,22 +40,22 @@ function toggle_parliament_chart() {
     }
 }
 
-function display_parliament_chart_button() {
-    const parl_chart_button = document.getElementById('parliamentChartButton')
+// function display_parliament_chart_button() {
+//     const parl_chart_button = document.getElementById('parliamentChartButton')
 
-    if (parl_chart_button.style.display != "flex") {
-        parl_chart_button.style.display = "flex";
-    }
-}
+//     if (parl_chart_button.style.display != "flex") {
+//         parl_chart_button.style.display = "flex";
+//     }
+// }
 
-function hide_parliament_chart_button() {
-    const parl_chart_button = document.getElementById('parliamentChartButton')
-    const parliamentChart = document.getElementById('parliamentChart')
+// function hide_parliament_chart_button() {
+//     const parl_chart_button = document.getElementById('parliamentChartButton')
+//     const parliamentChart = document.getElementById('parliamentChart')
 
-    parl_chart_button.style.display = "none";
-    parliamentChart.style.display = "none";
+//     parl_chart_button.style.display = "none";
+//     parliamentChart.style.display = "none";
     
-}
+// }
 
 function showDropdownMenu() {
     const dropdownContent = document.querySelector('.dropdown-content');

@@ -5,6 +5,7 @@ from matplotlib.colors import LinearSegmentedColormap
 import matplotlib.pyplot as plt
 import pandas as pd
 import parliament_charts
+import generateHtmlMapFiles
 
 # COLOURS
 Lib = '#EE3224'  # (238, 50, 36)
@@ -108,3 +109,6 @@ foliumMap = ridings.explore(
 )
 
 foliumMap.save("./pages/elections/election2021.html")
+
+### Generate election page in main folder
+generateHtmlMapFiles.generateElectionMapFile(2021)

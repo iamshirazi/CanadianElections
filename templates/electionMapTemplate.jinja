@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="View an interactive map for any Canadian election from 1867 to 1958, 2019, and 2021. 
-    See maps of results for past Canadian federal elections.">
+    <meta name="description" content="View an interactive {{ electionYear }} Canadian election map. 
+        See the results of any federal district in the {{ electionYear }} Canadian federal election.">
     <meta name="keywords" content="canadian, elections, maps, 1867, 1872, 1874, 1882,
      1887, 1891, 1896, 1900, 1904, 1908, 1911, 1917, 1921, 1925, 1926,
      1930, 1935, 1940, 1945, 1949, 1953, 1957, 1958, 2019, 2021, federal, results, 
      interactive, canada">
-    <title>Canadian Elections | About</title>
-    <link rel="stylesheet" href="elections_style.css">
-    <script src="elections_functions.js"></script>
+    <title>{{ electionYear }} Canadian Election Map</title>
+    <link rel="stylesheet" href="/main/elections_style.css">
+    <script src="/main/elections_functions.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/main/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/main/favicon/favicon-32x32.png?v=3">
     <link rel="icon" type="image/png" sizes="16x16" href="/main/favicon/favicon-16x16.png?v=3">
     <link rel="icon" type="image/x-icon" sizes="any" href="/main/favicon/favicon.ico?v=3">
 </head>
-<body>
+<body onload="set_parliament_chart('{{ electionYear }}')">
     <div id="mainBanner">
             <h1 id="homeButton">Canadian Elections</h1>
         <div>
@@ -61,27 +61,10 @@
             <button id="aboutButton" onclick=loadAbout()>About</button>
         </div>
     </div>
-    <div class="shiftUnderneathMainBanner">
-        <p class="aboutParagraph">
-            Created by Matthew Shirazi, B. Eng
-        </p>
-        <p class="aboutParagraph">
-            This project was created using Docker, Kubernetes, Python, HTML, CSS, and JavaScript. The website runs entirely in a container on a Linux virtual machine.
-        </p>
-        <p class="aboutParagraph">
-            For recent elections (2019 and 2021), voting data and shapefiles were retreived from Elections Canada. For elections prior to 2019, voting data was retrieved from the Library of Parliament.
-        </p>
-        <p class="aboutParagraph">
-            If you notice a mistake, please send an email to support@canadianelections.net!
-        </p>
-    </div>
-    <div>
-        <footer class="footer">
-            <p class="aboutParagraph"></p>
-                Pre-2019 federal district shape data retreived from: <br></br>
-                <i>Taylor, Zachary; Lucas, Jack; Kirby, J.P.; Hewitt, Christopher Macdonald, 2023, "Replication Data for “Canada’s Federal Electoral Districts, 1867–2021: New Digital Boundary Files and a Comparative Investigation of District Compactness.” Canadian Journal of Political Science.", https://doi.org/10.5683/SP3/4E8DCR, Borealis, V2; fedshapes_cbf_20221003.zip</i>
-            </p>
-        </footer>
+    <iframe id="iframe" src="/elections/election{{ electionYear }}.html" type="text/html" scrolling="no" style="overflow:hidden"></iframe>
+    <div id="current_election_text">{{ electionYear }}</div>
+    <button id="parliamentChartButton" onclick="toggle_parliament_chart()">></button>
+    <div id="parliamentChart" style="display: none;">
     </div>
 </body>
 </html>
