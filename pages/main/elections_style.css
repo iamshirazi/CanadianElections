@@ -97,6 +97,11 @@
     width: 100dvw;
 }
 
+.shiftUnderneathMainBanner {
+    position: absolute;
+    top: 10%;
+}
+
 #current_election_text {
     font-size: xx-large;
     font-weight: bold;
