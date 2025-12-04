@@ -9,6 +9,7 @@ Will add previous and future elections to this project.
 
 ### December 2025 UPDATE:
 * Optimized the website for search engines; every election now has its own individual web page.
+* Added the 1962 election to the project!
 
 ### November 2025 UPDATE:
 * Added the 1935, 1940, 1945, 1949, 1953, 1957 and 1958 elections to the project!
