@@ -7,7 +7,7 @@ dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Download
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1962.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1963.txt', dataframe2.values, fmt='%s')
 
 modified_lines = []
 election_data = []
@@ -99,8 +99,8 @@ def set_other_votes(election_data, index):
     formatted_line = party_winner_loser + " " + updated_party_votes
 
 
-### Read ElectionData1962.txt, everytime a line starts with a name, append it to the previous line.
-with open("./voting_data/ElectionData1962.txt", "r") as file:
+### Read ElectionData1963.txt, everytime a line starts with a name, append it to the previous line.
+with open("./voting_data/ElectionData1963.txt", "r") as file:
 
     passes = 0
     for current_line in file:
@@ -135,5 +135,5 @@ with open("./voting_data/ElectionData1962.txt", "r") as file:
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1962.txt", "w") as file:
+with open("./voting_data/Canada1963.txt", "w") as file:
     file.writelines(modified_lines)
