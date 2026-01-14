@@ -7,7 +7,7 @@ dataframe1 = pd.read_excel('./voting_data/electionsCandidates.xlsx') ## Download
 
 dataframe2 = dataframe1.drop(['Province or Territory', 'Gender', 'Occupation', 'Result'], axis=1)
 
-np.savetxt(r'./voting_data/ElectionData1963.txt', dataframe2.values, fmt='%s')
+np.savetxt(r'./voting_data/ElectionData1965.txt', dataframe2.values, fmt='%s')
 
 modified_lines = []
 election_data = []
@@ -24,12 +24,14 @@ def set_accilmation_votes(election_data):
         formatted_line = riding + " " + winner + " " + loser + " 1 0 0 0 0 0 0 0"
     elif winner_party == "Liberal-Party-of-Canada":
         formatted_line = riding + " " + winner + " " + loser + " 0 1 0 0 0 0 0 0"
-    elif winner_party == "Social-Credit-Party-of-Canada":
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 1 0 0 0 0 0"
     elif winner_party == "New-Democratic-Party":
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 1 0 0 0 0 0"
+    elif winner_party == "Ralliement-des-créditistes":
         formatted_line = riding + " " + winner + " " + loser + " 0 0 0 1 0 0 0 0"
-    elif winner_party == "Liberal-Labour-Party":
+    elif winner_party == "Social-Credit-Party-of-Canada":
         formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 1 0 0 0"
+    elif "Independent" in winner_party:
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 1 0 0"
 
 
 def set_winner_votes(election_data):
@@ -44,12 +46,14 @@ def set_winner_votes(election_data):
         formatted_line = riding + " " + winner + " " + loser + " " + winner_votes + " 0 0 0 0 0 0 0"
     elif winner_party == "Liberal-Party-of-Canada":
         formatted_line = riding + " " + winner + " " + loser + " 0 " + winner_votes + " 0 0 0 0 0 0"
-    elif winner_party == "Social-Credit-Party-of-Canada":
-        formatted_line = riding + " " + winner + " " + loser + " 0 0 " + winner_votes + " 0 0 0 0 0"
     elif winner_party == "New-Democratic-Party":
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 " + winner_votes + " 0 0 0 0 0"
+    elif winner_party == "Ralliement-des-créditistes":
         formatted_line = riding + " " + winner + " " + loser + " 0 0 0 " + winner_votes + " 0 0 0 0"
-    elif winner_party == "Liberal-Labour-Party":
+    elif winner_party == "Social-Credit-Party-of-Canada":
         formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 " + winner_votes + " 0 0 0"
+    elif "Independent" in winner_party:
+        formatted_line = riding + " " + winner + " " + loser + " 0 0 0 0 0 " + winner_votes + " 0 0"
     else:
         ### False positive
         formatted_line = riding + " " + winner + " " + "FALSE_POSITIVE" + " 0 0 0 0 0 0 0 " + winner_votes
@@ -71,11 +75,11 @@ def set_other_votes(election_data, index):
         updated_party_votes = loser_votes + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7]
     elif loser_party == "Liberal-Party-of-Canada" and int(party_votes[1]) == 0:
         updated_party_votes = party_votes[0] + ' ' +  loser_votes + ' ' +  party_votes[2] + ' ' +  party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7]
-    elif loser_party == "Social-Credit-Party-of-Canada" and int(party_votes[2]) == 0:
+    elif loser_party == "New-Democratic-Party" and int(party_votes[2]) == 0:
         updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  loser_votes + ' ' +  party_votes[3] + ' ' +  party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7]
-    elif loser_party ==  "New-Democratic-Party" and int(party_votes[3]) == 0:
+    elif loser_party ==  "Ralliement-des-créditistes" and int(party_votes[3]) == 0:
         updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' +  loser_votes + ' ' + party_votes[4] + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7]
-    elif loser_party == "Liberal-Labour-Party" and int(party_votes[4]) == 0:
+    elif loser_party == "Social-Credit-Party-of-Canada" and int(party_votes[4]) == 0:
         updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' +  loser_votes + ' ' + party_votes[5] + ' ' + party_votes[6] + ' ' + party_votes[7]
     elif (loser_party == "Independent" or "Independent" in loser_party) and int(party_votes[5]) == 0:
         updated_party_votes = party_votes[0] + ' ' +  party_votes[1] + ' ' +  party_votes[2] + ' ' + party_votes[3] + ' ' + party_votes[4] + ' ' + loser_votes + ' ' + party_votes[6] + ' ' + party_votes[7]
@@ -99,8 +103,8 @@ def set_other_votes(election_data, index):
     formatted_line = party_winner_loser + " " + updated_party_votes
 
 
-### Read ElectionData1963.txt, everytime a line starts with a name, append it to the previous line.
-with open("./voting_data/ElectionData1963.txt", "r") as file:
+### Read ElectionData1965.txt, everytime a line starts with a name, append it to the previous line.
+with open("./voting_data/ElectionData1965.txt", "r") as file:
 
     passes = 0
     for current_line in file:
@@ -135,5 +139,5 @@ with open("./voting_data/ElectionData1963.txt", "r") as file:
 
 
 ### Write modified_lines to thirdpass.txt
-with open("./voting_data/Canada1963.txt", "w") as file:
+with open("./voting_data/Canada1965.txt", "w") as file:
     file.writelines(modified_lines)
