@@ -7,6 +7,9 @@ The election maps of Canada are highly detailed, and you can zoom into any part 
 
 Will add previous and future elections to this project.
 
+### January 2026 UPDATE:
+* Added the 1965 election to the project!
+
 ### December 2025 UPDATE:
 * Optimized the website for search engines; every election now has its own individual web page.
 * Added the 1962 and 1963 elections to the project!

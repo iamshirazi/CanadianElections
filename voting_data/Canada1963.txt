@@ -141,8 +141,8 @@ Nickel-Belt Godin,Osias.-J. MACLEAN,John 7268 13414 3524 5486 0 0 0 0
 Nicolet--Yamaska Vincent,Clément SAINT-ARNAUD,Lorenzo 9438 8124 1825 228 0 0 0 0
 Nipissing Garland,John-Richard HEWITT,Cec 7283 16547 1587 2351 0 0 0 0
 Norfolk Roxburgh,John-Maxwell Knowles,John-Evans 10115 10862 594 1156 0 0 0 0
-Northumberland Jewett,Pauline Bradley,Harry-Oliver 9838 10343 388 621 0 0 0 0
 Northumberland--Miramichi McWilliam,George-Roy Theriault,Adé-J. 6305 10148 646 844 0 0 0 0
+Northumberland Jewett,Pauline Bradley,Harry-Oliver 9838 10343 388 621 0 0 0 0
 Notre-Dame-de-Grâce Asselin,Edmund-Tobin HAYES,W.-Paschal 8734 30532 932 7141 0 0 0 0
 Okanagan-Boundary Pugh,David-Vaughan Shaw,Frederick-Davis 10031 6453 7430 6425 0 0 0 0
 Okanagan--Revelstoke Fleming,Stuart-A. CLARKE,Everard 5800 3821 3314 3554 0 0 0 0

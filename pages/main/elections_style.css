@@ -324,7 +324,7 @@
     transition: all .5s ease;
 }
 
-.Social-Credit_dot, .New-Democracy_dot {
+.Social-Credit_dot, .New-Democracy_dot, .Ralliement_dot {
     bottom: 10%;
     height: 0.62rem;
     width: 0.62rem;
@@ -394,7 +394,8 @@
 .Social-Credit_dot:hover, .Co-operative-Commonwealth-Federation_dot:hover,
 .Reconstruction-Party_dot:hover, .National-Government_dot:hover, .New-Democracy_dot:hover,
 .United-Reform_dot:hover, .Progressive-Conservative_dot:hover, .Bloc-populaire_dot:hover,
-.Labor-Progressive_dot:hover, .Liberal-Labour_dot:hover, .New-Democratic_dot:hover {
+.Labor-Progressive_dot:hover, .Liberal-Labour_dot:hover, .New-Democratic_dot:hover,
+.Ralliement_dot:hover {
     height: 1rem;
     width: 1rem;
     transition: all .5s ease;
@@ -411,7 +412,7 @@
 .Reconstruction-Party_dot, .National-Government_dot, 
 .New-Democracy_dot, .United-Reform_dot, .Progressive-Conservative_dot,
 .Bloc-populaire_dot, .Labor-Progressive_dot, .Liberal-Labour_dot,
-.New-Democratic_dot {
+.New-Democratic_dot, .Ralliement_dot {
             height: 0.31rem;
             width: 0.31rem;
             margin: 0.03rem;
@@ -438,7 +439,7 @@
 .Reconstruction-Party_dot:hover, .National-Government_dot:hover,
 .New-Democracy_dot:hover, .United-Reform_dot:hover, .Progressive-Conservative_dot:hover,
 .Bloc-populaire_dot:hover, .Labor-Progressive_dot:hover, .Liberal-Labour_dot:hover,
-.New-Democratic_dot:hover {
+.New-Democratic_dot:hover, .Ralliement_dot:hover {
             height: 0.5rem;
             width: 0.5rem;
         }
