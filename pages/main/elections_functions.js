@@ -32,16 +32,14 @@ function toggle_parliament_chart() {
     }
 }
 
-function showDropdownMenu() {
+function toggleDropdownMenu() {
     const dropdownContent = document.querySelector('.dropdown-content');
 
-    dropdownContent.style.display = "block";
-}
-
-function hideDropdownMenu() {
-    const dropdownContent = document.querySelector('.dropdown-content');
-
-    dropdownContent.style.display = "none";
+    if (dropdownContent.style.display == "none") {
+        dropdownContent.style.display = "block";
+    } else {
+        dropdownContent.style.display = "none";
+    }
 }
 
 document.addEventListener('click', function(event) {
