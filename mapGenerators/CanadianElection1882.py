@@ -17,7 +17,7 @@ INDEPENDENT_SEATS = 4
 NATIONALIST_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("./districts2/CBF_RO1882_CSRS.shp")
+districts = gpd.read_file("/app/districts2/CBF_RO1882_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ###### REMOVED Alberta,Saskatchewan, Assinaboia DISTRICTS, ONLY ALLOW DISTRICTS WITH ID GREATER THAN 11999 ######

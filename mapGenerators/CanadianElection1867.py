@@ -17,7 +17,7 @@ ANTI_CON_SEATS = 18
 EMPTY_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("./districts2/CBF_RO1867_CSRS.shp", rows=186) ### Removed Manitoba
+districts = gpd.read_file("/app/districts2/CBF_RO1867_CSRS.shp", rows=186) ### Removed Manitoba
 districts['id'] = districts['id'].astype(int)
 districts_new = districts[districts['id'] < 59000] ### REMOVED BC DISTRICTS
 

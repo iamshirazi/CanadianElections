@@ -25,7 +25,7 @@ NEW_DEMOCRACY = 3
 UNITED_REFORM = 2
 
 # read shapefile
-districts = gpd.read_file("./districts2/CBF_RO1933_CSRS.shp")
+districts = gpd.read_file("/app/districts2/CBF_RO1933_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed

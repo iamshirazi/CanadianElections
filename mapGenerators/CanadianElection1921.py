@@ -26,7 +26,7 @@ INDEPENDENT_SEATS = 4
 UF_ONTARIO_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("./districts2/CBF_RO1914_CSRS.shp")
+districts = gpd.read_file("/app/districts2/CBF_RO1914_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed
