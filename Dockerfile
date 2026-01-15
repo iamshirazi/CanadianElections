@@ -25,11 +25,11 @@ COPY voting_data ./voting_data
 # Unzip districts2 and copy it to the container
 ADD districts2.tar.gz ./
 
-### TEMP TOO?
+### Create pages/main/parliament_charts directory
 RUN mkdir -p pages/main/parliament_charts
 
-### TEMP
-RUN ls -R .
+### Create pages/elections directory
+RUN mkdir -p pages/elections
 
 ## Run all python scripts to generate the maps
 RUN python CanadianElection1867.py && python CanadianElection1872.py \
