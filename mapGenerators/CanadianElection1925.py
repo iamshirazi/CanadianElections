@@ -21,7 +21,7 @@ LABOUR_SEATS = 2
 INDEPENDENT_SEATS = 4
 
 # read shapefile
-districts = gpd.read_file("/app/districts2/CBF_RO1924_CSRS.shp")
+districts = gpd.read_file("/app/CBF_RO1924_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed

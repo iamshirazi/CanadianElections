@@ -17,7 +17,7 @@ INDEPENDENT_SEATS = 10
 NATIONALIST_SEATS = 2
 
 # read shapefile
-districts = gpd.read_file("/app/districts2/CBF_RO1882_CSRS.shp")
+districts = gpd.read_file("/app/CBF_RO1882_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ###### Remove Claimed and Disputed territories between Ontario and Manitoba ######

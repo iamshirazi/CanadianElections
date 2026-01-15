@@ -17,7 +17,7 @@ CC_FEDERATION_SEATS = 8
 LIBERAL_LABOUR_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("/app/districts2/CBF_RO1952_CSRS.shp")
+districts = gpd.read_file("/app/CBF_RO1952_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed
