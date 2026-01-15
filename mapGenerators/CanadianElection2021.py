@@ -21,7 +21,7 @@ BLOQ_SEATS = 32
 INDEPENDENT_SEATS = 0
 
 # read shapefile
-districts = gpd.read_file("/app/lfed000b16a_e.shp")
+districts = gpd.read_file("districts2/lfed000b16a_e.shp")
 votes = pd.read_csv("voting_data/Canada2021.txt", sep=" ", header=0)
 
 # Merge district shapes and number of votes

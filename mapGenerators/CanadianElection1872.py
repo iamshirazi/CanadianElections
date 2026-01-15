@@ -15,7 +15,7 @@ LIB_SEATS = 93
 INDEPENDENT_SEATS = 6
 
 # read shapefile
-districts = gpd.read_file("/app/CBF_RO1872_CSRS.shp")
+districts = gpd.read_file("districts2/CBF_RO1872_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 districts_new = districts[districts['id'] > 11999] ### REMOVED PEI DISTRICTS, ONLY ALLOW DISTRICTS WITH ID GREATER THAN 11999
 

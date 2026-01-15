@@ -15,7 +15,7 @@ LIB_SEATS = 128
 INDEPENDENT_SEATS = 6
 
 # read shapefile
-districts = gpd.read_file("/app/CBF_RO1892_CSRS.shp")
+districts = gpd.read_file("districts2/CBF_RO1892_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ###### REMOVED Yukon district, ONLY ALLOW DISTRICTS THAT DO NOT HAVE AN ID=60001 ######

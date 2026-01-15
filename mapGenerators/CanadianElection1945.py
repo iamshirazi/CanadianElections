@@ -25,7 +25,7 @@ LABOR_PROGRESSIVE = 1
 LIBERAL_PROGRESSIVE_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("/app/CBF_RO1933_CSRS.shp")
+districts = gpd.read_file("districts2/CBF_RO1933_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed

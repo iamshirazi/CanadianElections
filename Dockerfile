@@ -23,7 +23,8 @@ RUN python3 -m pip install --upgrade pip \
 COPY voting_data ./voting_data
 
 # Unzip districts2 and copy it to the container
-ADD districts2.tar.gz ./
+RUN mkdir -p districts2
+ADD districts2.tar.gz districts2/
 
 ### TEMP
 RUN ls -R .

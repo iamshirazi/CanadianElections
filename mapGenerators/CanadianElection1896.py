@@ -19,7 +19,7 @@ PATRONS_SEATS = 2
 MCCARTHY_SEATS = 2
 
 # read shapefile
-districts = gpd.read_file("/app/CBF_RO1892_CSRS.shp")
+districts = gpd.read_file("districts2/CBF_RO1892_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ###### REMOVED Yukon district, ONLY ALLOW DISTRICTS THAT DO NOT HAVE AN ID=60001 ######
