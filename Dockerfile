@@ -1,5 +1,5 @@
 ### STAGE 1 - Generate html election maps
-FROM python:3.13.5-slim-bullseye as python-stage
+FROM python:3.13.5-slim-bullseye AS python-stage
 
 WORKDIR /app
 
@@ -25,6 +25,12 @@ COPY voting_data ./voting_data
 # Unzip districts2 and copy it to the container
 ADD districts2.tar.gz ./
 
+### Create pages/main/parliament_charts directory
+RUN mkdir -p pages/main/parliament_charts
+
+### Create pages/elections directory
+RUN mkdir -p pages/elections
+
 ## Run all python scripts to generate the maps
 RUN python CanadianElection1867.py && python CanadianElection1872.py \
     && python CanadianElection1874.py && python CanadianElection1878.py \
@@ -44,7 +50,7 @@ RUN python CanadianElection1867.py && python CanadianElection1872.py \
 
 
 ### STAGE 2 - Minify elections_style.css
-FROM node:lts-alpine as minify-stage
+FROM node:lts-alpine AS minify-stage
 
 WORKDIR /app
 

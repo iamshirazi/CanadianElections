@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          lfs: true
 
       - name: Build an image from Dockerfile
         run: |
@@ -42,6 +44,6 @@ jobs:
           severity: 'CRITICAL,HIGH'
 
       - name: Upload Trivy scan results to GitHub Security tab
-        uses: github/codeql-action/upload-sarif@v3
+        uses: github/codeql-action/upload-sarif@v4
         with:
           sarif_file: 'trivy-results.sarif'
