@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "add-docker-build-and-push--pipeline" ]
     tags:
       - '0.0.*'
 
