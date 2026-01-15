@@ -1,5 +1,5 @@
 ### STAGE 1 - Generate html election maps
-FROM python:3.13.5-slim-bullseye as python-stage
+FROM python:3.13.5-slim-bullseye AS python-stage
 
 WORKDIR /app
 
@@ -50,7 +50,7 @@ RUN python CanadianElection1867.py && python CanadianElection1872.py \
 
 
 ### STAGE 2 - Minify elections_style.css
-FROM node:lts-alpine as minify-stage
+FROM node:lts-alpine AS minify-stage
 
 WORKDIR /app
 
