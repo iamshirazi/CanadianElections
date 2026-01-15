@@ -1,8 +1,6 @@
 # Copyright (c) 2025 Matthew Shirazi
 
 import geopandas as gpd
-from matplotlib.colors import LinearSegmentedColormap
-import matplotlib.pyplot as plt
 import pandas as pd
 import parliament_charts
 import generateHtmlMapFiles

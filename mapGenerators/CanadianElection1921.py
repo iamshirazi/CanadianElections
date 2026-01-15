@@ -4,8 +4,6 @@
 ### NOTE: Westminster-District gets renamed to Fraser Valley in 1921
 
 import geopandas as gpd
-from matplotlib.colors import LinearSegmentedColormap
-import matplotlib.pyplot as plt
 import pandas as pd
 import parliament_charts
 import generateHtmlMapFiles
