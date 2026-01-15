@@ -1,0 +1,12 @@
+FROM python:3.13.5-slim-bullseye as python-stage
+
+WORKDIR /app
+
+## Copy requirements.txt and all Python scripts
+COPY mapGenerators ./
+
+## Copy voting_data to the container
+COPY voting_data ./voting_data
+
+# Unzip districts2 and copy it to the container
+ADD districts2.tar.gz ./

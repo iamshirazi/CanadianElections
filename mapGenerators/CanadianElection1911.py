@@ -17,7 +17,7 @@ INDEPENDENT_SEATS = 3
 LABOUR_SEATS = 1
 
 # read shapefile
-districts = gpd.read_file("districts2/CBF_RO1905_CSRS.shp")
+districts = gpd.read_file("./districts2/CBF_RO1905_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed
@@ -26,7 +26,7 @@ districts["geometry"] = (districts.to_crs(districts.estimate_utm_crs()).simplify
 
 # ************************************************************************************ #
 ## GET CORRECT WENTWORTH DISTRICT FROM 1903 election, 1905 wentworth is incorrect (overlaps Hamilton East and West)
-correct_wentworth = gpd.read_file("districts2/CBF_RO1903_CSRS.shp")
+correct_wentworth = gpd.read_file("./districts2/CBF_RO1903_CSRS.shp")
 correct_wentworth = correct_wentworth[correct_wentworth['fedname'].isin(['Wentworth'])]
 
 gdf_updated = districts.drop(districts[districts['fedname'] == 'Wentworth'].index)
@@ -34,7 +34,7 @@ gdf_updated = districts.drop(districts[districts['fedname'] == 'Wentworth'].inde
 districts = pd.concat([gdf_updated, correct_wentworth], ignore_index=True)
 # ************************************************************************************ #
 ## GET CORRECT MIDDLESEX-EAST DISTRICT FROM 1903 election, 1905 MIDDLESEX-EAST is incorrect (overlaps London)
-correct_districts= gpd.read_file("districts2/CBF_RO1903_CSRS.shp")
+correct_districts= gpd.read_file("./districts2/CBF_RO1903_CSRS.shp")
 correct_middlesex_east = correct_districts[correct_districts['fedname'].isin(['Middlesex East'])]
 
 gdf_updated_mideast = districts.drop(districts[districts['fedname'] == 'Middlesex East'].index)

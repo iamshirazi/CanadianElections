@@ -15,7 +15,7 @@ LIB_SEATS = 137
 INDEPENDENT_SEATS = 2
 
 # read shapefile
-districts = gpd.read_file("districts2/CBF_RO1903_CSRS.shp")
+districts = gpd.read_file("./districts2/CBF_RO1903_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed
