@@ -29,7 +29,7 @@ the seat makeup in parliament.
 * Minified elections_style.css in the Dockerfile to decrease loading times (improve performance).
 
 ### August 2025 UPDATE:
-* [canadianelections.net](https://canadianelections.net) is now **LIVE**! Head over to canadianelections.net to view this entire project!
+* [canadianelections.net](https://canadianelections.net/elections/1867.html) is now **LIVE**! Head over to canadianelections.net to view this entire project!
 * Made the elections.html page mobile friendly. The webpage now looks great on both PC and mobile.
 * Updated Dockerfile and python scripts. They now function better.
 
