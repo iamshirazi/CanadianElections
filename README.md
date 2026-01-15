@@ -9,6 +9,7 @@ Will add previous and future elections to this project.
 
 ### January 2026 UPDATE:
 * Added the 1965 election to the project!
+* Added a GitHub Action that scans for vulnerabilites in the Dockerfile.
 
 ### December 2025 UPDATE:
 * Optimized the website for search engines; every election now has its own individual web page.
