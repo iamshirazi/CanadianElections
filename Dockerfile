@@ -25,6 +25,9 @@ COPY voting_data ./voting_data
 # Unzip districts2 and copy it to the container
 ADD districts2.tar.gz ./
 
+### TEMP TOO?
+RUN mkdir -p pages/main/parliament_charts
+
 ### TEMP
 RUN ls -R .
 
