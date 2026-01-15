@@ -25,6 +25,9 @@ COPY voting_data ./voting_data
 # Unzip districts2 and copy it to the container
 ADD districts2.tar.gz ./
 
+### TEMP
+RUN ls -R .
+
 ## Run all python scripts to generate the maps
 RUN python CanadianElection1867.py && python CanadianElection1872.py \
     && python CanadianElection1874.py && python CanadianElection1878.py \
