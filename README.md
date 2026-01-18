@@ -8,7 +8,7 @@ The election maps of Canada are highly detailed, and you can zoom into any part 
 Will add previous and future elections to this project.
 
 ### January 2026 UPDATE:
-* Added the 1965 election to the project!
+* Added the 1965 and 1968 elections to the project!
 * Added a GitHub Action that scans for vulnerabilites in the Dockerfile.
 
 ### December 2025 UPDATE:
