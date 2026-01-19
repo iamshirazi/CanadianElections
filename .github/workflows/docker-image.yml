@@ -79,3 +79,4 @@ jobs:
             docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ steps.existing_tag.outputs.tag }}
           else
             docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ steps.bump.outputs.version }}
+          fi
