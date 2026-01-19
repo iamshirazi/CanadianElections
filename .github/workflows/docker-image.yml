@@ -23,7 +23,7 @@ jobs:
     - name: Check for existing tag on commit
       id: existing_tag
       run: |
-        TAG=$(git tag --points-at HEAD | head -n 1)
+        TAG=$(git tag --points-at HEAD | sort -V | tail -n 1)
         echo "tag=$TAG" >> $GITHUB_OUTPUT
 
     - name: Get latest tag
