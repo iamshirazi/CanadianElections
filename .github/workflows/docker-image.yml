@@ -74,4 +74,8 @@ jobs:
       with:
         context: .
         push: true
-        tags: docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ steps.bump.outputs.version }}
+        tags: |
+          if [ -n "${{ steps.existing_tag.outputs.tag }}" ]; then
+            docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ steps.existing_tag.outputs.tag }}
+          else
+            docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ steps.bump.outputs.version }}
