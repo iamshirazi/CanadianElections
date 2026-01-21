@@ -1,7 +1,7 @@
 # Canadian Elections
 
 ## Description:
-This project uses Python to draw Canada and all of its official ridings in an election, then colours them based on which party won in that riding.
+This project uses Python to draw Canada and all of its official ridings in an election, then colours them based on which party won in that riding. It also displays voting data for all parties in a riding, just hover over or click the riding!
 
 The election maps of Canada are highly detailed, and you can zoom into any part of the country seamlessly.
 
@@ -42,8 +42,9 @@ Will add previous and future elections to this project.
     You'll now be able to view the entire project locally!
 
 ### January 2026 UPDATE:
-* Added the 1965 and 1968 elections to the project!
+* Added the 1965, 1968, and 1972 elections to the project!
 * Added a GitHub Action that scans for vulnerabilites in the Dockerfile.
+* Added a GitHub Action that builds the Dockerfile and pushes it to Dockerhub after merging a Pull Request to main
 
 ### December 2025 UPDATE:
 * Optimized the website for search engines; every election now has its own individual web page.
