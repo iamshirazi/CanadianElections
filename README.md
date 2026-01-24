@@ -11,33 +11,25 @@ Will add previous and future elections to this project.
 1. Find the latest canadianelections Docker image from the official Dockerhub:
 [matthewshirazi/canadianelections](https://hub.docker.com/repository/docker/matthewshirazi/canadianelections/tags)
 
-2. Create a simple deployment using the latest canadianelections image:
+2. Create a Namespace named `test` on your local kubernetes cluster.
 
-    `kubectl create deployment local-canadiannelections -n test --image=matthewshirazi/canadianelections:0.0.xx`
+    ` kubectl create ns test`
+
+3. Create a simple Deployment using the latest canadianelections image:
+
+    `kubectl create deployment local-canadianelections -n test --image=matthewshirazi/canadianelections:0.0.xx`
 
     NOTE: Replace `xx` in the above command to the latest version
 
-3. Create a simple NodePort service which targets the pod's port 8080:
+4. Create a simple NodePort Service which targets the pod's port 8080:
 
-    `kubectl create service nodeport local-canadianelections -n test --tcp=80:8080`
+    `kubectl expose deploy local-canadianelections --port=80 --target-port=8080 --type=NodePort --name=local-canadianelections -n test`
 
-4. Get the assigned NodePort:
+5. Port forward to the local-canadianelections Service:
 
-    `kubectl get services local-canadianelections -n test`
+    `kubectl port-forward svc/local-canadianelections -n test 8080:80`
 
-    You'll see NodePort listed after the service port (so if it looks like 80:31125, 31125 is the NodePort)
-
-5. Get the Internal-IP of the node that the local-elections pod is running on
-
-    `kubectl get pods -n test -o wide`
-
-    Then:
-
-    `kubectl get nodes -o wide | grep <node_name>`
-
-    You'll find the Internal-IP for the node there.
-
-6. In your browser, head to `http://<Internal-IP>:<NodePort>/elections/1867.html`
+6. In your browser, head to `http://localhost/elections/1867.html`
 
     You'll now be able to view the entire project locally!
 
