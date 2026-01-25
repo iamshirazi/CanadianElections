@@ -46,7 +46,7 @@ RUN python CanadianElection1867.py && python CanadianElection1872.py \
     && python CanadianElection1957.py && python CanadianElection1958.py \
     && python CanadianElection1962.py && python CanadianElection1963.py \
     && python CanadianElection1965.py && python CanadianElection1968.py \
-    && python CanadianElection1972.py \
+    && python CanadianElection1972.py && python CanadianElection1974.py \
     && python CanadianElection2019.py && python CanadianElection2021.py
 
 
@@ -114,6 +114,7 @@ COPY --from=python-stage /app/pages/elections/election1963.html /usr/share/nginx
 COPY --from=python-stage /app/pages/elections/election1965.html /usr/share/nginx/html/pages/elections/election1965.html
 COPY --from=python-stage /app/pages/elections/election1968.html /usr/share/nginx/html/pages/elections/election1968.html
 COPY --from=python-stage /app/pages/elections/election1972.html /usr/share/nginx/html/pages/elections/election1972.html
+COPY --from=python-stage /app/pages/elections/election1974.html /usr/share/nginx/html/pages/elections/election1974.html
 COPY --from=python-stage /app/pages/elections/election2019.html /usr/share/nginx/html/pages/elections/election2019.html
 COPY --from=python-stage /app/pages/elections/election2021.html /usr/share/nginx/html/pages/elections/election2021.html
 
@@ -147,6 +148,7 @@ COPY --from=python-stage /app/pages/elections/1963.html /usr/share/nginx/html/pa
 COPY --from=python-stage /app/pages/elections/1965.html /usr/share/nginx/html/pages/elections/1965.html
 COPY --from=python-stage /app/pages/elections/1968.html /usr/share/nginx/html/pages/elections/1968.html
 COPY --from=python-stage /app/pages/elections/1972.html /usr/share/nginx/html/pages/elections/1972.html
+COPY --from=python-stage /app/pages/elections/1974.html /usr/share/nginx/html/pages/elections/1974.html
 COPY --from=python-stage /app/pages/elections/2019.html /usr/share/nginx/html/pages/elections/2019.html
 COPY --from=python-stage /app/pages/elections/2021.html /usr/share/nginx/html/pages/elections/2021.html
 
@@ -180,6 +182,7 @@ COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1963.html /
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1965.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1965.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1968.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1968.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1972.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1972.html
+COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1974.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1974.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart2019.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart2019.html
 COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart2021.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart2021.html
 
