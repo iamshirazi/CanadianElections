@@ -34,7 +34,7 @@ Will add previous and future elections to this project.
     You'll now be able to view the entire project locally!
 
 ### January 2026 UPDATE:
-* Added the 1965, 1968, and 1972 elections to the project!
+* Added the 1965, 1968, 1972 and 1974 elections to the project!
 * Added a GitHub Action that scans for vulnerabilites in the Dockerfile.
 * Added a GitHub Action that builds the Dockerfile and pushes it to Dockerhub after merging a Pull Request to main
 
