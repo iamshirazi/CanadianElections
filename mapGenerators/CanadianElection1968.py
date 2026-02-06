@@ -26,10 +26,29 @@ districts = gpd.read_file("districts2/CBF_RO1966_CSRS.shp")
 districts['id'] = districts['id'].astype(int)
 
 ## Simplifiy district shapes to increase loading speed
-districts["geometry"] = (districts.to_crs(districts.estimate_utm_crs()).simplify(100).to_crs(districts.crs))
+districts["geometry"] = (districts.to_crs(districts.estimate_utm_crs()).simplify(20).to_crs(districts.crs))
 
+# ************************************************************************************ #
+### SIMPLIFY NORTHWEST-TERRITORIES SHAPE SIZE BY 100, MERGE INTO districts DATAFRAME WHERE ALL OTHER DISTRICTS ARE SIMPLIFIED BY 20
+northwest_territories_district = districts[districts['id'] == 61001]
 
-dataframe2 = districts.sort_values('fedname')
+northwest_territories_district["geometry"] = northwest_territories_district.to_crs(
+    northwest_territories_district.estimate_utm_crs()).simplify(100).to_crs(northwest_territories_district.crs)
+
+new_attributes = northwest_territories_district.iloc[0].drop('geometry')
+
+merged_geometry = northwest_territories_district.geometry.unary_union
+new_row = gpd.GeoSeries([merged_geometry], crs=districts.crs, name='geometry')
+new_row_gdf = gpd.GeoDataFrame(new_attributes.to_frame().T, geometry=new_row)
+
+new_row_gdf['geometry'] = merged_geometry
+
+gdf_updated = districts.drop(northwest_territories_district.index)
+
+districts_new = pd.concat([gdf_updated, new_row_gdf], ignore_index=True)
+# ************************************************************************************ #
+
+dataframe2 = districts_new.sort_values('fedname')
 dataframe2.reset_index(drop=True, inplace=True)
 
 votes = pd.read_csv("voting_data/Canada1968.txt", sep=" ", header=0)
