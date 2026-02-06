@@ -1,6 +1,6 @@
 def generateParliamentChart(total_seats, sorted_parliament_seats):
     parliament_chart = ''
-    if total_seats <= 308:
+    if total_seats <= 280:
         number_of_seats_per_row = int(round(total_seats / 2 / 5)) ### 5 rows
     else:
         number_of_seats_per_row = int(round(total_seats / 2 / 6)) ### 6 rows
@@ -24,16 +24,13 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
 
 
     ### POPULATE SPEAKER ROW (SIXTH ROW)
-    if total_seats <= 308:
-        speaker_row += '<span class="' + sorted_parliament_seats[current_seat] +'_dot"></span></div>'
-    else:
-        speaker_row += '<span class="' + sorted_parliament_seats[current_seat] +'_dot"></span></div>'
+    speaker_row += '<span class="' + sorted_parliament_seats[current_seat] +'_dot"></span></div>'
     current_seat += 1
 
 
     ### POPULATE GOVERNING PARTY SECTION
 
-    if total_seats <= 308:
+    if total_seats <= 280:
         for i in range(number_of_seats_per_row):
             eleventh_row += '<span class="' + sorted_parliament_seats[current_seat] +'_dot"></span>'
             tenth_row += '<span class="' + sorted_parliament_seats[current_seat + 1] +'_dot"></span>'
@@ -76,7 +73,7 @@ def generateParliamentChart(total_seats, sorted_parliament_seats):
         or number_of_seats_per_row == 28:
         number_of_seats_per_row += 1
 
-    if total_seats <= 308:
+    if total_seats <= 280:
         for i in range(number_of_seats_per_row):
 
             if (future_seat) < total_seats:
@@ -547,6 +544,20 @@ def create_parliament_seating_plan_1974(prog_con_seats, lib_seats, new_democrati
         parliament_seats.append('Social-Credit')
     for i in range(independent_seats):
         parliament_seats.append('Independent')
+
+    return parliament_seats
+
+def create_parliament_seating_plan_1979(prog_con_seats, lib_seats, new_democratic_seats, social_credit_seats):
+    parliament_seats = []
+
+    for i in range(prog_con_seats):
+        parliament_seats.append('Progressive-Conservative')
+    for i in range(social_credit_seats):
+        parliament_seats.append('Social-Credit')
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(new_democratic_seats):
+        parliament_seats.append('New-Democratic')
 
     return parliament_seats
 
