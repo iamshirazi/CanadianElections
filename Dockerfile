@@ -1,5 +1,5 @@
 ### STAGE 1 - Generate html election maps
-FROM python:3.13.5-slim-bullseye AS python-stage
+FROM python:3.14.3-slim-trixie AS python-stage
 
 WORKDIR /app
 
@@ -67,7 +67,7 @@ RUN csso ./stylesheets/elections_style.css --output ./elections_style.css
 
 
 ### STAGE 3 - Copy html election maps and minifed CSS to final container
-FROM nginxinc/nginx-unprivileged:stable-alpine
+FROM nginxinc/nginx-unprivileged:alpine3.23-perl
 
 ## Copy sitemap.xml to nginx/html
 COPY ./pages/sitemap.xml /usr/share/nginx/html/pages/sitemap.xml
