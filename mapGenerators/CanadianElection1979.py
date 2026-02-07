@@ -27,11 +27,12 @@ districts["geometry"] = (districts.to_crs(districts.estimate_utm_crs()).simplify
 ### SIMPLIFY NUNATSIAQ SHAPE SIZE BY 100, MERGE INTO districts DATAFRAME WHERE ALL OTHER DISTRICTS ARE SIMPLIFIED BY 20
 nunatsiaq_district = districts[districts['id'] == 61002]
 
-nunatsiaq_district["geometry"] = nunatsiaq_district.to_crs(nunatsiaq_district.estimate_utm_crs()).simplify(100).to_crs(nunatsiaq_district.crs)
+nunatsiaq_district["geometry"] = nunatsiaq_district.to_crs(
+    nunatsiaq_district.estimate_utm_crs()).simplify(100).to_crs(nunatsiaq_district.crs)
 
 new_attributes = nunatsiaq_district.iloc[0].drop('geometry')
 
-merged_geometry = nunatsiaq_district.geometry.unary_union
+merged_geometry = nunatsiaq_district.geometry.union_all()
 new_row = gpd.GeoSeries([merged_geometry], crs=districts.crs, name='geometry')
 new_row_gdf = gpd.GeoDataFrame(new_attributes.to_frame().T, geometry=new_row)
 

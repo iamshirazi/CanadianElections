@@ -24,24 +24,6 @@ districts['id'] = districts['id'].astype(int)
 districts_new = districts[districts['fedname'] != "Claimed by Ontario (awarded 1889)"]
 districts_new = districts_new[districts_new['fedname'] != "Disputed Territories (Awarded to Ontario 1889)"]
 
-# ************************************************************************************ #
-####### MERGE THE TERRITORIES CLAIMED BY ONTARIO FOR THE NEXT ELECTION (GIVEN TO ONTARIO IN 1889) - PRE WORK ######
-# rows_to_merge = districts[districts['fedname'].isin(['Algoma', 'Claimed by Ontario (awarded 1889)', 'Disputed Territories (Awarded to Ontario 1889)'])]
-
-# new_attributes = rows_to_merge.iloc[0].drop('geometry')
-# new_attributes['fedname'] = "Algoma"
-
-# merged_geometry = rows_to_merge.geometry.unary_union
-# new_row = gpd.GeoSeries([merged_geometry], crs=districts.crs, name='geometry')
-# new_row_gdf = gpd.GeoDataFrame(new_attributes.to_frame().T, geometry=new_row)
-
-# new_row_gdf['geometry'] = merged_geometry
-
-# gdf_updated = districts.drop(rows_to_merge.index)
-
-# districts = pd.concat([gdf_updated, new_row_gdf], ignore_index=True)
-# ************************************************************************************ #
-
 ## Simplifiy district shapes to increase loading speed
 districts_new["geometry"] = (districts_new.to_crs(districts_new.estimate_utm_crs()).simplify(20).to_crs(districts_new.crs))
 
