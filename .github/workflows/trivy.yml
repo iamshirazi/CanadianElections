@@ -32,11 +32,10 @@ jobs:
           docker build -t docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ github.sha }} .
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@7b7aa264d83dc58691451798b4d117d53d21edfe
+        uses: aquasecurity/trivy-action@0.33.1
         with:
           image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ github.sha }}'
-          format: 'template'
-          template: '@/contrib/sarif.tpl'
+          format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
 
