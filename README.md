@@ -29,7 +29,7 @@ Will add previous and future elections to this project.
 
     `kubectl port-forward svc/local-canadianelections -n test 8080:80`
 
-6. In your browser, head to `http://localhost/elections/1867.html`
+6. In your browser, head to `http://localhost:8080/elections/1867.html`
 
     You'll now be able to view the entire project locally!
 
