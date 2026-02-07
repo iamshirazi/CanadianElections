@@ -34,7 +34,7 @@ northwest_territories_district["geometry"] = northwest_territories_district.to_c
 
 new_attributes = northwest_territories_district.iloc[0].drop('geometry')
 
-merged_geometry = northwest_territories_district.geometry.unary_union
+merged_geometry = northwest_territories_district.geometry.union_all()
 new_row = gpd.GeoSeries([merged_geometry], crs=districts.crs, name='geometry')
 new_row_gdf = gpd.GeoDataFrame(new_attributes.to_frame().T, geometry=new_row)
 

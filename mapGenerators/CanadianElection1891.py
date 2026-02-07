@@ -27,7 +27,7 @@ rows_to_merge = districts[districts['fedname'].isin(['Algoma', 'Claimed by Ontar
 new_attributes = rows_to_merge.iloc[0].drop('geometry')
 new_attributes['fedname'] = "Algoma"
 
-merged_geometry = rows_to_merge.geometry.unary_union
+merged_geometry = rows_to_merge.geometry.union_all()
 new_row = gpd.GeoSeries([merged_geometry], crs=districts.crs, name='geometry')
 new_row_gdf = gpd.GeoDataFrame(new_attributes.to_frame().T, geometry=new_row)
 
