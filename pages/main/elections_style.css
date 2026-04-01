@@ -390,6 +390,225 @@
     transition: all .5s ease;
 }
 
+#form {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 1s;
+    width: 50px;
+    height: 50px;
+    background: white;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 4px solid white;
+    padding: 5px;
+}
+
+input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 42.5px;
+    line-height: 30px;
+    outline: 0;
+    border: 0;
+    font-size: 1em;
+    border-radius: 20px;
+    padding: 0 20px;
+}
+
+.fa {
+    box-sizing: border-box;
+    padding: 10px;
+    width: 42.5px;
+    height: 42.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 4px;
+    color: #07051a;
+    text-align: center;
+    font-size: 1.2em;
+    transition: all 1s;
+}
+#form:focus-within,
+#form:hover,
+#form:valid{
+    width: 30dvh;
+    cursor: pointer;
+}
+
+#form:hover input,
+#form:focus-within input,
+#form:valid input {
+    width: 100%;
+} 
+
+#form:hover .fa,
+#form:focus-within .fa,
+#form:valid .fa {
+    background: #07051a;
+    color: white;
+}
+
+#searchButton {
+    display: none;
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 20px;
+    color: white;
+    padding: 4px;
+    min-height: max-content;
+    background: transparent;
+    outline: 0;
+    border: 1px solid #303030;
+    border-radius: 4px;
+    text-align: center;
+    width: 100%;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#form:valid button {
+    display: block;
+    z-index: 1;
+}
+
+#searchBarContainer {
+    position: relative;
+    display: inline-block;
+    top: 106px;
+    left: 12dvh;
+    z-index: 1;
+}
+
+#searchResults {
+    position: absolute;
+    display: inline-block;
+    top: 19dvh;
+    left: 13dvh;
+    max-height: 30dvh;
+    overflow: scroll;
+    border-radius: 10px;
+    z-index: 1;
+
+    /* -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black calc(100% - 30px),
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 93%,
+        transparent 100%
+    ); */
+}
+
+#searchResults.scrollable {
+    -webkit-mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black calc(100% - 40px),
+        transparent 100%
+    );
+
+    mask-image: linear-gradient(
+        to bottom,
+        black 0%,
+        black 93%,
+        transparent 100%
+    );
+}
+
+/* HIDE mask-image IF SCROLLED TO BOTTOM OF RESULTS TABLE */
+#searchResults.at-bottom {
+    mask-image: none;
+    -webkit-mask-image: none;
+}
+
+.results-table {
+    font-family: 'Verdana';
+    width: 200px;
+    font-size: small;
+    background-color: white;
+    border-collapse: collapse;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.scrolled .results-table thead:nth-of-type(2) th {
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.5);
+    transition: all .5s ease;
+}
+
+.scrolled .results-table .searchResultsColumns th {
+    box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.5);
+    transition: all .5s ease;
+}
+
+.results-table .searchResultsColumns th {
+    transition: all .5s ease;
+}
+
+.results-table thead:nth-of-type(2) th {
+    transition: all .5s ease;
+}
+
+thead {
+    background: #000000;
+    color: whitesmoke;
+}
+
+th, td {
+  padding: 0.5rem;
+}
+
+#ridingHeader, #ridingHeader th {
+    position: sticky;
+    top: 0;
+}
+
+/* STICKY HEADERS FOR DISTRICT VOTING RESULTS HEADERS */
+.results-table:has(#ridingHeader) #districtResultsColumns {
+    position: sticky;
+    top: 16%;
+}
+
+.results-table:has(#ridingHeader) #districtResultsColumns th {
+    position: sticky;
+    top: 16%;
+}
+/* STICKY HEADERS FOR SEARCH RESULTS HEADERS */
+.searchResultsColumns, .searchResultsColumns th {
+    position: sticky;
+    top: 0;
+}
+
+#ridingHeader {
+    font-size: large;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance:none;
+}
+
+#map {
+    position: absolute;
+    top: 10%;
+    left: -1px;
+    height: 90dvh;
+    width: 100dvw;
+    z-index: -10;
+}
+
 .fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row,
 .thirteenth_row, .twelfth_row, .eleventh_row, .tenth_row, .ninth_row,
 .eighth_row, .seventh_row {
@@ -460,4 +679,29 @@
 .eighth_row, .seventh_row {
     margin-left: 0.5rem;
 }
+
+    #searchResults {
+        top: 21dvh;
+        left: 1dvh;
+        max-height: 20dvh;
+    }
+
+    .results-table {
+        max-width: 30dvh;
+        font-size: xx-small; /* VERIFY THAT THIS IS NOT TOO SMALL */
+    }
+
+    #ridingHeader {
+        font-size: x-small; /* VERIFY THAT THIS IS NOT TOO SMALL */
+    }
+
+    th, td {
+        padding: 0.25rem;
+    }
+
+    .results-table thead, .results-table th {
+        position: sticky;
+        top: 12.5%;
+    }
+
     }

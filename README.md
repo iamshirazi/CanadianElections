@@ -1,37 +1,25 @@
 # Canadian Elections
 
 ## Description:
-This project uses Python to draw Canada and all of its official ridings in an election, then colours them based on which party won in that riding. It also displays voting data for all parties in a riding, just hover over or click the riding!
+The Canadian Elections project is a full-stack web application that displays highly detailed, interactive maps of Canadian elections.
 
-The election maps of Canada are highly detailed, and you can zoom into any part of the country seamlessly.
+View the website here: https://canadianelections.net
+
+Users can search for a candidate or district in an election, and click on the search results to automatically zoom to the district (or district of the candidate).
+
+All districts, candidates, parties, and elections are stored in a PostgreSQL database, and are displayed via API calls to a FastAPI service. 
+
+The database, the API, and the front-end are all running on a k3s cluster on a Linux virtual machine.
 
 Will add previous and future elections to this project.
 
-### How to run this project:
-1. Find the latest canadianelections Docker image from the official Dockerhub:
-[matthewshirazi/canadianelections](https://hub.docker.com/repository/docker/matthewshirazi/canadianelections/tags)
-
-2. Create a Namespace named `test` on your local kubernetes cluster.
-
-    ` kubectl create ns test`
-
-3. Create a simple Deployment using the latest canadianelections image:
-
-    `kubectl create deployment local-canadianelections -n test --image=matthewshirazi/canadianelections:0.0.xx`
-
-    NOTE: Replace `xx` in the above command to the latest version
-
-4. Create a simple NodePort Service which targets the pod's port 8080:
-
-    `kubectl expose deploy local-canadianelections --port=80 --target-port=8080 --type=NodePort --name=local-canadianelections -n test`
-
-5. Port forward to the local-canadianelections Service:
-
-    `kubectl port-forward svc/local-canadianelections -n test 8080:80`
-
-6. In your browser, head to `http://localhost:8080/elections/1867.html`
-
-    You'll now be able to view the entire project locally!
+### April 2026 UPDATE:
+* Built a PostgreSQL database to store all of the districts, candidates, parties, and elections.
+* Built an API using FastAPI to allow users to search for a candidate or district.
+* Added a "zoom to district" feature. If a user clicks on a candidate or district search result, they are automatically brought to the district.
+* All candidates in every riding are displayed in a clean table. This is far superior to the "only display the top two highest voted candidates" model I previously had.
+* Simplified the Dockerfile, deleted unnecessary files from the repo.
+* Upgraded the Canadian Elections project from a strictly front-end website, to a **full-stack web application**
 
 ### February 2026 UPDATE:
 * Added the 1979 election to the project!

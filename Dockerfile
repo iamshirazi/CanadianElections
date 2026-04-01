@@ -1,29 +1,15 @@
-### STAGE 1 - Generate html election maps
+######### STAGE 1 - Generate html election maps #########
 FROM python:3.14.3-slim-trixie AS python-stage
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    libgdal-dev \
-    python3-dev \
-    build-essential \
-    gcc \
-    clang
-
-## Copy requirements.txt and all Python scripts
+## Copy all Python scripts
 COPY requirements.txt ./ \
     mapGenerators ./
 
-## Install all requirements
 RUN python3 -m pip install --upgrade pip \
     && python3 -m \
     pip install -r requirements.txt
-
-## Copy voting_data to the container
-COPY voting_data ./voting_data
-
-# Unzip districts2 and copy it to the container
-ADD districts2.tar.gz ./
 
 ### Create pages/main/parliament_charts directory
 RUN mkdir -p pages/main/parliament_charts
@@ -32,26 +18,10 @@ RUN mkdir -p pages/main/parliament_charts
 RUN mkdir -p pages/elections
 
 ## Run all python scripts to generate the maps
-RUN python CanadianElection1867.py && python CanadianElection1872.py \
-    && python CanadianElection1874.py && python CanadianElection1878.py \
-    && python CanadianElection1882.py && python CanadianElection1887.py \
-    && python CanadianElection1891.py && python CanadianElection1896.py \
-    && python CanadianElection1900.py && python CanadianElection1904.py \
-    && python CanadianElection1908.py && python CanadianElection1911.py \
-    && python CanadianElection1917.py && python CanadianElection1921.py \
-    && python CanadianElection1925.py && python CanadianElection1926.py \
-    && python CanadianElection1930.py && python CanadianElection1935.py \
-    && python CanadianElection1940.py && python CanadianElection1945.py \
-    && python CanadianElection1949.py && python CanadianElection1953.py \
-    && python CanadianElection1957.py && python CanadianElection1958.py \
-    && python CanadianElection1962.py && python CanadianElection1963.py \
-    && python CanadianElection1965.py && python CanadianElection1968.py \
-    && python CanadianElection1972.py && python CanadianElection1974.py \
-    && python CanadianElection1979.py \
-    && python CanadianElection2019.py && python CanadianElection2021.py
+RUN python generateCanadianElectionFiles.py
 
 
-### STAGE 2 - Minify elections_style.css
+######### STAGE 2 - Minify elections_style.css #########
 FROM node:lts-alpine AS minify-stage
 
 WORKDIR /app
@@ -66,7 +36,7 @@ COPY ./pages/main/elections_style.css ./stylesheets/elections_style.css
 RUN csso ./stylesheets/elections_style.css --output ./elections_style.css
 
 
-### STAGE 3 - Copy html election maps and minifed CSS to final container
+######### STAGE 3 - Copy html election maps and minifed CSS to final container #########
 FROM nginxinc/nginx-unprivileged:alpine3.23-perl
 
 ## Copy sitemap.xml to nginx/html
@@ -85,110 +55,11 @@ RUN chmod -R 755 /usr/share/nginx/html/pages/main/favicon
 ## Copy elections_style.css from minify-stage
 COPY --from=minify-stage /app/elections_style.css /usr/share/nginx/html/pages/main/elections_style.css
 
-## Copy the maps to the nginx/html/pages/elections folder
-COPY --from=python-stage /app/pages/elections/election1867.html /usr/share/nginx/html/pages/elections/election1867.html
-COPY --from=python-stage /app/pages/elections/election1872.html /usr/share/nginx/html/pages/elections/election1872.html
-COPY --from=python-stage /app/pages/elections/election1874.html /usr/share/nginx/html/pages/elections/election1874.html
-COPY --from=python-stage /app/pages/elections/election1878.html /usr/share/nginx/html/pages/elections/election1878.html
-COPY --from=python-stage /app/pages/elections/election1882.html /usr/share/nginx/html/pages/elections/election1882.html
-COPY --from=python-stage /app/pages/elections/election1887.html /usr/share/nginx/html/pages/elections/election1887.html
-COPY --from=python-stage /app/pages/elections/election1891.html /usr/share/nginx/html/pages/elections/election1891.html
-COPY --from=python-stage /app/pages/elections/election1896.html /usr/share/nginx/html/pages/elections/election1896.html
-COPY --from=python-stage /app/pages/elections/election1900.html /usr/share/nginx/html/pages/elections/election1900.html
-COPY --from=python-stage /app/pages/elections/election1904.html /usr/share/nginx/html/pages/elections/election1904.html
-COPY --from=python-stage /app/pages/elections/election1908.html /usr/share/nginx/html/pages/elections/election1908.html
-COPY --from=python-stage /app/pages/elections/election1911.html /usr/share/nginx/html/pages/elections/election1911.html
-COPY --from=python-stage /app/pages/elections/election1917.html /usr/share/nginx/html/pages/elections/election1917.html
-COPY --from=python-stage /app/pages/elections/election1921.html /usr/share/nginx/html/pages/elections/election1921.html
-COPY --from=python-stage /app/pages/elections/election1925.html /usr/share/nginx/html/pages/elections/election1925.html
-COPY --from=python-stage /app/pages/elections/election1926.html /usr/share/nginx/html/pages/elections/election1926.html
-COPY --from=python-stage /app/pages/elections/election1930.html /usr/share/nginx/html/pages/elections/election1930.html
-COPY --from=python-stage /app/pages/elections/election1935.html /usr/share/nginx/html/pages/elections/election1935.html
-COPY --from=python-stage /app/pages/elections/election1940.html /usr/share/nginx/html/pages/elections/election1940.html
-COPY --from=python-stage /app/pages/elections/election1945.html /usr/share/nginx/html/pages/elections/election1945.html
-COPY --from=python-stage /app/pages/elections/election1949.html /usr/share/nginx/html/pages/elections/election1949.html
-COPY --from=python-stage /app/pages/elections/election1953.html /usr/share/nginx/html/pages/elections/election1953.html
-COPY --from=python-stage /app/pages/elections/election1957.html /usr/share/nginx/html/pages/elections/election1957.html
-COPY --from=python-stage /app/pages/elections/election1958.html /usr/share/nginx/html/pages/elections/election1958.html
-COPY --from=python-stage /app/pages/elections/election1962.html /usr/share/nginx/html/pages/elections/election1962.html
-COPY --from=python-stage /app/pages/elections/election1963.html /usr/share/nginx/html/pages/elections/election1963.html
-COPY --from=python-stage /app/pages/elections/election1965.html /usr/share/nginx/html/pages/elections/election1965.html
-COPY --from=python-stage /app/pages/elections/election1968.html /usr/share/nginx/html/pages/elections/election1968.html
-COPY --from=python-stage /app/pages/elections/election1972.html /usr/share/nginx/html/pages/elections/election1972.html
-COPY --from=python-stage /app/pages/elections/election1974.html /usr/share/nginx/html/pages/elections/election1974.html
-COPY --from=python-stage /app/pages/elections/election1979.html /usr/share/nginx/html/pages/elections/election1979.html
-COPY --from=python-stage /app/pages/elections/election2019.html /usr/share/nginx/html/pages/elections/election2019.html
-COPY --from=python-stage /app/pages/elections/election2021.html /usr/share/nginx/html/pages/elections/election2021.html
-
 ## Copy the election pages to the nginx/html/pages/elections folder
-COPY --from=python-stage /app/pages/elections/1867.html /usr/share/nginx/html/pages/elections/1867.html
-COPY --from=python-stage /app/pages/elections/1872.html /usr/share/nginx/html/pages/elections/1872.html
-COPY --from=python-stage /app/pages/elections/1874.html /usr/share/nginx/html/pages/elections/1874.html
-COPY --from=python-stage /app/pages/elections/1878.html /usr/share/nginx/html/pages/elections/1878.html
-COPY --from=python-stage /app/pages/elections/1882.html /usr/share/nginx/html/pages/elections/1882.html
-COPY --from=python-stage /app/pages/elections/1887.html /usr/share/nginx/html/pages/elections/1887.html
-COPY --from=python-stage /app/pages/elections/1891.html /usr/share/nginx/html/pages/elections/1891.html
-COPY --from=python-stage /app/pages/elections/1896.html /usr/share/nginx/html/pages/elections/1896.html
-COPY --from=python-stage /app/pages/elections/1900.html /usr/share/nginx/html/pages/elections/1900.html
-COPY --from=python-stage /app/pages/elections/1904.html /usr/share/nginx/html/pages/elections/1904.html
-COPY --from=python-stage /app/pages/elections/1908.html /usr/share/nginx/html/pages/elections/1908.html
-COPY --from=python-stage /app/pages/elections/1911.html /usr/share/nginx/html/pages/elections/1911.html
-COPY --from=python-stage /app/pages/elections/1917.html /usr/share/nginx/html/pages/elections/1917.html
-COPY --from=python-stage /app/pages/elections/1921.html /usr/share/nginx/html/pages/elections/1921.html
-COPY --from=python-stage /app/pages/elections/1925.html /usr/share/nginx/html/pages/elections/1925.html
-COPY --from=python-stage /app/pages/elections/1926.html /usr/share/nginx/html/pages/elections/1926.html
-COPY --from=python-stage /app/pages/elections/1930.html /usr/share/nginx/html/pages/elections/1930.html
-COPY --from=python-stage /app/pages/elections/1935.html /usr/share/nginx/html/pages/elections/1935.html
-COPY --from=python-stage /app/pages/elections/1940.html /usr/share/nginx/html/pages/elections/1940.html
-COPY --from=python-stage /app/pages/elections/1945.html /usr/share/nginx/html/pages/elections/1945.html
-COPY --from=python-stage /app/pages/elections/1949.html /usr/share/nginx/html/pages/elections/1949.html
-COPY --from=python-stage /app/pages/elections/1953.html /usr/share/nginx/html/pages/elections/1953.html
-COPY --from=python-stage /app/pages/elections/1957.html /usr/share/nginx/html/pages/elections/1957.html
-COPY --from=python-stage /app/pages/elections/1958.html /usr/share/nginx/html/pages/elections/1958.html
-COPY --from=python-stage /app/pages/elections/1962.html /usr/share/nginx/html/pages/elections/1962.html
-COPY --from=python-stage /app/pages/elections/1963.html /usr/share/nginx/html/pages/elections/1963.html
-COPY --from=python-stage /app/pages/elections/1965.html /usr/share/nginx/html/pages/elections/1965.html
-COPY --from=python-stage /app/pages/elections/1968.html /usr/share/nginx/html/pages/elections/1968.html
-COPY --from=python-stage /app/pages/elections/1972.html /usr/share/nginx/html/pages/elections/1972.html
-COPY --from=python-stage /app/pages/elections/1974.html /usr/share/nginx/html/pages/elections/1974.html
-COPY --from=python-stage /app/pages/elections/1979.html /usr/share/nginx/html/pages/elections/1979.html
-COPY --from=python-stage /app/pages/elections/2019.html /usr/share/nginx/html/pages/elections/2019.html
-COPY --from=python-stage /app/pages/elections/2021.html /usr/share/nginx/html/pages/elections/2021.html
+COPY --from=python-stage /app/pages/elections /usr/share/nginx/html/pages/elections
 
 ## Copy the parliament_charts to the nginx/html/pages/main/parliament_charts folder
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1867.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1867.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1872.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1872.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1874.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1874.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1878.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1878.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1882.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1882.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1887.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1887.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1891.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1891.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1896.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1896.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1900.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1900.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1904.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1904.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1908.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1908.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1911.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1911.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1917.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1917.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1921.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1921.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1925.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1925.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1926.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1926.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1930.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1930.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1935.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1935.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1940.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1940.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1945.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1945.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1949.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1949.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1953.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1953.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1957.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1957.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1958.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1958.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1962.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1962.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1963.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1963.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1965.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1965.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1968.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1968.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1972.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1972.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1974.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1974.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart1979.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart1979.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart2019.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart2019.html
-COPY --from=python-stage /app/pages/main/parliament_charts/parl_chart2021.html /usr/share/nginx/html/pages/main/parliament_charts/parl_chart2021.html
+COPY --from=python-stage /app/pages/main/parliament_charts /usr/share/nginx/html/pages/main/parliament_charts
 
 USER nginx
 EXPOSE 8080
