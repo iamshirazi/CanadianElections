@@ -6,9 +6,9 @@ import os
 POSTGRES_USER = os.getenv("POSTGRES_USER")
 POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
 POSTGRES_DB = os.getenv("POSTGRES_DB")
-DATABASE_URL = os.getenv("POSTGRES_URL")
+POSTGRES_URL = os.getenv("POSTGRES_URL")
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(POSTGRES_URL)
 SessionLocal = sessionmaker(bind=engine)
 
 Base = declarative_base()
