@@ -685,9 +685,13 @@ input[type="search"]::-webkit-search-cancel-button {
         padding: 0.25rem;
     }
 
-    .results-table thead, .results-table th {
-        position: sticky;
-        top: 12.5%;
+    /* FIX DISTRICT VOTING RESULTS HEADERS */
+    .results-table:has(#ridingHeader) #districtResultsColumns {
+        top: 12%;
+    }
+
+    .results-table:has(#ridingHeader) #districtResultsColumns th {
+        top: 12%;
     }
 
     }
