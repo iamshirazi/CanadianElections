@@ -93,7 +93,7 @@ async function loadDistricts() {
   const response = await fetch(`https://canadianelections.net/districts/geojson?election_year=${election_year}`);
   const data = await response.json();
 
-  L.geoJSON(data, {
+  const layer = L.geoJSON(data, {
     style: function (feature) {
       return {
         fillColor: getPartyColour(feature.properties.party),
@@ -127,6 +127,9 @@ async function loadDistricts() {
 
     }
   }).addTo(map);
+  
+  const bounds = layer.getBounds();
+  map.fitBounds(bounds);
 }
 
 loadDistricts();
