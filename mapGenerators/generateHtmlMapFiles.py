@@ -1,3 +1,5 @@
+# Copyright (c) 2026 Matthew Shirazi
+
 from jinja2 import Environment, FileSystemLoader
 
 def generateElectionMapFile(electionYear):

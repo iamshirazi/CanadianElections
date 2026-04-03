@@ -12,7 +12,7 @@
      interactive, canada">
     <title>Canadian Elections | About</title>
     <link rel="stylesheet" href="elections_style.css">
-    <script src="elections_functions.js"></script>
+    <script type="module" src="about_functions.js"></script>
     <link rel="apple-touch-icon" sizes="180x180" href="/main/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/main/favicon/favicon-32x32.png?v=3">
     <link rel="icon" type="image/png" sizes="16x16" href="/main/favicon/favicon-16x16.png?v=3">
@@ -22,63 +22,66 @@
     <div id="mainBanner">
             <h1 id="homeButton">Canadian Elections</h1>
         <div>
-            <button class="electionButtons" onclick="loadElection('1867')">1867</button>
+            <button id="button1867" class="electionButtons">1867</button>
         </div>
         <div>
-            <button class="electionButtons" onclick="loadElection('2021')">2021</button>
+            <button id="newestElection" class="electionButtons">2021</button>
         </div>
         <div class="dropdown">
-            <button class="electionButtons" id="moreButton" onclick="toggleDropdownMenu()">More</button>
+            <button class="electionButtons" id="moreButton">More</button>
             <div class="dropdown-content" style="display: none">
-                <a onclick="loadElection('1867')">1867</a>
-                <a onclick="loadElection('1872')">1872</a>
-                <a onclick="loadElection('1874')">1874</a>
-                <a onclick="loadElection('1878')">1878</a>
-                <a onclick="loadElection('1882')">1882</a>
-                <a onclick="loadElection('1887')">1887</a>
-                <a onclick="loadElection('1891')">1891</a>
-                <a onclick="loadElection('1896')">1896</a>
-                <a onclick="loadElection('1900')">1900</a>
-                <a onclick="loadElection('1904')">1904</a>
-                <a onclick="loadElection('1908')">1908</a>
-                <a onclick="loadElection('1911')">1911</a>
-                <a onclick="loadElection('1917')">1917</a>
-                <a onclick="loadElection('1921')">1921</a>
-                <a onclick="loadElection('1925')">1925</a>
-                <a onclick="loadElection('1926')">1926</a>
-                <a onclick="loadElection('1930')">1930</a>
-                <a onclick="loadElection('1935')">1935</a>
-                <a onclick="loadElection('1940')">1940</a>
-                <a onclick="loadElection('1945')">1945</a>
-                <a onclick="loadElection('1949')">1949</a>
-                <a onclick="loadElection('1953')">1953</a>
-                <a onclick="loadElection('1957')">1957</a>
-                <a onclick="loadElection('1958')">1958</a>
-                <a onclick="loadElection('1962')">1962</a>
-                <a onclick="loadElection('1963')">1963</a>
-                <a onclick="loadElection('1965')">1965</a>
-                <a onclick="loadElection('1968')">1968</a>
-                <a onclick="loadElection('1972')">1972</a>
-                <a onclick="loadElection('1974')">1974</a>
-                <a onclick="loadElection('1979')">1979</a>
-                <a onclick="loadElection('2019')">2019</a>
-                <a onclick="loadElection('2021')">2021</a>
+                <a>1867</a>
+                <a>1872</a>
+                <a>1874</a>
+                <a>1878</a>
+                <a>1882</a>
+                <a>1887</a>
+                <a>1891</a>
+                <a>1896</a>
+                <a>1900</a>
+                <a>1904</a>
+                <a>1908</a>
+                <a>1911</a>
+                <a>1917</a>
+                <a>1921</a>
+                <a>1925</a>
+                <a>1926</a>
+                <a>1930</a>
+                <a>1935</a>
+                <a>1940</a>
+                <a>1945</a>
+                <a>1949</a>
+                <a>1953</a>
+                <a>1957</a>
+                <a>1958</a>
+                <a>1962</a>
+                <a>1963</a>
+                <a>1965</a>
+                <a>1968</a>
+                <a>1972</a>
+                <a>1974</a>
+                <a>1979</a>
+                <a>2019</a>
+                <a>2021</a>
             </div>
         </div>
         <div>
-            <button id="aboutButton" onclick=loadAbout()>About</button>
+            <button id="aboutButton">About</button>
         </div>
     </div>
     <div class="shiftUnderneathMainBanner">
         <p class="aboutParagraph">
             Created by Matthew Shirazi, B. Eng
         </p>
+        <br>
         <p class="aboutParagraph">
             This project was created using Docker, Kubernetes, Python, HTML, CSS, and JavaScript. The website runs entirely in a container on a Linux virtual machine.
         </p>
+        <br>
         <p class="aboutParagraph">
-            For recent elections (2019 and 2021), voting data and shapefiles were retreived from Elections Canada. For elections prior to 2019, voting data was retrieved from the Library of Parliament.
+            Voting data was retrieved from the Library of Parliament.
         </p>
+        <br>
         <p class="aboutParagraph">
             If you notice a mistake, please send an email to support@canadianelections.net!
         </p>
@@ -86,7 +89,7 @@
     <div>
         <footer class="footer">
             <p class="aboutParagraph"></p>
-                Pre-2019 federal district shape data retreived from: <br></br>
+                Federal district shape data retreived from: <br></br>
                 <i>Taylor, Zachary; Lucas, Jack; Kirby, J.P.; Hewitt, Christopher Macdonald, 2023, "Replication Data for “Canada’s Federal Electoral Districts, 1867–2021: New Digital Boundary Files and a Comparative Investigation of District Compactness.” Canadian Journal of Political Science.", https://doi.org/10.5683/SP3/4E8DCR, Borealis, V2; fedshapes_cbf_20221003.zip</i>
             </p>
         </footer>
