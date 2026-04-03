@@ -582,6 +582,16 @@ th, td {
     font-size: large;
 }
 
+/* ONLY DARKEN TABLE ROWS IF SEARCH RESULTS, NOT IF VOTING RESULTS*/
+.results-table.results-table:not(:has(#ridingHeader)) tr {
+    transition: all 0.3s ease;
+}
+
+.results-table.results-table:not(:has(#ridingHeader)) tr:hover {
+    background-color: #c6c6c6;
+    transition: all 0.3s ease;
+}
+
 input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance:none;
 }
