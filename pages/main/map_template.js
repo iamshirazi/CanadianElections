@@ -1,9 +1,11 @@
-export const map = L.map("map", {attributionControl: false}).setView([60, -96], 4); // Canada center
+export const map = L.map("map").setView([60, -96], 4); // Canada center
 
 import { retrieveDistrict } from "./elections_functions.js";
 
 // Base layer
-L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png").addTo(map);
+L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+  attribution: "© Matthew Shirazi",
+}).addTo(map);
 
 map.on("click", function () {
   const container = document.getElementById("searchResults");

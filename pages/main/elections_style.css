@@ -583,11 +583,11 @@ th, td {
 }
 
 /* ONLY DARKEN TABLE ROWS IF SEARCH RESULTS, NOT IF VOTING RESULTS*/
-.results-table.results-table:not(:has(#ridingHeader)) tr {
+.results-table.results-table:not(:has(#ridingHeader)) tbody tr {
     transition: all 0.3s ease;
 }
 
-.results-table.results-table:not(:has(#ridingHeader)) tr:hover {
+.results-table.results-table:not(:has(#ridingHeader)) tbody tr:hover {
     background-color: #c6c6c6;
     transition: all 0.3s ease;
 }
