@@ -15,7 +15,7 @@ def get_db():
         db.close()
 
 @router.get("")
-def search(
+async def search(
     query: str = Query(..., min_length=1, max_length=30),
     election_year: int = Query(...), 
     db: Session = Depends(get_db)

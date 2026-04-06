@@ -15,7 +15,7 @@ def get_db():
         db.close()
 
 @router.get("/{district_id}/results", response_model=DistrictResults)
-def get_district_results(
+async def get_district_results(
     district_id: int,
     election_year: int,
     db: Session = Depends(get_db)
@@ -57,7 +57,7 @@ def get_district_results(
 
 
 @router.get("/{district_id}/geojson")
-def get_district_geojson(district_id: int, db: Session = Depends(get_db)):
+async def get_district_geojson(district_id: int, db: Session = Depends(get_db)):
     query = text("""
         SELECT jsonb_build_object(
             'type', 'Feature',
@@ -80,7 +80,7 @@ def get_district_geojson(district_id: int, db: Session = Depends(get_db)):
 
 
 @router.get("/geojson")
-def get_all_districts(election_year: int, db: Session = Depends(get_db)):
+async def get_all_districts(election_year: int, db: Session = Depends(get_db)):
 
     query = text("""
     WITH election_boundary AS (
@@ -130,7 +130,7 @@ def get_all_districts(election_year: int, db: Session = Depends(get_db)):
 
 
 @router.get("/{election_year}/{candidate_id}/geojson")
-def get_district_from_candidate(election_year: int, candidate_id: int, db: Session = Depends(get_db)):
+async def get_district_from_candidate(election_year: int, candidate_id: int, db: Session = Depends(get_db)):
 
     election = db.query(Election).filter(Election.year == election_year).one()
 
