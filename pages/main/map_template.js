@@ -132,4 +132,31 @@ async function loadDistricts() {
   map.fitBounds(bounds);
 }
 
+async function getParties() {
+  const election_year = document.getElementById("current_election_text").textContent;
+  const response = await fetch(`http://localhost:8000/parties/?election_year=${election_year}`);
+  const data = await response.json();
+
+
+  const unordered_list = document.getElementsByClassName("legend-labels")[0];
+
+  const parties = data.parties;
+
+  parties.forEach(party => {
+
+    const span_item = document.createElement('span');
+    span_item.className = "legendPartySquares";
+    span_item.style.backgroundColor = getPartyColour(party);
+
+    const list_item = document.createElement('li');
+    list_item.textContent = party;
+
+    list_item.prepend(span_item);
+
+    unordered_list.appendChild(list_item);
+  })
+  
+}
+
 loadDistricts();
+getParties();

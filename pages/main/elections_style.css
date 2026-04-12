@@ -87,7 +87,7 @@
     background-color: #c6c6c6;
 }
 
-#iframe {
+/* #iframe {
     position: absolute;
     top: 10%;
     left: -1px;
@@ -95,7 +95,7 @@
     border: none;
     height: 90dvh;
     width: 100dvw;
-}
+} */
 
 .shiftUnderneathMainBanner {
     position: absolute;
@@ -566,12 +566,12 @@ th, td {
 /* STICKY HEADERS FOR DISTRICT VOTING RESULTS HEADERS */
 .results-table:has(#ridingHeader) #districtResultsColumns {
     position: sticky;
-    top: 16%;
+    top: 15%;
 }
 
 .results-table:has(#ridingHeader) #districtResultsColumns th {
     position: sticky;
-    top: 16%;
+    top: 15%;
 }
 /* STICKY HEADERS FOR SEARCH RESULTS HEADERS */
 .searchResultsColumns, .searchResultsColumns th {
@@ -604,6 +604,38 @@ input[type="search"]::-webkit-search-cancel-button {
     height: 90dvh;
     width: 100dvw;
     z-index: -10;
+}
+
+#legend {
+    position: absolute;
+    bottom: 4dvh;
+    right: 1dvh;
+    background-color: whitesmoke;
+    border-radius: 10px;
+    font-family: 'Verdana';
+    font-size: small;
+
+}
+
+.legend-title {
+    margin-top: 1dvh;
+    text-align: center;
+    font-weight: bold;
+}
+
+.legend-labels {
+    position: relative;
+    margin-right: 1dvh;
+    padding-left: 1dvh;
+    list-style-type: none;
+}
+
+.legendPartySquares {
+    display: inline-block;
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin-right: 1dvh;
 }
 
 .fifth_row, .fourth_row, .third_row, .second_row, .first_row, .sixth_row,
