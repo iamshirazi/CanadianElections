@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from routers import districts, search
+from routers import districts, search, parties
 from database import engine
 import models
 from fastapi.middleware.cors import CORSMiddleware
@@ -24,3 +24,4 @@ app.add_middleware(
 
 app.include_router(districts.router)
 app.include_router(search.router)
+app.include_router(parties.router)

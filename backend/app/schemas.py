@@ -16,3 +16,6 @@ class SearchItem(BaseModel):
     id: int
     name: str
     type: str
+
+class Parties(BaseModel):
+    parties: list[str]
