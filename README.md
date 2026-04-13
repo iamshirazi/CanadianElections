@@ -17,9 +17,11 @@ Will add previous and future elections to this project.
 * Built a PostgreSQL database to store all of the districts, candidates, parties, and elections.
 * Built an API using FastAPI to allow users to search for a candidate or district.
 * Added a "zoom to district" feature. If a user clicks on a candidate or district search result, they are automatically brought to the district.
-* All candidates in every riding are displayed in a clean table. This is far superior to the "only display the top two highest voted candidates" model I previously had.
+* All candidates in every riding are displayed in a clean table.
 * Simplified the Dockerfile, deleted unnecessary files from the repo.
 * Upgraded the Canadian Elections project from a strictly front-end website, to a **full-stack web application**
+* Added a Party legend (replaced previous folium legend)
+* Added a simple loading screen until the districts render
 
 ### February 2026 UPDATE:
 * Added the 1979 election to the project!

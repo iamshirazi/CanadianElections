@@ -87,11 +87,20 @@ function getPartyColour(party) {
   }
 }
 
+async function removeLoadingScreen() {
+  const mapContainer = document.getElementById("mapContainer");
+  const loadingSpinner = document.getElementById("loadingSpinner");
+
+  mapContainer.style.opacity = "1";
+  loadingSpinner.style.display = 'none';
+}
+
 
 async function loadDistricts() {
   const election_year = document.getElementById("current_election_text").textContent;
   const response = await fetch(`https://canadianelections.net/districts/geojson?election_year=${election_year}`);
   const data = await response.json();
+  removeLoadingScreen();
 
   const layer = L.geoJSON(data, {
     style: function (feature) {
@@ -134,7 +143,7 @@ async function loadDistricts() {
 
 async function getParties() {
   const election_year = document.getElementById("current_election_text").textContent;
-  const response = await fetch(`http://localhost:8000/parties/?election_year=${election_year}`);
+  const response = await fetch(`https://canadianelections.net/parties/?election_year=${election_year}`);
   const data = await response.json();
 
 
