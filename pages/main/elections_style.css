@@ -738,11 +738,11 @@ input[type="search"]::-webkit-search-cancel-button {
 
     .results-table {
         max-width: 30dvw;
-        font-size: xx-small; /* VERIFY THAT THIS IS NOT TOO SMALL */
+        font-size: xx-small;
     }
 
     #ridingHeader {
-        font-size: x-small; /* VERIFY THAT THIS IS NOT TOO SMALL */
+        font-size: x-small;
     }
 
     th, td {
