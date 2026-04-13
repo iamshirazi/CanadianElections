@@ -742,4 +742,15 @@ input[type="search"]::-webkit-search-cancel-button {
         font-size: small;
     }
 
+    #legend {
+        font-size: x-small;
+    }
+
+    .legendPartySquares {
+        width: 8px;
+        height: 8px;
+        margin-right: 1dvh;
+        margin-top: 0.5dvh;
+    }
+
     }
