@@ -3,6 +3,7 @@ import { map } from "./map_template.js";
 ///// EventListeners FOR CLICKING ON THE 1867 AND NEWEST ELECTION BUTTONS /////
 const election1867 = document.getElementById("button1867");
 const newestElection = document.getElementById("newestElection");
+const closeButton = document.getElementById("closeTableButton");
 
 election1867.addEventListener("click", (event) => {
     loadElection(election1867.textContent);
@@ -125,6 +126,7 @@ export function search(election_year) {
     else {
         const container = document.getElementById("searchResults");
         container.innerHTML = "";
+        closeButton.style.display = "none";
     }
 }
 
@@ -132,6 +134,28 @@ searchBar.addEventListener("keyup", (event) => {
     const election_year = document.getElementById("current_election_text").textContent;
 
     search(election_year);
+});
+//////////////////////////////////// END /////////////////////////////////////////
+
+
+///// EventListener FOR THE LEGEND /////
+const legend = document.getElementById("legend");
+
+export function collapseLegend() {
+    const legendScale = document.querySelector(".legend-scale");
+    legendScale.classList.toggle("collapsed");
+
+    console.log(legendArrow);
+
+    if (legendScale.style.visibility == "hidden") {
+        legendScale.style.visibility = "hidden";
+    } else {
+        legendScale.style.visibility = "visible";
+    }
+};
+
+legend.addEventListener("click", (event) => {
+    collapseLegend();
 });
 //////////////////////////////////// END /////////////////////////////////////////
 
@@ -148,6 +172,7 @@ export async function zoomToDistrict_with_CandidateID(electionId, candidateId) {
 
     // CLEAR SEARCH RESULTS IN TABLE
     container.innerHTML = "";
+    closeButton.style.display = "none";
     clearInput();
     retrieveDistrict(election_year, feature.features[0].properties.id);
 }
@@ -165,6 +190,7 @@ export async function zoomToDistrict(districtId) {
 
     // CLEAR SEARCH RESULTS IN TABLE
     container.innerHTML = "";
+    closeButton.style.display = "none";
     clearInput();
     retrieveDistrict(election_year, districtId);
 }
@@ -187,6 +213,16 @@ export function retrieveDistrict(election_year, districtId) {
     }
 }
 
+///// EventListener FOR THE X BUTTON TO CLOSE THE results-table /////
+function closeResultsTable(event) {
+    const container = document.getElementById("searchResults");
+    container.innerHTML = "";
+    closeButton.style.display = "none";
+};
+    
+closeButton.addEventListener("click", closeResultsTable);
+//////////////////////////////////// END /////////////////////////////////////////
+
 
 function renderResultsTable(data) {
     const container = document.getElementById("searchResults");
@@ -200,6 +236,9 @@ function renderResultsTable(data) {
         // RETURN NOTHING!
         return;
     }
+
+    // MAKE X BUTTON ON TABLE VISIBLE
+    closeButton.style.display = "block";
 
     const table = document.createElement("table");
     table.className = "results-table";
@@ -255,6 +294,7 @@ function renderSearchResults(results) {
 
     // CLEAR PREVIOUS RESULTS
     container.innerHTML = "";
+    closeButton.style.display = "none";
 
     if (!results || results.length === 0) {
         container.textContent = "No results found.";

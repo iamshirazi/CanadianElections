@@ -476,7 +476,7 @@ input {
 #searchBarContainer {
     position: relative;
     display: inline-block;
-    top: 106px;
+    top: 11.2dvh;
     left: 4dvw;
     z-index: 1;
 }
@@ -484,8 +484,8 @@ input {
 #searchResults {
     position: absolute;
     display: inline-block;
-    top: 19dvh;
-    left: 5dvw;
+    top: 20dvh;
+    left: 4.5dvw;
     max-height: 30dvh;
     overflow: scroll;
     border-radius: 10px;
@@ -603,11 +603,21 @@ input[type="search"]::-webkit-search-cancel-button {
     position: absolute;
     bottom: 4dvh;
     right: 1dvw;
-    background-color: whitesmoke;
+    background-color: rgb(245, 245, 245, 0.9);
     border-radius: 10px;
     font-family: 'Verdana';
     font-size: small;
+}
 
+.legend-scale {
+    overflow: hidden;
+    max-height: 500px;
+    margin-bottom: 1dvh;
+    transition: all .4s ease;
+}
+
+.legend-scale.collapsed {
+    max-height: 0;
 }
 
 .legend-title {
@@ -629,6 +639,47 @@ input[type="search"]::-webkit-search-cancel-button {
     width: 10px;
     height: 10px;
     margin-right: 1dvw;
+}
+
+.arrow {
+    position: relative;
+    display: inline-block;
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    padding: 5px;
+    top: -3px;
+    left: 30%;
+    transition: all 0.5s ease;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
+.legend-scale.collapsed ~ .legend-title .arrow.down,
+#legend:has(.legend-scale.collapsed) .arrow.down {
+    transform: rotate(-135deg);
+    -webkit-transform: rotate(-135deg);
+    top: 4px;
+}
+
+#closeTableButton {
+    position: absolute;
+    display: none;
+    font-size: x-large;
+    font-weight: normal;
+    font-family: 'Verdana';
+    color: whitesmoke;
+    top: 20dvh;
+    left: 4.5dvw;
+    padding-left: 0.5rem;
+    z-index: 10;
+    transition: all 0.5s ease;
+}
+
+#closeTableButton:hover {
+    color: red;
 }
 
 #mapContainer {
@@ -732,7 +783,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
     #searchResults {
         top: 21dvh;
-        left: 1dvw;
+        left: 5dvw;
         max-height: 20dvh;
     }
 
@@ -783,16 +834,24 @@ input[type="search"]::-webkit-search-cancel-button {
         width: 80px;
         height: 80px;
         border: 10px solid #f3f0f0;
-    border-top: 10px solid #00A7EC;
+        border-top: 10px solid #00A7EC;
     }
 
     #searchBarContainer {
-        left: 8dvw;
+        left: 12dvw;
         top: 100px;
     }
 
     #searchResults {
-        left: 10dvw;
+        left: 12dvw;
     }
 
+    #closeTableButton {
+        font-size: small;
+        color: red;
+        top: 21dvh;
+        left: 12dvw;
+        padding-left: 0.25rem;
     }
+
+}

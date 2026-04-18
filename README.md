@@ -22,6 +22,8 @@ Will add previous and future elections to this project.
 * Upgraded the Canadian Elections project from a strictly front-end website, to a **full-stack web application**
 * Added a Party legend (replaced previous folium legend)
 * Added a simple loading screen until the districts render
+* Added button to close the voting results table
+* Made the legend collapsable and transparent
 
 ### February 2026 UPDATE:
 * Added the 1979 election to the project!
