@@ -476,7 +476,7 @@ input {
 #searchBarContainer {
     position: relative;
     display: inline-block;
-    top: 11.2dvh;
+    top: 13.3dvh;
     left: 4dvw;
     z-index: 1;
 }
