@@ -9,7 +9,9 @@ L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 
 map.on("click", function () {
   const container = document.getElementById("searchResults");
+  const closeButton = document.getElementById("closeTableButton");
   container.innerHTML = "";
+  closeButton.style.display = "none";
 });
 
 function getPartyColour(party) {
