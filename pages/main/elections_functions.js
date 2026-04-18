@@ -145,8 +145,6 @@ export function collapseLegend() {
     const legendScale = document.querySelector(".legend-scale");
     legendScale.classList.toggle("collapsed");
 
-    console.log(legendArrow);
-
     if (legendScale.style.visibility == "hidden") {
         legendScale.style.visibility = "hidden";
     } else {
