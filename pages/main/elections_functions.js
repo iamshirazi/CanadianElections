@@ -236,7 +236,7 @@ function renderResultsTable(data) {
     }
 
     // MAKE X BUTTON ON TABLE VISIBLE
-    closeButton.style.display = "block";
+    closeButton.style.display = "inline-block";
 
     const table = document.createElement("table");
     table.className = "results-table";
