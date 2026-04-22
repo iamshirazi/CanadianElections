@@ -1,4 +1,4 @@
-FROM python:3.14.3-slim-trixie
+FROM dhi.io/python:3
 
 WORKDIR /app
 
