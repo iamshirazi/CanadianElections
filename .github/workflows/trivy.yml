@@ -40,7 +40,7 @@ jobs:
             -f ${{ matrix.dockerfile }} ${{ matrix.context }}
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@0.36.0
         with:
           image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ matrix.name }}:${{ github.sha }}'
           format: 'sarif'
