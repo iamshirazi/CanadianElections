@@ -32,7 +32,7 @@ jobs:
     environment: vulnerability-checks
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Build an image from Dockerfile
         run: |
