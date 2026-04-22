@@ -20,21 +20,29 @@ jobs:
       actions: read # only required for a private repository by github/codeql-action/upload-sarif to get the Action run status
     name: Build
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - name: canadianelections
+            context: .
+            dockerfile: Dockerfile
+          - name: fastapi
+            context: ./backend
+            dockerfile: ./backend/Dockerfile
     environment: vulnerability-checks
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          lfs: true
+        uses: actions/checkout@v6
 
       - name: Build an image from Dockerfile
         run: |
-          docker build -t docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ github.sha }} .
+          docker build -t docker.io/${{ secrets.DOCKER_USERNAME }}/${{ matrix.name }}:${{ github.sha }} \
+            -f ${{ matrix.dockerfile }} ${{ matrix.context }}
 
       - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@0.35.0
+        uses: aquasecurity/trivy-action@v0.36.0
         with:
-          image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/canadianelections:${{ github.sha }}'
+          image-ref: 'docker.io/${{ secrets.DOCKER_USERNAME }}/${{ matrix.name }}:${{ github.sha }}'
           format: 'sarif'
           output: 'trivy-results.sarif'
           severity: 'CRITICAL,HIGH'
