@@ -1,5 +1,5 @@
 ######### STAGE 1 - Generate html election maps #########
-FROM python:3.14.3-slim-trixie AS python-stage
+FROM python:3.15.0b3-slim-trixie AS python-stage
 
 WORKDIR /app
 
