@@ -580,6 +580,8 @@ def create_parliament_seating_plan_2019(con_seats, lib_seats, ndp_seats, green_s
         parliament_seats.append('Green')
     for i in range(independent_seats):
         parliament_seats.append('Independent')
+    
+    return parliament_seats
 
 def create_parliament_seating_plan_2025(con_seats, lib_seats, ndp_seats, green_seats, bloq_seats):
     parliament_seats = []
