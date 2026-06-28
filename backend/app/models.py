@@ -1,5 +1,5 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
-from database import Base
+from database import Base ### to upload results locally, switch to: from backend.app.database import Base
 from geoalchemy2 import Geometry
 
 class Election(Base):

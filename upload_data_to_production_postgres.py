@@ -17,7 +17,7 @@ from backend.app.models import Election, Party, Candidate, District
 
 
 def sort_csv_and_save_new_file(csv_file_path: str, ELECTION_YEAR: str):
-    voting_data = pd.read_csv(csv_file_path)
+    voting_data = pd.read_csv(csv_file_path, dtype={'Votes': 'Int64'})
 
 
     ### FIX VICTORIA DISTRICT NAMES TO MATCH SHAPEFILE
@@ -282,7 +282,8 @@ def sort_csv_and_save_new_file(csv_file_path: str, ELECTION_YEAR: str):
         voting_data.loc[(voting_data["Constituency"] == "Leeds--Grenville--Thousand Islands--Rideau Lakes"),"Constituency"] = "Leeds--Grenville--Thousand Islands and Rideau Lakes"
 
     ### FIX St. Boniface--St. Vital DISTRICT NAMES TO MATCH SHAPEFILE
-    voting_data.loc[(voting_data["Constituency"] == "St. Boniface--St. Vital"),"Constituency"] = "Saint Boniface--Saint Vital"
+    if int(ELECTION_YEAR) < 2025:
+        voting_data.loc[(voting_data["Constituency"] == "St. Boniface--St. Vital"),"Constituency"] = "Saint Boniface--Saint Vital"
 
 
     voting_data = voting_data.sort_values('Constituency', ascending=True)
@@ -602,6 +603,10 @@ def simplify_and_save_shp_file(
         districtsDataframe = remove_incorrect_districts(shapefile_path, rows_to_keep, fedid_of_incorrect_districts, ELECTION_YEAR)
     else:
         districtsDataframe = gpd.read_file(shapefile_path, encoding="UTF-8")
+
+        if int(ELECTION_YEAR) >= 2025:
+            districtsDataframe.rename(columns={"FED_NUM": "id", "ED_NAMEE": "fedname", "SHAPE_Area": "Shape_Area"}, inplace=True)
+        
         districtsDataframe['id'] = districtsDataframe['id'].astype(int)
 
     if ELECTION_YEAR == '1882' or ELECTION_YEAR == '1887':
@@ -615,8 +620,9 @@ def simplify_and_save_shp_file(
     if ELECTION_YEAR == '1908' or ELECTION_YEAR == '1911':
         districtsDataframe = fix_middlesex_and_london_districts(districtsDataframe)
 
-    ## Simplifiy district shapes to increase loading speed
-    districtsDataframe["geometry"] = (districtsDataframe.to_crs(districtsDataframe.estimate_utm_crs()).simplify(20).to_crs(districtsDataframe.crs))
+    if int(ELECTION_YEAR) < 2025:
+        ## Simplifiy district shapes to increase loading speed
+        districtsDataframe["geometry"] = (districtsDataframe.to_crs(districtsDataframe.estimate_utm_crs()).simplify(20).to_crs(districtsDataframe.crs))
 
 
     if int(ELECTION_YEAR) >= 1949:
@@ -649,6 +655,13 @@ def simplify_and_save_shp_file(
     if 'areatotal' in districtsDataframe.columns:
         districtsDataframe['shape_area'] = districtsDataframe['areatotal']
         districtsDataframe = districtsDataframe.drop(columns=['areatotal'])
+
+    if 'ED_NAMEF' in districtsDataframe.columns:
+        districtsDataframe = districtsDataframe.drop(columns=['ED_NAMEF'])
+    if 'REPORDER' in districtsDataframe.columns:
+        districtsDataframe = districtsDataframe.drop(columns=['REPORDER'])
+    if 'SHAPE_Leng' in districtsDataframe.columns:
+        districtsDataframe = districtsDataframe.drop(columns=['SHAPE_Leng'])
 
     ### RENAME COLUMNS TO MATCH POSTGRES DATABASE
     districtsDataframe = districtsDataframe.rename(columns={'Shape_Area': 'shape_area', 'geometry': 'geom'})
@@ -1883,17 +1896,39 @@ def upload_2021_districts():
     fix_district_names_in_postgres(ELECTION_ID)
 
 
+def upload_2025_districts():
+    ELECTION_YEAR = "2025"
+    ELECTION_ID = 45
+    BOUNDARY_VERSION_ID = 19
+    NEW_SHAPEFILE_PATH = "./simplified_district_data/Canada" + ELECTION_YEAR + ".gpkg"
+    rows_to_keep = None                     ## CAN BE SET TO None
+    fedid_of_incorrect_districts = None   ## CAN BE SET TO None
+
+    ### CREATE ELECTION IN DATABASE
+    create_election_in_database(ELECTION_ID, int(ELECTION_YEAR), BOUNDARY_VERSION_ID)
+
+    #### TO UPLOAD JUST PROVINCE AND NAME OF DISTRICTS
+    shapefile_path = "districts2/FED_CA_2025_EN.shp"
+
+    simplify_and_save_shp_file(shapefile_path, ELECTION_YEAR, ELECTION_ID, rows_to_keep, fedid_of_incorrect_districts, BOUNDARY_VERSION_ID)
+
+    # # ### UPLOADS SHAPEFILE TO LOCAL POSTGRES
+    upload_shapefile_to_postgres(NEW_SHAPEFILE_PATH, ELECTION_ID, ELECTION_YEAR)
+
+    fix_district_names_in_postgres(ELECTION_ID)
+
+
 def main():
 
-    ELECTION_YEAR = "2021"
-    ELECTION_ID = 44
-    BOUNDARY_VERSION_ID = 18
+    ELECTION_YEAR = "2025"
+    ELECTION_ID = 45
+    BOUNDARY_VERSION_ID = 19
     csv_file_path_original = 'voting_data/electionsCandidates' + ELECTION_YEAR + '.csv'
     csv_file_path_sorted = 'voting_data/electionsCandidates' + ELECTION_YEAR + '_sorted.csv'
 
     ## STEP 1: UPLOAD AND FIX DISTRICTS
     ### MAKE SURE THE DISTRICTS DO NOT EXIST ALREADY!
-    upload_2021_districts()
+    upload_2025_districts()
 
     ### NEED TO SAVE electionsCandidates file to voting_data folder BEFORE proceeding!
 
