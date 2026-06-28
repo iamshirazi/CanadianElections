@@ -581,4 +581,18 @@ def create_parliament_seating_plan_2019(con_seats, lib_seats, ndp_seats, green_s
     for i in range(independent_seats):
         parliament_seats.append('Independent')
 
+def create_parliament_seating_plan_2025(con_seats, lib_seats, ndp_seats, green_seats, bloq_seats):
+    parliament_seats = []
+
+    for i in range(lib_seats):
+        parliament_seats.append('Liberal')
+    for i in range(con_seats):
+        parliament_seats.append('Conservative')
+    for i in range(bloq_seats):
+        parliament_seats.append('Bloq-Quebecois')
+    for i in range(ndp_seats):
+        parliament_seats.append('NDP')
+    for i in range(green_seats):
+        parliament_seats.append('Green')
+
     return parliament_seats

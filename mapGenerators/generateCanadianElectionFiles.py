@@ -760,6 +760,28 @@ def election2021():
     generateHtmlMapFiles.generateElectionMapFile(ELECTION_YEAR)
 
 
+def election2025():
+    ELECTION_YEAR = 2025
+
+    CON_SEATS = 144
+    LIB_SEATS = 169
+    NDP_SEATS = 7
+    GREEN_SEATS = 1
+    BLOQ_SEATS = 22
+
+
+    total_seats = (CON_SEATS + LIB_SEATS + NDP_SEATS + GREEN_SEATS + BLOQ_SEATS)
+
+    sorted_parliament_seats = generateParliamentChartFiles.create_parliament_seating_plan_2025(CON_SEATS, LIB_SEATS, NDP_SEATS, GREEN_SEATS, BLOQ_SEATS)
+
+    parliament_chart = generateParliamentChartFiles.generateParliamentChart(total_seats, sorted_parliament_seats)
+
+    createParliamentChartFile(parliament_chart, ELECTION_YEAR)
+
+    ### Generate election page in main folder
+    generateHtmlMapFiles.generateElectionMapFile(ELECTION_YEAR)
+
+
 def main():
     elections = [election1867, election1872, election1874, election1878, election1882,
                  election1887, election1891, election1896, election1900, election1904,
@@ -767,7 +789,7 @@ def main():
                  election1926, election1930, election1935, election1940, election1945,
                  election1949, election1953, election1957, election1958, election1962,
                  election1963, election1965, election1968, election1972, election1974,
-                 election1979, election2019, election2021]
+                 election1979, election2019, election2021, election2025]
     
     for election_function in elections:
         election_function()
